@@ -1,0 +1,10 @@
+python-dotenv
+djangorestframework
+psycopg2-binary
+supabase
+django-environ
+djangorestframework-simplejwt
+django-cors-headers
+redis
+django-redis
+upstash-redis

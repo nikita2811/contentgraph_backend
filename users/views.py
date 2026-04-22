@@ -10,13 +10,13 @@ from django.conf import settings
 import jwt
 import logging
 from .models import User
-from .utils import send_invite_email
 from .utils import (send_verification_email,get_token_for_user,store_refresh_token,
                     is_refresh_token_valid,delete_refresh_token,reset_password_email,verify_password_reset_token)
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
+
 
 
 
@@ -42,7 +42,9 @@ class RegisterView(APIView):
           serializer_data.save()
           user_data = serializer_data.data
           user = User.objects.get(email=user_data['email'])
+          logger.info("code working fine till here")
           send_verification_email(user,request)
+          logger.info("code working fine till here 2")
           return Response(user_data,status=status.HTTP_201_CREATED)
         
         return Response({"errors": serializer_data.errors}, status=status.HTTP_400_BAD_REQUEST)
@@ -120,7 +122,6 @@ class LoginView(APIView):
 
         # 6. Generate JWT tokens
             tokens = get_token_for_user(user)
-            print(tokens)
             refresh_token= str(tokens['refresh'])
             store_refresh_token(user.id, refresh_token)
             logger.info(f"User logged in: {email}")

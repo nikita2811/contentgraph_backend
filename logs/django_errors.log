@@ -1,0 +1,10 @@
+INFO 2026-04-22 17:06:04,178 autoreload 36304 42636 C:\Python-Projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-04-22 17:06:06,064 autoreload 33864 40760 Watching for file changes with StatReloader
+INFO 2026-04-22 17:07:12,102 autoreload 33864 40760 C:\Python-Projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-04-22 17:07:14,351 autoreload 34376 32352 Watching for file changes with StatReloader
+INFO 2026-04-22 17:07:38,524 autoreload 34376 32352 C:\Python-Projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-04-22 17:07:40,200 autoreload 40184 10308 Watching for file changes with StatReloader
+INFO 2026-04-22 17:08:12,814 autoreload 40184 10308 C:\Python-Projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-04-22 17:08:14,549 autoreload 32156 37444 Watching for file changes with StatReloader
+INFO 2026-04-22 17:08:38,610 autoreload 32156 37444 C:\Python-Projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-04-22 17:08:40,254 autoreload 23124 11436 Watching for file changes with StatReloader

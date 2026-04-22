@@ -11,21 +11,30 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+import environ
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+LOGS_DIR = os.path.join(BASE_DIR, 'logs')
+os.makedirs(LOGS_DIR, exist_ok=True) 
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!vx#%(+b_l$s8s%9@8q99p_+8#0j656a2spef=7&c)8z+v%#se'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://app.contentgraph.io','localhost:5173']
 
 
 # Application definition
@@ -37,9 +46,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -73,10 +86,51 @@ WSGI_APPLICATION = 'contentgraph_backend.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+
+       "default": env.db("DATABASE_URL")
+    
+}
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+ 'handlers': {
+        # Print logs to terminal
+        'console': {
+            'class':     'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+        # Save logs to a file
+        'file': {
+            'class':     'logging.FileHandler',
+            'filename':  'logs/django_errors.log',
+            'formatter': 'verbose',
+        },
+    },
+ 'loggers': {
+        # Django's internal logs
+        'django': {
+            'handlers':  ['console', 'file'],
+            'level':     'INFO',
+            'propagate': True,
+        },
+        # Your app's logs
+        'users': {
+            'handlers':  ['console', 'file'],
+            'level':     'DEBUG',
+            'propagate': False,
+        },
+    },
 }
 
 
@@ -115,3 +169,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+AUTH_USER_MODEL ='users.user'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = env('EMAIL_PORT', cast=int)
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = env('EMAIL_USE_SSL', cast=bool, default=True)
+EMAIL_USE_TLS = env('EMAIL_USE_TLS', cast=bool, default=False)
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
+ 
+REDIS_URL=env('REDIS_URL')
+UPSTASH_REDIS_REST_URL = env('UPSTASH_REDIS_REST_URL')
+UPSTASH_REDIS_REST_TOKEN = env('UPSTASH_REDIS_REST_TOKEN')
