@@ -8,3 +8,4 @@ INFO 2026-04-22 17:08:12,814 autoreload 40184 10308 C:\Python-Projects\contentgr
 INFO 2026-04-22 17:08:14,549 autoreload 32156 37444 Watching for file changes with StatReloader
 INFO 2026-04-22 17:08:38,610 autoreload 32156 37444 C:\Python-Projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
 INFO 2026-04-22 17:08:40,254 autoreload 23124 11436 Watching for file changes with StatReloader
+INFO 2026-04-22 17:18:25,135 autoreload 23124 11436 C:\Python-Projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.

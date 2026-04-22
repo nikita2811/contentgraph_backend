@@ -86,8 +86,14 @@ WSGI_APPLICATION = 'contentgraph_backend.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-
-       "default": env.db("DATABASE_URL")
+       'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'db',       # matches the service name in docker-compose
+        'PORT': '5432',
+    }
     
 }
 LOGGING = {
