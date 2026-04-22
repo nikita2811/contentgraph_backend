@@ -37,8 +37,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['contentgraph-backend.onrender.com',
                  'backend.contentgraph.io',
-                 'https://app.contentgraph.io',
-                 'http://localhost:5173']
+                 'app.contentgraph.io',
+                 'localhost:5173']
 
 
 # Application definition
