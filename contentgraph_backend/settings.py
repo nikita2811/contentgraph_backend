@@ -34,8 +34,26 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['contentgraph-backend.onrender.com','backend.contentgraph.io','app.contentgraph.io','localhost:5173']
+ALLOWED_HOSTS = ['contentgraph-backend.onrender.com','backend.contentgraph.io','app.contentgraph.io','http://localhost:5173']
 
+# ✅ Allow all HTTP methods
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
+]
+# ✅ Allow these headers
+CORS_ALLOW_HEADERS = [
+    "Content-Type",
+    "Authorization",
+    "Accept",
+    "X-CSRFToken",
+]
+# ✅ Allow cookies / auth credentials
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
