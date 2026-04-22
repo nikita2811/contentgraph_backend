@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: contentgraph-backend
+    env: docker
+    dockerfilePath: ./Dockerfile   # must match exact location
+    dockerContext: .
