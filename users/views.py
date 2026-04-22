@@ -103,12 +103,14 @@ class LoginView(APIView):
             )
             if not user.is_verified:
              return Response(
-                {'error': 'Email is not verified. Please verify your email first.'},
+                {'code': 'EMAIL_NOT_VERIFIED',
+                'error': 'Email is not verified. Please verify your email first.'},
                 status=status.HTTP_403_FORBIDDEN
             )
             if not user.is_active:
              return Response(
-                {'error': 'Account is disabled. Contact support.'},
+                {'code': 'ACCOUNT_DISABLED',
+                'error': 'Account is disabled. Contact support.'},
                 status=status.HTTP_403_FORBIDDEN
             )
 
