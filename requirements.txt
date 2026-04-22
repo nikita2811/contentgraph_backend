@@ -9,3 +9,4 @@ redis
 django-redis
 upstash-redis
 gunicorn
+dj-database-url

@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import os
 import environ
+import dj_database_url
 
 
 
@@ -67,7 +68,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'contentgraph_backend.urls'
 
-CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "https://app.contentgraph.io",  # exact match, no trailing slash
+]
 
 # ✅ Allow all HTTP methods
 CORS_ALLOW_METHODS = [
@@ -111,14 +116,12 @@ WSGI_APPLICATION = 'contentgraph_backend.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-       'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': 'db',       # matches the service name in docker-compose
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True,  # 👈 Supabase requires SSL
+    )
+       
     
 }
 LOGGING = {
