@@ -39,24 +39,6 @@ ALLOWED_HOSTS = ['contentgraph-backend.onrender.com',
                  'https://app.contentgraph.io',
                  'http://localhost:5173']
 
-# ✅ Allow all HTTP methods
-CORS_ALLOW_METHODS = [
-    "GET",
-    "POST",
-    "PUT",
-    "PATCH",
-    "DELETE",
-    "OPTIONS",
-]
-# ✅ Allow these headers
-CORS_ALLOW_HEADERS = [
-    "Content-Type",
-    "Authorization",
-    "Accept",
-    "X-CSRFToken",
-]
-# ✅ Allow cookies / auth credentials
-CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -84,6 +66,28 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'contentgraph_backend.urls'
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+# ✅ Allow all HTTP methods
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
+]
+# ✅ Allow these headers
+CORS_ALLOW_HEADERS = [
+    "Content-Type",
+    "Authorization",
+    "Accept",
+    "X-CSRFToken",
+]
+# ✅ Allow cookies / auth credentials
+CORS_ALLOW_CREDENTIALS = True
+
 
 TEMPLATES = [
     {
