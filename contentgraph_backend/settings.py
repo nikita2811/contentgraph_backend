@@ -34,7 +34,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://backend.contentgraph.io','https://app.contentgraph.io','localhost:5173']
+ALLOWED_HOSTS = ['contentgraph-backend.onrender.com','https://backend.contentgraph.io','https://app.contentgraph.io','localhost:5173']
 
 
 # Application definition
