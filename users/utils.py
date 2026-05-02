@@ -14,6 +14,7 @@ from upstash_redis import Redis
 import os
 from .email import send_html_email
 from rest_framework.response import Response
+from django.contrib.auth.tokens import default_token_generator
 
 r = Redis(
     url=os.environ.get("UPSTASH_REDIS_REST_URL"),  # paste directly
@@ -62,12 +63,15 @@ def get_token_for_user(user):                   # ✅ renamed from get_token_for
 
 
 def send_verification_email(user, request):
-    token  = str(RefreshToken.for_user(user).access_token)  # ✅ access token only
+    token = default_token_generator.make_token(user)
+    uid = urlsafe_base64_encode(force_bytes(user.pk))
+    
+    logger.info(f'token:{token}')  # ✅ access token only
     domain = get_current_site(request).domain
     link   = reverse('verify-email')
 
     verification_url=(
-        f'http://{domain}{link}?token={token}'
+        f'http://{domain}{link}?uid={uid}&token={token}'
     )
     context = {
             "user": user,
