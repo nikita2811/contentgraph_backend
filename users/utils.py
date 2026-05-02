@@ -12,6 +12,8 @@ from django.contrib.auth import get_user_model
 import logging
 from upstash_redis import Redis
 import os
+from .email import send_html_email
+from rest_framework.response import Response
 
 r = Redis(
     url=os.environ.get("UPSTASH_REDIS_REST_URL"),  # paste directly
@@ -29,8 +31,7 @@ User = get_user_model()
 REFRESH_TOKEN_EXPIRY = 60 * 60 * 24 * 7
 
 
-def store_refresh_token(user_id, refresh_token):
-    
+def store_refresh_token(user_id, refresh_token): 
     key = f'refresh_token:{user_id}'
     r.set(key, refresh_token, ex=REFRESH_TOKEN_EXPIRY)
 
@@ -64,13 +65,26 @@ def send_verification_email(user, request):
     token  = str(RefreshToken.for_user(user).access_token)  # ✅ access token only
     domain = get_current_site(request).domain
     link   = reverse('verify-email')
-    url    = f'http://{domain}{link}?token={token}'
-    email = EmailMessage(
-        subject = 'Verify your email',
-        body    = f'Hi {user.name},\n\nClick the link below to verify your email:\n{url}',
-        to      = [user.email],
+
+    verification_url=(
+        f'http://{domain}{link}?token={token}'
     )
-    email.send()
+    context = {
+            "user": user,
+            "verification_url": verification_url,
+            "expiry_time": "24 hours"
+        }
+    send_html_email(
+            subject="Verify Your Email",
+            template_name="verify_email.html",
+            context=context,
+            recipient_list=[user.email]
+        )
+
+    return Response({
+            "message": "Verification email sent"
+        })
+    
 
 
 def generate_password_reset_token(user):
