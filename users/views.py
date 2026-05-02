@@ -20,6 +20,7 @@ from django.utils.http import urlsafe_base64_decode
 from django.utils.encoding import force_str
 from django.contrib.auth.tokens import default_token_generator
 from django.shortcuts import redirect
+import threading
 
 
 
@@ -47,7 +48,10 @@ class RegisterView(APIView):
           user_data = serializer_data.data
           user = User.objects.get(email=user_data['email'])
           logger.info("code working fine till here")
-          send_verification_email(user,request)
+          # Send email in background thread (don't block response)
+          thread = threading.Thread(target=send_verification_email, args=(user,request))
+          thread.start()
+       
           logger.info("code working fine till here 2")
           return Response(user_data,status=status.HTTP_201_CREATED)
         
