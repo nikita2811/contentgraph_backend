@@ -11,7 +11,7 @@ import jwt
 import logging
 from .models import User,PasswordResetToken
 from .utils import (send_verification_email,get_token_for_user,store_refresh_token,
-                    is_refresh_token_valid,delete_refresh_token,reset_password_email,verify_password_reset_token)
+                    is_refresh_token_valid,delete_refresh_token,reset_password_email)
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework_simplejwt.tokens import RefreshToken
