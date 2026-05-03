@@ -74,6 +74,7 @@ class EmailVerificationView(APIView):
 
   if default_token_generator.check_token(user, token):
             user.is_active = True
+            user.is_verified = True
             user.save()
             return redirect(f'{FRONTEND}/signin?status=success&message=Email verified successfully')
 
