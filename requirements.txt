@@ -10,3 +10,4 @@ django-redis
 upstash-redis
 gunicorn
 dj-database-url
+django-anymail[resend]

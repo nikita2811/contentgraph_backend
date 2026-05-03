@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'users',
     'rest_framework',
     'corsheaders',
+    'anymail',
 ]
 
 MIDDLEWARE = [
@@ -204,7 +205,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 AUTH_USER_MODEL ='users.user'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'anymail.backends.resend.EmailBackend'
 EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_PORT = env('EMAIL_PORT', cast=int)
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
@@ -217,3 +218,5 @@ REDIS_URL=env('REDIS_URL')
 UPSTASH_REDIS_REST_URL = env('UPSTASH_REDIS_REST_URL')
 UPSTASH_REDIS_REST_TOKEN = env('UPSTASH_REDIS_REST_TOKEN')
 FRONTEND_URL ='https://app.contentgraph.io'
+
+RESEND_API_KEY=env('RESEND_API_KEY')
