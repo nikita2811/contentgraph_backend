@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import (BaseUserManager,AbstractBaseUser,PermissionsMixin)
+from django.utils import timezone
+import uuid
 
 # Create your models here.
 class UserManager(BaseUserManager):
@@ -39,3 +41,18 @@ class User(AbstractBaseUser,PermissionsMixin):
 
      def __str__(self):
       return self.email
+    
+
+
+class PasswordResetToken(models.Model):
+    user       = models.ForeignKey(User, on_delete=models.CASCADE)
+    token      = models.UUIDField(default=uuid.uuid4, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_used    = models.BooleanField(default=False)
+
+    def is_expired(self):
+        # expires after 30 minutes
+        return timezone.now() > self.created_at + timezone.timedelta(minutes=30)
+
+    def __str__(self):
+        return f"{self.user.email} - {self.token}"

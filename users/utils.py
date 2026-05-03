@@ -65,8 +65,7 @@ def get_token_for_user(user):                   # ✅ renamed from get_token_for
 def send_verification_email(user, request):
     token = default_token_generator.make_token(user)
     uid = urlsafe_base64_encode(force_bytes(user.pk))
-    
-    logger.info(f'token:{token}')  # ✅ access token only
+
     domain = get_current_site(request).domain
     link   = reverse('verify-email')
 
@@ -90,15 +89,29 @@ def send_verification_email(user, request):
         })
     
 
+def reset_password_email(user,token, request):
+    uid = user.id
+    domain = get_current_site(request).domain
+    link   = reverse('reset-password')
 
-def generate_password_reset_token(user):
-    token   = PasswordResetTokenGenerator().make_token(user)
-    user_id = urlsafe_base64_encode(force_bytes(user.pk))   # ✅ force_bytes + user.pk
-    return user_id, token
+    resend_url=(
+        f'http://{domain}{link}?uid={uid}&token={token}'
+    )
+    context = {
+            "user": user,
+            "resend_url":resend_url,
+            "expiry_time": "24 hours"
+        }
+    send_html_email(
+            subject="Reset Password",
+            template_name="forgot_password.html",
+            context=context,
+            recipient_list=[user.email]
+        )
 
-
-def reset_password_email(user, request):
-    uid, token = generate_password_reset_token(user)
+    return Response({
+            "message": "Forgot password email sent"
+        })
     domain     = get_current_site(request).domain
     link       = reverse('reset-password')
     url        = f'http://{domain}{link}?uid={uid}&token={token}'
@@ -108,24 +121,10 @@ def reset_password_email(user, request):
         body    = f'Hi {user.name},\n\nClick the link below to reset your password:\n{url}',
         to      = [user.email],
     )
-    email.send()                                             # ✅ was commented out
+    email.send()                                          
 
 
-def verify_password_reset_token(uid, token):
-    try:
-        user_id = force_str(urlsafe_base64_decode(uid))
-        print(f"decoded user_id = {user_id}")
-        user    = User.objects.get(pk=user_id)
 
-        if not PasswordResetTokenGenerator().check_token(user, token):
-            return None, 'Token is invalid or has expired.'
-
-        return user, None
-
-    except User.DoesNotExist:
-        return None, 'User not found.'
-    except Exception:
-        return None, 'Invalid token.'
     
 
 

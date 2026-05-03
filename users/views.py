@@ -9,7 +9,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.conf import settings
 import jwt
 import logging
-from .models import User
+from .models import User,PasswordResetToken
 from .utils import (send_verification_email,get_token_for_user,store_refresh_token,
                     is_refresh_token_valid,delete_refresh_token,reset_password_email,verify_password_reset_token)
 from django.contrib.auth import authenticate
@@ -205,8 +205,9 @@ class ResetPassword(APIView):
          return Response({'error':'User not found'},status=status.HTTP_400_BAD_REQUEST)
       try:
             user = User.objects.get(email=email)
-            print(user)
-            reset_password_email(user, request)   # send email with token
+            # Create new token
+            reset_token = PasswordResetToken.objects.create(user=user)
+            reset_password_email(user,reset_token.token, request)   # send email with token
             return Response(
                 {'message': 'Password reset email sent. Check your inbox.'},
                 status=status.HTTP_200_OK
@@ -218,12 +219,13 @@ class ResetPassword(APIView):
                 status=status.HTTP_200_OK
             )
 class NewResetPassword(APIView):
-   def get(self,request):
+   def post(self,request):
         uid   = request.query_params.get('uid')
         token = request.query_params.get('token')
-        
         password = request.data.get('password')
         confirm_password = request.data.get('confirm_password')
+
+
         if not all([ token, password, confirm_password]):
             return Response(
                 {'error': ' token, password and confirm_password are required.'},
@@ -235,16 +237,26 @@ class NewResetPassword(APIView):
                 {'error': 'Passwords do not match.'},
                 status=status.HTTP_400_BAD_REQUEST
             )
-        user, error = verify_password_reset_token(uid, token)
-        if error:
-            return Response(
-                {'error': error},
-                status=status.HTTP_400_BAD_REQUEST
-            )
+        
+        try:
+            reset_token = PasswordResetToken.objects.get(token=token, is_used=False)
+        except PasswordResetToken.DoesNotExist:
+            return Response({"error": "Invalid or expired token"}, status=400)
 
-        #  set new password
+        # Check expiry
+        if reset_token.is_expired():
+            reset_token.delete()
+            return Response({"error": "Token expired, please request a new one"}, status=400)
+
+         # Reset password
+        user = reset_token.user
         user.set_password(password)
         user.save()
+
+        # Invalidate token after use ✅
+        reset_token.is_used = True
+        reset_token.save()
+       
 
         return Response(
             {'message': 'Password reset successfully. You can now login.'},
