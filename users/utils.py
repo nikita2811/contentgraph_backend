@@ -93,9 +93,9 @@ def reset_password_email(user,token, request):
     uid = user.id
     domain = get_current_site(request).domain
     link   = reverse('reset-password')
-
+    FRONTEND = settings.FRONTEND_URL
     resend_url=(
-        f'http://{domain}{link}?uid={uid}&token={token}'
+        f'{FRONTEND}/{link}?uid={uid}&token={token}'
     )
     context = {
             "user": user,
