@@ -110,16 +110,7 @@ def reset_password_email(user,token, request):
     return Response({
             "message": "Forgot password email sent"
         })
-    domain     = get_current_site(request).domain
-    link       = reverse('reset-password')
-    url        = f'http://{domain}{link}?uid={uid}&token={token}'
-
-    email = EmailMessage(
-        subject = 'Reset your Password',
-        body    = f'Hi {user.name},\n\nClick the link below to reset your password:\n{url}',
-        to      = [user.email],
-    )
-    email.send()                                          
+                                            
 
 
 

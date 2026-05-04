@@ -11,3 +11,5 @@ upstash-redis
 gunicorn
 dj-database-url
 django-anymail[resend]
+pyjwt
+cryptography
