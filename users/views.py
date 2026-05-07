@@ -220,8 +220,8 @@ class ResetPassword(APIView):
             )
 class NewResetPassword(APIView):
    def post(self,request):
-        uid   = request.query_params.get('uid')
-        token = request.query_params.get('token')
+        uid   = request.data.get('uid')
+        token = request.data.get('token')
         password = request.data.get('password')
         confirm_password = request.data.get('confirm_password')
 
