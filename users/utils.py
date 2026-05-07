@@ -89,11 +89,10 @@ def send_verification_email(user, request):
         })
     
 
-def reset_password_email(user,token, request):
-    uid = user.id
+def reset_password_email(user,token):
     FRONTEND = settings.FRONTEND_URL
     resend_url=(
-        f'{FRONTEND}/reset-password?uid={uid}&token={token}'
+        f'{FRONTEND}/reset-password?token={token}'
     )
     context = {
             "user": user,

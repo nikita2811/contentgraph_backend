@@ -207,7 +207,7 @@ class ResetPassword(APIView):
             user = User.objects.get(email=email)
             # Create new token
             reset_token = PasswordResetToken.objects.create(user=user)
-            reset_password_email(user,reset_token.token, request)   # send email with token
+            reset_password_email(user,reset_token.token)   # send email with token
             return Response(
                 {'message': 'Password reset email sent. Check your inbox.'},
                 status=status.HTTP_200_OK
@@ -220,7 +220,6 @@ class ResetPassword(APIView):
             )
 class NewResetPassword(APIView):
    def post(self,request):
-        uid   = request.data.get('uid')
         token = request.data.get('token')
         password = request.data.get('password')
         confirm_password = request.data.get('confirm_password')
