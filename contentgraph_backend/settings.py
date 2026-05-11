@@ -238,9 +238,10 @@ RAZORPAY_KEY_SECRET = env('RAZORPAY_KEY_SECRET')
 
 
 # settings.py
-REDIS_URL = env("REDIS_URL")  # note: rediss:// not redis://
+UPSTASH_REDIS_URL = env("UPSTASH_REDIS_URL")  # note: rediss:// not redis://
 
-CELERY_BROKER_URL        = 'redis://127.0.0.1:6379/0'
+CELERY_BROKER_URL = env("CELERY_BROKER_URL", default="redis://localhost:6379/0")
+CELERY_RESULT_BACKEND = env("CELERY_BROKER_URL", default="redis://localhost:6379/0")
 CELERY_RESULT_BACKEND    = 'django-db'
 CELERY_ACCEPT_CONTENT    = ["json"]
 CELERY_TASK_SERIALIZER   = "json"
