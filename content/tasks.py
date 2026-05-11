@@ -1,11 +1,11 @@
 import logging
+import json
 from celery import shared_task
 from celery.exceptions import SoftTimeLimitExceeded
 from contentgraph_backend.exceptions import AIServiceUnavailable, AIServiceError
 from services.fastapi_client import generate_content
 from .models import Product, CeleryTaskMeta, AIResult
 from django.utils.timezone import now
-import json
 
 logger = logging.getLogger(__name__)
 
@@ -48,8 +48,9 @@ def generate_content_task(self, product_request_id) -> dict:
     try:
         data = Product.objects.get(id=product_request_id)
         logger.info(f"product data: {data}")
+
         product_details = {
-            "product_name": data.product_name,   # fixed typo: "prodcut_name" → "product_name"
+            "product_name": data.product_name,
             "category": data.category,
             "target_audience": data.target_audience,
             "tone": data.tone,
@@ -58,22 +59,24 @@ def generate_content_task(self, product_request_id) -> dict:
 
         result = generate_content(product_details)
         response = result.result
+
+        # Parse nested JSON strings
         final_content_str = response["final_content"][0]["text"]
         serp_str = response["serp"][0]["text"]
-            
-            # Parse the nested JSON strings
         content = json.loads(final_content_str)
         serp = json.loads(serp_str)
 
-        # Uncomment when ready to persist results:
+        # Persist results
         AIResult.objects.create(
             request=data,
             seo_title=content["seo_title"],
             meta_description=content["meta_description"],
             long_description=content["long_description"],
-            tags=content["tags"],
+            # join if tags is CharField, remove join if JSONField
+            tags=",".join(content["tags"]) if isinstance(content["tags"], list) else content["tags"],
             primary_keyword=serp["primary_keyword"],
-            secondary_keyword=serp["secondary_keyword"],
+            # join if secondary_keywords is a list and field is CharField
+            secondary_keyword=",".join(serp["secondary_keywords"]) if isinstance(serp["secondary_keywords"], list) else serp["secondary_keywords"],
         )
 
         # Mark request completed
@@ -85,25 +88,28 @@ def generate_content_task(self, product_request_id) -> dict:
         meta.completed_at = now()
         meta.save(update_fields=['status', 'completed_at'])
 
-        return result
+        # Return serializable dict
+        return {"status": "success", "product_id": data.id}
 
     except AIServiceUnavailable as e:
-        # FastAPI unreachable or timed out — retry with backoff
-        if self.request.retries >= self.max_retries: # final retry exhausted
+        if self.request.retries >= self.max_retries:
+            _mark_failed(data, meta, str(e), self.request.retries)
             logger.warning(f"[task={self.request.id}] Retries exhausted: {e}")
             raise
         logger.warning(f"[task={self.request.id}] Transient error, retrying: {e}")
         raise self.retry(exc=e, countdown=2 ** self.request.retries)
 
     except AIServiceError as e:
-        # 4xx/5xx from FastAPI — don't retry, fail immediately
+        _mark_failed(data, meta, str(e), self.request.retries)
         logger.error(f"[task={self.request.id}] Non-retryable error: {e}")
         raise
 
     except SoftTimeLimitExceeded:
+        _mark_failed(data, meta, "AI pipeline timed out", self.request.retries)
         logger.error(f"[task={self.request.id}] Pipeline exceeded 270s soft limit")
         raise AIServiceUnavailable("AI pipeline timed out")
 
     except Exception as e:
+        _mark_failed(data, meta, str(e), self.request.retries)
         logger.exception(f"[task={self.request.id}] Unexpected error: {e}")
         raise
