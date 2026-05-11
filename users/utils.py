@@ -34,7 +34,7 @@ REFRESH_TOKEN_EXPIRY = 60 * 60 * 24 * 7
 
 def store_refresh_token(user_id, refresh_token): 
     key = f'refresh_token:{user_id}'
-    r.set(key, refresh_token, ex=REFRESH_TOKEN_EXPIRY)
+    r.setex(key, refresh_token, ex=REFRESH_TOKEN_EXPIRY)
 
 
 def get_refresh_token(user_id):
