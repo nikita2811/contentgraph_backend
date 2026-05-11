@@ -7,3 +7,9 @@ INFO 2026-05-11 16:46:29,840 autoreload 22092 37956 C:\Python-Projects\contentgr
 INFO 2026-05-11 16:46:34,551 autoreload 41076 17880 Watching for file changes with StatReloader
 INFO 2026-05-11 16:47:08,681 autoreload 41076 17880 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
 INFO 2026-05-11 16:47:10,615 autoreload 29240 42764 Watching for file changes with StatReloader
+INFO 2026-05-11 16:53:10,263 autoreload 29240 42764 C:\Python-Projects\contentgraph_backend\users\utils.py changed, reloading.
+INFO 2026-05-11 16:53:13,598 autoreload 27472 25992 Watching for file changes with StatReloader
+INFO 2026-05-11 16:53:50,353 autoreload 27472 25992 C:\Python-Projects\contentgraph_backend\users\views.py changed, reloading.
+INFO 2026-05-11 16:53:52,237 autoreload 12044 7628 Watching for file changes with StatReloader
+INFO 2026-05-11 16:53:56,925 autoreload 12044 7628 C:\Python-Projects\contentgraph_backend\users\views.py changed, reloading.
+INFO 2026-05-11 16:53:58,652 autoreload 11816 43284 Watching for file changes with StatReloader

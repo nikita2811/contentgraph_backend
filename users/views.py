@@ -158,8 +158,8 @@ class LoginView(APIView):
         
     
 class RedisTokenRefreshView(TokenRefreshView):
-  def post(self,request,*args,**kargs):
-    refresh_token = request.COOKIES.get('refresh_token')
+  def post(self,request):
+    refresh_token = request.data.get('refresh') or request.COOKIES.get('refresh_token')
     if not refresh_token:
             return Response(
                 {'error':'Refresh token not found. Please login again.'},
