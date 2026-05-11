@@ -1,2 +1,4 @@
 .env
 /logs
+private.pem
+generate-keys.py
