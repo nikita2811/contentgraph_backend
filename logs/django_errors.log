@@ -5,3 +5,5 @@ INFO 2026-05-11 16:38:52,649 autoreload 20280 30648 C:\Python-Projects\contentgr
 INFO 2026-05-11 16:38:56,288 autoreload 22092 37956 Watching for file changes with StatReloader
 INFO 2026-05-11 16:46:29,840 autoreload 22092 37956 C:\Python-Projects\contentgraph_backend\users\utils.py changed, reloading.
 INFO 2026-05-11 16:46:34,551 autoreload 41076 17880 Watching for file changes with StatReloader
+INFO 2026-05-11 16:47:08,681 autoreload 41076 17880 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-11 16:47:10,615 autoreload 29240 42764 Watching for file changes with StatReloader

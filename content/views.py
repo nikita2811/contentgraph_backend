@@ -83,7 +83,7 @@ class ResultView(APIView):
     GET /content/generate/<task_id>/
     Frontend polls this every 3s. Each call is < 1s. Cloudflare safe. ✓
     """
-    def get(self, request, task_id: str):
+    def get(self, task_id: str):
         result = AsyncResult(task_id)
 
         # PENDING = not started or unknown task_id
