@@ -1,0 +1,38 @@
+<button id="pay-btn">Pay ₹{{ amount|divisibleby:100 }}</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var options = {
+        key: "{{ razorpay_key }}",
+        amount: "{{ amount }}",
+        currency: "INR",
+        name: "My Store",
+        description: "Order Payment",
+        order_id: "{{ order_id }}",
+        handler: function (response) {
+            // Send to backend for verification
+            fetch("/verify-payment/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams({
+                    razorpay_order_id: response.razorpay_order_id,
+                    razorpay_payment_id: response.razorpay_payment_id,
+                    razorpay_signature: response.razorpay_signature,
+                    csrfmiddlewaretoken: "{{ csrf_token }}"
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === "success") alert("Payment Successful!");
+                    else alert("Payment Verification Failed!");
+                });
+        },
+        prefill: { name: "John Doe", email: "john@example.com" },
+        theme: { color: "#3399cc" }
+    };
+
+    document.getElementById("pay-btn").onclick = function () {
+        var rzp = new Razorpay(options);
+        rzp.open();
+    };
+</script>

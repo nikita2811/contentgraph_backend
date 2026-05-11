@@ -13,3 +13,7 @@ dj-database-url
 django-anymail[resend]
 pyjwt
 cryptography
+razorpay
+celery[redis]>=5.3
+redis[hiredis]>=5.0
+django-celery-results

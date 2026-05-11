@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import environ
 import dj_database_url
+import ssl
 
 
 
@@ -38,7 +39,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['contentgraph-backend.onrender.com',
                  'backend.contentgraph.io',
                  'app.contentgraph.io',
-                 'localhost:5173']
+                 'localhost',
+                 'contentgraph-ai-agent.onrender.com',
+                 '127.0.0.1']
 
 
 # Application definition
@@ -54,6 +57,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'anymail',
+    'content',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +71,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
 
 ROOT_URLCONF = 'contentgraph_backend.urls'
 
@@ -220,5 +230,42 @@ UPSTASH_REDIS_REST_TOKEN = env('UPSTASH_REDIS_REST_TOKEN')
 FRONTEND_URL ='https://app.contentgraph.io'
 
 RESEND_API_KEY=env('RESEND_API_KEY')
-SERVICE_JWT_PRIVATE_KEY = env('SERVICE_JWT_PRIVATE_KEY')
+SERVICE_JWT_PRIVATE_KEY = env('SERVICE_JWT_PRIVATE_KEY').strip()
 FASTAPI_SERVICE_URL     = env('FASTAPI_SERVICE_URL')
+RAZORPAY_KEY_ID = env('RAZORPAY_KEY_ID')
+RAZORPAY_KEY_SECRET = env('RAZORPAY_KEY_SECRET')
+
+
+
+# settings.py
+REDIS_URL = env("REDIS_URL")  # note: rediss:// not redis://
+
+CELERY_BROKER_URL        = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND    = 'django-db'
+CELERY_ACCEPT_CONTENT    = ["json"]
+CELERY_TASK_SERIALIZER   = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TIMEZONE          = "UTC"
+
+# CELERY_TASK_SOFT_TIME_LIMIT      = 270
+# CELERY_TASK_TIME_LIMIT           = 300
+# CELERY_RESULT_EXPIRES            = 300
+# CELERY_TASK_ACKS_LATE            = True
+# CELERY_TASK_REJECT_ON_WORKER_LOST = True
+
+# # Critical for Upstash — prevents idle connection drops
+
+# CELERY_BROKER_TRANSPORT_OPTIONS = {
+#     'visibility_timeout': 3600,
+#     'socket_keepalive': True,
+#     'retry_on_timeout': True,
+# }
+
+# CELERY_TASK_ALWAYS_EAGER = True
+# CELERY_RESULT_EXTENDED = True
+
+# CELERY_BROKER_USE_SSL = {'ssl_cert_reqs': ssl.CERT_NONE}
+# CELERY_REDIS_BACKEND_USE_SSL = {'ssl_cert_reqs': ssl.CERT_NONE}
+
+# CELERY_REDIS_BACKEND_HEALTH_CHECK_INTERVAL = 25
+

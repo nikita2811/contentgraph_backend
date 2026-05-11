@@ -3,13 +3,35 @@ import jwt
 from datetime import datetime, timedelta, timezone
 from django.conf import settings
 from functools import lru_cache
+from dotenv import load_dotenv
+import base64
+from cryptography.hazmat.primitives.serialization import (
+    load_pem_private_key,
+  
+)
+
 
 @lru_cache(maxsize=1)
 def _get_private_key():
     """Cache parsed key — avoid re-parsing PEM on every request."""
-    from cryptography.hazmat.primitives.serialization import load_pem_private_key
-    key_bytes = settings.SERVICE_JWT_PRIVATE_KEY.encode()
-    return load_pem_private_key(key_bytes, password=None)
+
+    raw = settings.SERVICE_JWT_PRIVATE_KEY
+
+    # Strip any accidental whitespace, quotes, or CRLF Windows added
+    raw = raw.strip().strip('"').strip("'")
+
+    try:
+        pem_bytes = base64.b64decode(raw)           # decode base64 → raw PEM bytes
+    except Exception as e:
+        raise ValueError(f"Base64 decode failed: {e}\nRaw value start: {raw[:50]}")
+    
+    try:
+        return load_pem_private_key(pem_bytes, password=None)
+    except Exception as e:
+        # Print decoded PEM to help debug framing issues
+        raise ValueError(f"PEM load failed: {e}\nDecoded PEM:\n{pem_bytes.decode()}")
+
+   
 
 def generate_service_token() -> str:
     """

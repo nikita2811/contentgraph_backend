@@ -2,12 +2,12 @@ import httpx
 import logging
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 from django.conf import settings
-from .jwt_auth import get_auth_header
-from core.exceptions import AIServiceUnavailable, AIServiceError
+from .auth import get_auth_header
+from contentgraph_backend.exceptions import AIServiceError,AIServiceUnavailable
 
 logger = logging.getLogger(__name__)
 
-SINGLE_TIMEOUT = httpx.Timeout(connect=5.0, read=60.0,  write=10.0, pool=5.0)
+SINGLE_TIMEOUT = httpx.Timeout(connect=10.0, read=180.0,  write=15.0, pool=10.0)
 BULK_TIMEOUT   = httpx.Timeout(connect=5.0, read=300.0, write=10.0, pool=5.0)
 
 
@@ -23,7 +23,7 @@ def _get_client(timeout: httpx.Timeout) -> httpx.Client:
 
 
 @retry(
-    retry=retry_if_exception_type(httpx.TransportError),
+    retry=retry_if_exception_type(httpx.TransportError | httpx.TimeoutException),
     stop=stop_after_attempt(3),
     wait=wait_exponential(multiplier=1, min=1, max=8),
     reraise=True,
@@ -31,7 +31,10 @@ def _get_client(timeout: httpx.Timeout) -> httpx.Client:
 def generate_content(payload: dict) -> dict:
     try:
         with _get_client(SINGLE_TIMEOUT) as client:
-            response = client.post("/api/v1/generate", json=payload)
+            response = client.post("/generate", json=payload,headers={
+            **get_auth_header(),         
+            "Content-Type": "application/json",
+        },)
             response.raise_for_status()
             return response.json()
 
@@ -51,30 +54,30 @@ def generate_content(payload: dict) -> dict:
         ) from e
 
 
-def generate_bulk(payloads: list[dict]) -> dict:
-    try:
-        with _get_client(BULK_TIMEOUT) as client:
-            response = client.post(
-                "/api/v1/generate/bulk",
-                json={"items": payloads},
-            )
-            response.raise_for_status()
-            return response.json()
+# def generate_bulk(payloads: list[dict]) -> dict:
+#     try:
+#         with _get_client(BULK_TIMEOUT) as client:
+#             response = client.post(
+#                 "/api/v1/generate/bulk",
+#                 json={"items": payloads},
+#             )
+#             response.raise_for_status()
+#             return response.json()
 
-    except httpx.ConnectError as e:
-        logger.error(f"FastAPI unreachable during bulk: {e}")
-        raise AIServiceUnavailable("AI service is currently unavailable") from e
+#     except httpx.ConnectError as e:
+#         logger.error(f"FastAPI unreachable during bulk: {e}")
+#         # raise AIServiceUnavailable("AI service is currently unavailable") from e
 
-    except httpx.TimeoutException as e:
-        logger.error(f"FastAPI bulk timeout: {e}")
-        raise AIServiceUnavailable("AI service timed out during bulk generation") from e
+#     except httpx.TimeoutException as e:
+#         logger.error(f"FastAPI bulk timeout: {e}")
+#         raise AIServiceUnavailable("AI service timed out during bulk generation") from e
 
-    except httpx.HTTPStatusError as e:
-        logger.error(f"FastAPI bulk error {e.response.status_code}: {e.response.text}")
-        raise AIServiceError(
-            f"Bulk generation failed: {e.response.status_code}",
-            status_code=e.response.status_code,
-        ) from e
+#     except httpx.HTTPStatusError as e:
+#         logger.error(f"FastAPI bulk error {e.response.status_code}: {e.response.text}")
+#         raise AIServiceError(
+#             f"Bulk generation failed: {e.response.status_code}",
+#             status_code=e.response.status_code,
+#         ) from e
 
 
 def health_check() -> bool:

@@ -21,6 +21,17 @@ services:
     env_file: .env
     depends_on:
       - db
+  celery_worker:
+  build: .
+  command: celery -A contentgraph_backend worker --loglevel=info
+  volumes:
+    - .:/app
+  environment:
+    - DJANGO_SETTINGS_MODULE=contentgraph_backend.settings
+    - CELERY_BROKER_URL=redis://redis:6379/0
+  depends_on:
+    - redis
+    - db
 
 volumes:
   postgres_data:
