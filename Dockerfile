@@ -8,15 +8,15 @@ ENV PYTHONUNBUFFERED=1
 # Set work directory
 WORKDIR /app
 
-# Install dependencies
+# Install dependencies + supervisor
 COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --upgrade pip && pip install -r requirements.txt && pip install supervisor
 
 # Copy project
 COPY . .
+COPY supervisord.conf /etc/supervisord.conf
 
 # Expose port
 EXPOSE 8000
-# run migrations and app
-CMD ["sh", "-c", "python manage.py migrate && gunicorn contentgraph_backend.wsgi:application --bind 0.0.0.0:8000"]
 
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]
