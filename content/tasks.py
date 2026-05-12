@@ -6,10 +6,11 @@ from contentgraph_backend.exceptions import AIServiceUnavailable, AIServiceError
 from services.fastapi_client import generate_content
 from .models import Product, CeleryTaskMeta, AIResult
 from django.utils.timezone import now
+import os
 
 logger = logging.getLogger(__name__)
 
-
+logger.info(f"DB URL in worker: {os.environ.get('DATABASE_URL', 'NOT SET')}")
 def _mark_failed(seo_request, meta, error_message, retries=0):
     if seo_request is not None:
         seo_request.status = 'failed'
@@ -57,9 +58,8 @@ def generate_content_task(self, product_request_id) -> dict:
             "key_features": data.key_features,
         }
 
-        result = generate_content(product_details)
-        response = result.result
-
+        response = generate_content(product_details)
+        print(response)
         # Parse nested JSON strings
         final_content_str = response["final_content"][0]["text"]
         serp_str = response["serp"][0]["text"]
@@ -71,7 +71,8 @@ def generate_content_task(self, product_request_id) -> dict:
             request=data,
             seo_title=content["seo_title"],
             meta_description=content["meta_description"],
-            long_description=content["long_description"],
+            meta_title=content["h1"],
+            long_description=content["intro_paragraph"],
             # join if tags is CharField, remove join if JSONField
             tags=",".join(content["tags"]) if isinstance(content["tags"], list) else content["tags"],
             primary_keyword=serp["primary_keyword"],

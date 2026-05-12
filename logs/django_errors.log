@@ -988,3 +988,4 @@ INFO 2026-05-12 12:59:51,435 autoreload 21124 42508 Watching for file changes wi
 INFO 2026-05-12 13:00:47,458 autoreload 21124 42508 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
 INFO 2026-05-12 13:00:52,147 autoreload 2008 25916 Watching for file changes with StatReloader
 INFO 2026-05-12 13:02:19,999 autoreload 2008 25916 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 13:02:51,863 autoreload 32084 31124 Watching for file changes with StatReloader
