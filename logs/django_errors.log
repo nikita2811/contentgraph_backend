@@ -17,3 +17,974 @@ INFO 2026-05-11 19:48:15,972 autoreload 11816 43284 C:\Python-Projects\contentgr
 INFO 2026-05-11 19:48:27,073 autoreload 15392 26024 Watching for file changes with StatReloader
 INFO 2026-05-11 19:49:30,107 autoreload 15392 26024 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
 INFO 2026-05-11 19:49:32,225 autoreload 30240 38144 Watching for file changes with StatReloader
+INFO 2026-05-12 10:46:12,019 autoreload 42960 12656 Watching for file changes with StatReloader
+INFO 2026-05-12 11:02:35,720 views 42960 17400 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 11:02:35,747 log 42960 17400 "POST /auth/signin HTTP/1.1" 200 672
+ERROR 2026-05-12 11:03:20,989 log 42960 17400 Internal Server Error: /content/generate-content
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 32, in __call__
+    return self.__value__
+           ^^^^^^^^^^^^^^
+AttributeError: 'ChannelPromise' object has no attribute '__value__'. Did you mean: '__call__'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\kombu\transport\virtual\base.py", line 951, in create_channel
+    return self._avail_channels.pop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+IndexError: pop from empty list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 385, in connect_check_health
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\retry.py", line 87, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 386, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 797, in _connect
+    raise err
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 781, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\transport\virtual\base.py", line 975, in establish_connection
+    self._avail_channels.append(self.create_channel(self))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\transport\virtual\base.py", line 953, in create_channel
+    channel = self.Channel(connection)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\transport\redis.py", line 757, in __init__
+    self.client.ping()
+  File "C:\Myenv\Lib\site-packages\redis\commands\core.py", line 1219, in ping
+    return self.execute_command("PING", **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 623, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 629, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\utils.py", line 191, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 1530, in get_connection
+    connection.connect()
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 379, in connect
+    self.connect_check_health(check_health=True)
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 391, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 60, in post
+    task = generate_content_task.delay(request_data.id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\base.py", line 947, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "C:\Myenv\Lib\site-packages\celery\app\amqp.py", line 559, in send_task_message
+    ret = producer.publish(
+          ^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 190, in publish
+    return _publish(
+           ^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 200, in _publish
+    channel = self.channel
+              ^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+                              ^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+                             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 460, in _ensure_connection
+    with ctx():
+         ^^^^^
+  File "C:\Python\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+ERROR 2026-05-12 11:03:21,032 log 42960 17400 "POST /content/generate-content HTTP/1.1" 500 304187
+ERROR 2026-05-12 11:03:42,509 log 42960 17400 Internal Server Error: /content/generate-content
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 32, in __call__
+    return self.__value__
+           ^^^^^^^^^^^^^^
+AttributeError: 'ChannelPromise' object has no attribute '__value__'. Did you mean: '__call__'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\kombu\transport\virtual\base.py", line 951, in create_channel
+    return self._avail_channels.pop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+IndexError: pop from empty list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 385, in connect_check_health
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\retry.py", line 87, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 386, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 797, in _connect
+    raise err
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 781, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\transport\virtual\base.py", line 975, in establish_connection
+    self._avail_channels.append(self.create_channel(self))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\transport\virtual\base.py", line 953, in create_channel
+    channel = self.Channel(connection)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\transport\redis.py", line 757, in __init__
+    self.client.ping()
+  File "C:\Myenv\Lib\site-packages\redis\commands\core.py", line 1219, in ping
+    return self.execute_command("PING", **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 623, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 629, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\utils.py", line 191, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 1530, in get_connection
+    connection.connect()
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 379, in connect
+    self.connect_check_health(check_health=True)
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 391, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 60, in post
+    task = generate_content_task.delay(request_data.id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\base.py", line 947, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "C:\Myenv\Lib\site-packages\celery\app\amqp.py", line 559, in send_task_message
+    ret = producer.publish(
+          ^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 190, in publish
+    return _publish(
+           ^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 200, in _publish
+    channel = self.channel
+              ^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+                              ^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+                             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 460, in _ensure_connection
+    with ctx():
+         ^^^^^
+  File "C:\Python\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+ERROR 2026-05-12 11:03:42,516 log 42960 17400 "POST /content/generate-content HTTP/1.1" 500 304188
+INFO 2026-05-12 11:07:11,159 autoreload 35256 13792 Watching for file changes with StatReloader
+ERROR 2026-05-12 11:07:28,809 log 35256 43564 Internal Server Error: /content/generate-content
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 32, in __call__
+    return self.__value__
+           ^^^^^^^^^^^^^^
+AttributeError: 'ChannelPromise' object has no attribute '__value__'. Did you mean: '__call__'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\kombu\transport\virtual\base.py", line 951, in create_channel
+    return self._avail_channels.pop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+IndexError: pop from empty list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 385, in connect_check_health
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\retry.py", line 87, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 386, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 761, in _connect
+    for res in socket.getaddrinfo(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\transport\virtual\base.py", line 975, in establish_connection
+    self._avail_channels.append(self.create_channel(self))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\transport\virtual\base.py", line 953, in create_channel
+    channel = self.Channel(connection)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\transport\redis.py", line 757, in __init__
+    self.client.ping()
+  File "C:\Myenv\Lib\site-packages\redis\commands\core.py", line 1219, in ping
+    return self.execute_command("PING", **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 623, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 629, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\utils.py", line 191, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 1530, in get_connection
+    connection.connect()
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 379, in connect
+    self.connect_check_health(check_health=True)
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 391, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to red-d80tr6flk1mc739u13t0:6379. getaddrinfo failed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 60, in post
+    task = generate_content_task.delay(request_data.id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\base.py", line 947, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "C:\Myenv\Lib\site-packages\celery\app\amqp.py", line 559, in send_task_message
+    ret = producer.publish(
+          ^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 190, in publish
+    return _publish(
+           ^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 200, in _publish
+    channel = self.channel
+              ^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+                              ^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+                             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 460, in _ensure_connection
+    with ctx():
+         ^^^^^
+  File "C:\Python\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: Error 11001 connecting to red-d80tr6flk1mc739u13t0:6379. getaddrinfo failed.
+ERROR 2026-05-12 11:07:28,836 log 35256 43564 "POST /content/generate-content HTTP/1.1" 500 302606
+WARNING 2026-05-12 11:12:33,637 log 35256 26256 Unauthorized: /content/generate-content
+WARNING 2026-05-12 11:12:33,649 log 35256 26256 "POST /content/generate-content HTTP/1.1" 401 183
+INFO 2026-05-12 11:12:50,010 views 35256 26256 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 11:12:50,013 log 35256 26256 "POST /auth/signin HTTP/1.1" 200 672
+ERROR 2026-05-12 11:13:44,742 log 35256 26256 Internal Server Error: /content/generate-content
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 32, in __call__
+    return self.__value__
+           ^^^^^^^^^^^^^^
+AttributeError: 'ChannelPromise' object has no attribute '__value__'. Did you mean: '__call__'?
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\kombu\transport\virtual\base.py", line 951, in create_channel
+    return self._avail_channels.pop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+IndexError: pop from empty list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 385, in connect_check_health
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\retry.py", line 87, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 386, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 761, in _connect
+    for res in socket.getaddrinfo(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 474, in _reraise_as_library_errors
+    yield
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 461, in _ensure_connection
+    return retry_over_time(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 941, in _connection_factory
+    self._connection = self._establish_connection()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 863, in _establish_connection
+    conn = self.transport.establish_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\transport\virtual\base.py", line 975, in establish_connection
+    self._avail_channels.append(self.create_channel(self))
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\transport\virtual\base.py", line 953, in create_channel
+    channel = self.Channel(connection)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\transport\redis.py", line 757, in __init__
+    self.client.ping()
+  File "C:\Myenv\Lib\site-packages\redis\commands\core.py", line 1219, in ping
+    return self.execute_command("PING", **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 623, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 629, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\utils.py", line 191, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 1530, in get_connection
+    connection.connect()
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 379, in connect
+    self.connect_check_health(check_health=True)
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 391, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to red-d80tr6flk1mc739u13t0:6379. getaddrinfo failed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 60, in post
+    task = generate_content_task.delay(request_data.id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\base.py", line 947, in send_task
+    amqp.send_task_message(P, name, message, **options)
+  File "C:\Myenv\Lib\site-packages\celery\app\amqp.py", line 559, in send_task_message
+    ret = producer.publish(
+          ^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 190, in publish
+    return _publish(
+           ^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 558, in _ensured
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 200, in _publish
+    channel = self.channel
+              ^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 224, in _get_channel
+    channel = self._channel = channel()
+                              ^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 34, in __call__
+    value = self.__value__ = self.__contract__()
+                             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\messaging.py", line 240, in <lambda>
+    channel = ChannelPromise(lambda: connection.default_channel)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 960, in default_channel
+    self._ensure_connection(**conn_opts)
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 460, in _ensure_connection
+    with ctx():
+         ^^^^^
+  File "C:\Python\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Myenv\Lib\site-packages\kombu\connection.py", line 478, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: Error 11001 connecting to red-d80tr6flk1mc739u13t0:6379. getaddrinfo failed.
+ERROR 2026-05-12 11:13:44,797 log 35256 26256 "POST /content/generate-content HTTP/1.1" 500 302605
+INFO 2026-05-12 11:14:25,905 autoreload 30440 20868 Watching for file changes with StatReloader
+WARNING 2026-05-12 11:20:33,825 log 30440 13452 Unauthorized: /content/generate-content
+WARNING 2026-05-12 11:20:33,834 log 30440 13452 "POST /content/generate-content HTTP/1.1" 401 183
+INFO 2026-05-12 11:20:43,219 views 30440 13452 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 11:20:43,226 log 30440 13452 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-12 11:21:05,386 views 30440 13452 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 11:21:05,391 log 30440 13452 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-12 11:21:21,382 log 30440 13452 "POST /content/generate-content HTTP/1.1" 202 71
+ERROR 2026-05-12 11:22:10,692 log 30440 13452 Internal Server Error: /content/generate/0d029523-0b56-4e39-a439-f9567e73f104
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ResultView.get() got multiple values for argument 'task_id'
+ERROR 2026-05-12 11:22:10,702 log 30440 13452 "GET /content/generate/0d029523-0b56-4e39-a439-f9567e73f104 HTTP/1.1" 500 97961
+INFO 2026-05-12 11:23:49,233 autoreload 30440 20868 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 11:23:54,851 autoreload 25404 30916 Watching for file changes with StatReloader
+INFO 2026-05-12 11:24:08,279 log 25404 27672 "GET /content/generate/0d029523-0b56-4e39-a439-f9567e73f104 HTTP/1.1" 200 21
+INFO 2026-05-12 11:24:12,812 log 25404 27672 "GET /content/generate/0d029523-0b56-4e39-a439-f9567e73f104 HTTP/1.1" 200 21
+INFO 2026-05-12 11:24:15,660 log 25404 27672 "GET /content/generate/0d029523-0b56-4e39-a439-f9567e73f104 HTTP/1.1" 200 21
+INFO 2026-05-12 11:25:08,713 autoreload 25404 30916 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-12 11:25:11,745 autoreload 30648 40812 Watching for file changes with StatReloader
+ERROR 2026-05-12 11:25:23,865 log 30648 1336 Internal Server Error: /content/generate/0d029523-0b56-4e39-a439-f9567e73f104
+ERROR 2026-05-12 11:25:23,866 log 30648 1336 "GET /content/generate/0d029523-0b56-4e39-a439-f9567e73f104 HTTP/1.1" 500 72
+INFO 2026-05-12 11:26:00,303 autoreload 30648 40812 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-12 11:26:03,599 autoreload 38800 11860 Watching for file changes with StatReloader
+WARNING 2026-05-12 11:26:08,261 log 38800 12208 Unauthorized: /content/generate-content
+WARNING 2026-05-12 11:26:08,263 log 38800 12208 "POST /content/generate-content HTTP/1.1" 401 183
+INFO 2026-05-12 11:26:22,741 views 38800 12208 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 11:26:22,743 log 38800 12208 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-12 11:26:37,263 log 38800 12208 "POST /content/generate-content HTTP/1.1" 202 71
+ERROR 2026-05-12 11:27:23,401 log 38800 12208 Internal Server Error: /content/generate/ad72275b-abda-4074-a89a-95168526594c
+ERROR 2026-05-12 11:27:23,401 log 38800 12208 "GET /content/generate/ad72275b-abda-4074-a89a-95168526594c HTTP/1.1" 500 72
+ERROR 2026-05-12 11:27:26,182 log 38800 12208 Internal Server Error: /content/generate/ad72275b-abda-4074-a89a-95168526594c
+ERROR 2026-05-12 11:27:26,184 log 38800 12208 "GET /content/generate/ad72275b-abda-4074-a89a-95168526594c HTTP/1.1" 500 72
+INFO 2026-05-12 11:28:45,150 autoreload 38800 11860 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-12 11:28:48,279 autoreload 18144 40396 Watching for file changes with StatReloader
+INFO 2026-05-12 11:28:53,603 log 18144 11912 "POST /content/generate-content HTTP/1.1" 202 71
+ERROR 2026-05-12 11:29:20,737 log 18144 11912 Internal Server Error: /content/generate/d74bb97b-792f-4dc9-add9-8813160aefa8
+ERROR 2026-05-12 11:29:20,737 log 18144 11912 "GET /content/generate/d74bb97b-792f-4dc9-add9-8813160aefa8 HTTP/1.1" 500 72
+ERROR 2026-05-12 11:29:24,338 log 18144 11912 Internal Server Error: /content/generate/d74bb97b-792f-4dc9-add9-8813160aefa8
+ERROR 2026-05-12 11:29:24,342 log 18144 11912 "GET /content/generate/d74bb97b-792f-4dc9-add9-8813160aefa8 HTTP/1.1" 500 72
+INFO 2026-05-12 11:29:42,597 autoreload 18144 40396 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-12 11:29:45,138 autoreload 12408 10068 Watching for file changes with StatReloader
+ERROR 2026-05-12 11:29:57,457 log 12408 42892 Internal Server Error: /content/generate/d74bb97b-792f-4dc9-add9-8813160aefa8
+ERROR 2026-05-12 11:29:57,459 log 12408 42892 "GET /content/generate/d74bb97b-792f-4dc9-add9-8813160aefa8 HTTP/1.1" 500 72
+ERROR 2026-05-12 11:30:00,343 log 12408 42892 Internal Server Error: /content/generate/d74bb97b-792f-4dc9-add9-8813160aefa8
+ERROR 2026-05-12 11:30:00,346 log 12408 42892 "GET /content/generate/d74bb97b-792f-4dc9-add9-8813160aefa8 HTTP/1.1" 500 72
+INFO 2026-05-12 11:30:23,783 log 12408 42892 "POST /content/generate-content HTTP/1.1" 202 71
+ERROR 2026-05-12 11:30:39,666 log 12408 42892 Internal Server Error: /content/generate/eed46cf3-1367-40e5-81c7-ceb414c4e7a3
+ERROR 2026-05-12 11:30:39,667 log 12408 42892 "GET /content/generate/eed46cf3-1367-40e5-81c7-ceb414c4e7a3 HTTP/1.1" 500 72
+ERROR 2026-05-12 11:30:42,473 log 12408 42892 Internal Server Error: /content/generate/eed46cf3-1367-40e5-81c7-ceb414c4e7a3
+ERROR 2026-05-12 11:30:42,473 log 12408 42892 "GET /content/generate/eed46cf3-1367-40e5-81c7-ceb414c4e7a3 HTTP/1.1" 500 72
+ERROR 2026-05-12 11:30:46,610 log 12408 42892 Internal Server Error: /content/generate/eed46cf3-1367-40e5-81c7-ceb414c4e7a3
+ERROR 2026-05-12 11:30:46,612 log 12408 42892 "GET /content/generate/eed46cf3-1367-40e5-81c7-ceb414c4e7a3 HTTP/1.1" 500 72
+INFO 2026-05-12 11:31:03,425 autoreload 12408 10068 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-12 11:31:06,694 autoreload 432 32564 Watching for file changes with StatReloader
+INFO 2026-05-12 11:44:43,596 autoreload 17728 2872 Watching for file changes with StatReloader
+INFO 2026-05-12 11:44:57,775 views 17728 40244 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 11:44:57,787 log 17728 40244 "POST /auth/signin HTTP/1.1" 200 672
+ERROR 2026-05-12 11:45:34,132 log 17728 40244 Internal Server Error: /content/generate/eed46cf3-1367-40e5-81c7-ceb414c4e7a3
+ERROR 2026-05-12 11:45:34,133 log 17728 40244 "GET /content/generate/eed46cf3-1367-40e5-81c7-ceb414c4e7a3 HTTP/1.1" 500 72
+INFO 2026-05-12 11:45:57,218 autoreload 17728 2872 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-12 11:46:00,256 autoreload 10396 9808 Watching for file changes with StatReloader
+INFO 2026-05-12 11:51:55,918 autoreload 34624 20032 Watching for file changes with StatReloader
+WARNING 2026-05-12 11:52:13,065 log 34624 2892 Unauthorized: /content/generate/eed46cf3-1367-40e5-81c7-ceb414c4e7a3
+WARNING 2026-05-12 11:52:13,067 log 34624 2892 "GET /content/generate/eed46cf3-1367-40e5-81c7-ceb414c4e7a3 HTTP/1.1" 401 183
+INFO 2026-05-12 11:52:21,801 views 34624 2892 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 11:52:21,803 log 34624 2892 "POST /auth/signin HTTP/1.1" 200 672
+ERROR 2026-05-12 11:53:21,292 log 34624 37980 Internal Server Error: /content/generate/eed46cf3-1367-40e5-81c7-ceb414c4e7a3
+ERROR 2026-05-12 11:53:21,293 log 34624 37980 "GET /content/generate/eed46cf3-1367-40e5-81c7-ceb414c4e7a3 HTTP/1.1" 500 72
+INFO 2026-05-12 11:55:49,345 autoreload 29340 4832 Watching for file changes with StatReloader
+INFO 2026-05-12 11:55:58,262 views 29340 34176 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 11:55:58,268 log 29340 34176 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-12 11:56:18,851 views 29340 34176 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 11:56:18,851 log 29340 34176 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-12 11:56:33,600 log 29340 34176 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-12 11:57:24,991 log 29340 34176 "GET /content/generate/381c222c-d763-4fbe-83d8-2cca0fc7bee2 HTTP/1.1" 200 21
+INFO 2026-05-12 11:57:28,817 log 29340 34176 "GET /content/generate/381c222c-d763-4fbe-83d8-2cca0fc7bee2 HTTP/1.1" 200 21
+INFO 2026-05-12 11:57:31,355 log 29340 34176 "GET /content/generate/381c222c-d763-4fbe-83d8-2cca0fc7bee2 HTTP/1.1" 200 21
+INFO 2026-05-12 11:57:33,714 log 29340 34176 "GET /content/generate/381c222c-d763-4fbe-83d8-2cca0fc7bee2 HTTP/1.1" 200 21
+INFO 2026-05-12 11:58:30,841 autoreload 29340 4832 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-12 11:58:34,948 autoreload 12196 23784 Watching for file changes with StatReloader
+ERROR 2026-05-12 11:58:40,068 log 12196 10496 Internal Server Error: /content/generate/381c222c-d763-4fbe-83d8-2cca0fc7bee2
+ERROR 2026-05-12 11:58:40,068 log 12196 10496 "GET /content/generate/381c222c-d763-4fbe-83d8-2cca0fc7bee2 HTTP/1.1" 500 72
+INFO 2026-05-12 11:59:54,044 autoreload 12196 23784 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 11:59:56,067 autoreload 40764 29780 Watching for file changes with StatReloader
+INFO 2026-05-12 12:00:12,803 autoreload 40764 29780 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 12:00:15,660 autoreload 31440 15648 Watching for file changes with StatReloader
+ERROR 2026-05-12 12:00:59,873 log 31440 43436 Internal Server Error: /content/generate/381c222c-d763-4fbe-83d8-2cca0fc7bee2
+ERROR 2026-05-12 12:00:59,877 log 31440 43436 "GET /content/generate/381c222c-d763-4fbe-83d8-2cca0fc7bee2 HTTP/1.1" 500 72
+INFO 2026-05-12 12:01:46,144 autoreload 31440 15648 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 12:01:49,474 autoreload 24852 15340 Watching for file changes with StatReloader
+INFO 2026-05-12 12:03:36,754 autoreload 24852 15340 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-12 12:03:40,270 autoreload 13148 40844 Watching for file changes with StatReloader
+INFO 2026-05-12 12:04:21,730 autoreload 13148 40844 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 12:04:23,761 autoreload 41428 14648 Watching for file changes with StatReloader
+INFO 2026-05-12 12:04:33,600 autoreload 41428 14648 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 12:04:36,399 autoreload 42724 7436 Watching for file changes with StatReloader
+WARNING 2026-05-12 12:04:39,994 log 42724 20768 Unauthorized: /content/generate/381c222c-d763-4fbe-83d8-2cca0fc7bee2
+WARNING 2026-05-12 12:04:39,996 log 42724 20768 "GET /content/generate/381c222c-d763-4fbe-83d8-2cca0fc7bee2 HTTP/1.1" 401 183
+INFO 2026-05-12 12:04:58,331 views 42724 20768 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 12:04:58,332 log 42724 20768 "POST /auth/signin HTTP/1.1" 200 672
+ERROR 2026-05-12 12:05:09,908 log 42724 20768 Internal Server Error: /content/generate/381c222c-d763-4fbe-83d8-2cca0fc7bee2
+ERROR 2026-05-12 12:05:09,909 log 42724 20768 "GET /content/generate/381c222c-d763-4fbe-83d8-2cca0fc7bee2 HTTP/1.1" 500 72
+INFO 2026-05-12 12:05:55,820 views 42724 20768 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 12:05:55,820 log 42724 20768 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-12 12:06:07,974 log 42724 20768 "POST /content/generate-content HTTP/1.1" 202 71
+ERROR 2026-05-12 12:06:47,261 log 42724 20768 Internal Server Error: /content/generate/99bf66cb-d83e-4272-9afd-5746179e6a19
+ERROR 2026-05-12 12:06:47,261 log 42724 20768 "GET /content/generate/99bf66cb-d83e-4272-9afd-5746179e6a19 HTTP/1.1" 500 72
+INFO 2026-05-12 12:12:53,669 autoreload 11860 16792 Watching for file changes with StatReloader
+INFO 2026-05-12 12:13:01,287 views 11860 37760 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 12:13:01,294 log 11860 37760 "POST /auth/signin HTTP/1.1" 200 672
+ERROR 2026-05-12 12:13:28,913 log 11860 37760 Internal Server Error: /content/generate/99bf66cb-d83e-4272-9afd-5746179e6a19
+ERROR 2026-05-12 12:13:28,915 log 11860 37760 "GET /content/generate/99bf66cb-d83e-4272-9afd-5746179e6a19 HTTP/1.1" 500 72
+ERROR 2026-05-12 12:13:31,831 log 11860 37760 Internal Server Error: /content/generate/99bf66cb-d83e-4272-9afd-5746179e6a19
+ERROR 2026-05-12 12:13:31,833 log 11860 37760 "GET /content/generate/99bf66cb-d83e-4272-9afd-5746179e6a19 HTTP/1.1" 500 72
+INFO 2026-05-12 12:13:53,235 log 11860 37760 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-12 12:14:13,049 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:14:15,098 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:14:16,633 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:14:18,276 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:14:31,374 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:14:33,427 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:15:20,131 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:15:22,292 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:15:45,655 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:15:50,653 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:16:44,295 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:16:46,137 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:16:47,784 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:17:25,835 log 11860 37760 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:19:37,659 log 11860 32780 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:19:44,683 log 11860 32780 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:19:46,458 log 11860 32780 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:19:48,205 log 11860 32780 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:22:06,961 log 11860 27828 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+INFO 2026-05-12 12:22:53,494 autoreload 11860 16792 C:\Python-Projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-05-12 12:22:57,228 autoreload 10984 25140 Watching for file changes with StatReloader
+INFO 2026-05-12 12:23:06,483 log 10984 29020 "GET /content/generate/d9721a5d-998e-4568-bde5-9a07190d2097 HTTP/1.1" 200 21
+WARNING 2026-05-12 12:23:11,695 log 10984 29020 Unauthorized: /content/generate-content
+WARNING 2026-05-12 12:23:11,695 log 10984 29020 "POST /content/generate-content HTTP/1.1" 401 183
+INFO 2026-05-12 12:23:20,204 views 10984 29020 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 12:23:20,206 log 10984 29020 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-12 12:23:44,962 log 10984 29020 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-12 12:24:05,190 log 10984 29020 "GET /content/generate/06f42b4a-477a-4c7b-a97e-73aaf7d07ebc HTTP/1.1" 200 21
+INFO 2026-05-12 12:24:07,458 log 10984 29020 "GET /content/generate/06f42b4a-477a-4c7b-a97e-73aaf7d07ebc HTTP/1.1" 200 21
+INFO 2026-05-12 12:24:09,111 log 10984 29020 "GET /content/generate/06f42b4a-477a-4c7b-a97e-73aaf7d07ebc HTTP/1.1" 200 21
+INFO 2026-05-12 12:24:38,685 log 10984 29020 "GET /content/generate/06f42b4a-477a-4c7b-a97e-73aaf7d07ebc HTTP/1.1" 200 21
+INFO 2026-05-12 12:24:59,838 log 10984 29020 "GET /content/generate/06f42b4a-477a-4c7b-a97e-73aaf7d07ebc HTTP/1.1" 200 21
+INFO 2026-05-12 12:25:02,070 log 10984 29020 "GET /content/generate/06f42b4a-477a-4c7b-a97e-73aaf7d07ebc HTTP/1.1" 200 21
+INFO 2026-05-12 12:25:03,715 log 10984 29020 "GET /content/generate/06f42b4a-477a-4c7b-a97e-73aaf7d07ebc HTTP/1.1" 200 21
+ERROR 2026-05-12 12:25:50,251 log 10984 29020 Internal Server Error: /content/generate/06f42b4a-477a-4c7b-a97e-73aaf7d07ebc
+ERROR 2026-05-12 12:25:50,254 log 10984 29020 "GET /content/generate/06f42b4a-477a-4c7b-a97e-73aaf7d07ebc HTTP/1.1" 500 39
+ERROR 2026-05-12 12:25:53,951 log 10984 29020 Internal Server Error: /content/generate/06f42b4a-477a-4c7b-a97e-73aaf7d07ebc
+ERROR 2026-05-12 12:25:53,955 log 10984 29020 "GET /content/generate/06f42b4a-477a-4c7b-a97e-73aaf7d07ebc HTTP/1.1" 500 39
+INFO 2026-05-12 12:27:21,432 autoreload 10984 25140 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-12 12:27:26,211 autoreload 19104 12368 Watching for file changes with StatReloader
+INFO 2026-05-12 12:27:34,970 log 19104 21068 "POST /content/generate-content HTTP/1.1" 202 71
+ERROR 2026-05-12 12:27:55,244 log 19104 21068 Internal Server Error: /content/generate/94ec5a42-26e3-4b8a-872c-3447f767b580
+ERROR 2026-05-12 12:27:55,246 log 19104 21068 "GET /content/generate/94ec5a42-26e3-4b8a-872c-3447f767b580 HTTP/1.1" 500 39
+ERROR 2026-05-12 12:27:57,380 log 19104 21068 Internal Server Error: /content/generate/94ec5a42-26e3-4b8a-872c-3447f767b580
+ERROR 2026-05-12 12:27:57,380 log 19104 21068 "GET /content/generate/94ec5a42-26e3-4b8a-872c-3447f767b580 HTTP/1.1" 500 39
+WARNING 2026-05-12 12:28:47,504 log 19104 21068 Unauthorized: /content/generate-content
+WARNING 2026-05-12 12:28:47,505 log 19104 21068 "POST /content/generate-content HTTP/1.1" 401 183
+INFO 2026-05-12 12:28:58,317 views 19104 21068 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 12:28:58,325 log 19104 21068 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-12 12:29:24,932 log 19104 21068 "POST /content/generate-content HTTP/1.1" 202 71
+WARNING 2026-05-12 12:29:48,474 log 19104 21068 Unauthorized: /content/generate/0dcf2782-bafe-4f19-ac4f-d795147d252a
+WARNING 2026-05-12 12:29:48,474 log 19104 21068 "GET /content/generate/0dcf2782-bafe-4f19-ac4f-d795147d252a HTTP/1.1" 401 183
+ERROR 2026-05-12 12:30:21,762 log 19104 21068 Internal Server Error: /content/generate/0dcf2782-bafe-4f19-ac4f-d795147d252a
+ERROR 2026-05-12 12:30:21,762 log 19104 21068 "GET /content/generate/0dcf2782-bafe-4f19-ac4f-d795147d252a HTTP/1.1" 500 39
+ERROR 2026-05-12 12:30:24,343 log 19104 21068 Internal Server Error: /content/generate/0dcf2782-bafe-4f19-ac4f-d795147d252a
+ERROR 2026-05-12 12:30:24,345 log 19104 21068 "GET /content/generate/0dcf2782-bafe-4f19-ac4f-d795147d252a HTTP/1.1" 500 39
+ERROR 2026-05-12 12:31:37,546 log 19104 9916 Internal Server Error: /content/generate/0dcf2782-bafe-4f19-ac4f-d795147d252a
+ERROR 2026-05-12 12:31:37,549 log 19104 9916 "GET /content/generate/0dcf2782-bafe-4f19-ac4f-d795147d252a HTTP/1.1" 500 39
+ERROR 2026-05-12 12:31:40,139 log 19104 9916 Internal Server Error: /content/generate/0dcf2782-bafe-4f19-ac4f-d795147d252a
+ERROR 2026-05-12 12:31:40,141 log 19104 9916 "GET /content/generate/0dcf2782-bafe-4f19-ac4f-d795147d252a HTTP/1.1" 500 39
+ERROR 2026-05-12 12:31:45,237 log 19104 9916 Internal Server Error: /content/generate/0dcf2782-bafe-4f19-ac4f-d795147d252a
+ERROR 2026-05-12 12:31:45,237 log 19104 9916 "GET /content/generate/0dcf2782-bafe-4f19-ac4f-d795147d252a HTTP/1.1" 500 39
+INFO 2026-05-12 12:31:53,059 log 19104 9916 "POST /content/generate-content HTTP/1.1" 202 71
+ERROR 2026-05-12 12:32:13,444 log 19104 9916 Internal Server Error: /content/generate/b249be44-ef1f-47f6-85f1-1aed4d169a22
+ERROR 2026-05-12 12:32:13,448 log 19104 9916 "GET /content/generate/b249be44-ef1f-47f6-85f1-1aed4d169a22 HTTP/1.1" 500 51
+INFO 2026-05-12 12:33:05,054 autoreload 19104 12368 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-12 12:33:08,809 autoreload 34420 34180 Watching for file changes with StatReloader
+INFO 2026-05-12 12:33:41,890 log 34420 6488 "POST /content/generate-content HTTP/1.1" 202 71
+WARNING 2026-05-12 12:34:01,100 log 34420 6488 Unauthorized: /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e
+WARNING 2026-05-12 12:34:01,103 log 34420 6488 "GET /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e HTTP/1.1" 401 183
+INFO 2026-05-12 12:34:10,022 views 34420 6488 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 12:34:10,022 log 34420 6488 "POST /auth/signin HTTP/1.1" 200 672
+ERROR 2026-05-12 12:34:32,517 log 34420 6488 Internal Server Error: /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 103, in get
+    ai_result = AIResult.objects.get(request=meta.product)
+                                             ^^^^^^^^^^^^
+AttributeError: 'CeleryTaskMeta' object has no attribute 'product'
+ERROR 2026-05-12 12:34:32,537 log 34420 6488 "GET /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e HTTP/1.1" 500 102754
+INFO 2026-05-12 12:36:25,456 autoreload 34420 34180 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 12:36:30,844 autoreload 14016 26804 Watching for file changes with StatReloader
+ERROR 2026-05-12 12:36:39,915 log 14016 20828 Internal Server Error: /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 103, in get
+    ai_result = AIResult.objects.get(request=meta.product_name)
+                                             ^^^^^^^^^^^^^^^^^
+AttributeError: 'CeleryTaskMeta' object has no attribute 'product_name'
+ERROR 2026-05-12 12:36:39,921 log 14016 20828 "GET /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e HTTP/1.1" 500 102804
+INFO 2026-05-12 12:37:16,826 autoreload 14016 26804 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 12:37:20,914 autoreload 42976 40792 Watching for file changes with StatReloader
+WARNING 2026-05-12 12:37:30,086 log 42976 13700 Not Found: /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e
+WARNING 2026-05-12 12:37:30,086 log 42976 13700 "GET /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e HTTP/1.1" 404 49
+WARNING 2026-05-12 12:37:33,798 log 42976 13700 Not Found: /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e
+WARNING 2026-05-12 12:37:33,800 log 42976 13700 "GET /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e HTTP/1.1" 404 49
+INFO 2026-05-12 12:53:41,517 autoreload 42976 40792 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 12:53:47,081 autoreload 15784 21364 Watching for file changes with StatReloader
+WARNING 2026-05-12 12:53:54,916 log 15784 36836 Unauthorized: /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e
+WARNING 2026-05-12 12:53:54,918 log 15784 36836 "GET /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e HTTP/1.1" 401 183
+INFO 2026-05-12 12:54:03,101 views 15784 36836 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-12 12:54:03,105 log 15784 36836 "POST /auth/signin HTTP/1.1" 200 672
+ERROR 2026-05-12 12:54:28,446 log 15784 36836 Internal Server Error: /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 109, in get
+    "meta_title": ai_result.meta_title,
+                  ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AIResult' object has no attribute 'meta_title'. Did you mean: 'seo_title'?
+ERROR 2026-05-12 12:54:28,456 log 15784 36836 "GET /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e HTTP/1.1" 500 103097
+ERROR 2026-05-12 12:55:00,196 log 15784 36836 Internal Server Error: /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 109, in get
+    "meta_title": ai_result.meta_title,
+                  ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AIResult' object has no attribute 'meta_title'. Did you mean: 'seo_title'?
+ERROR 2026-05-12 12:55:00,202 log 15784 36836 "GET /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e HTTP/1.1" 500 103097
+INFO 2026-05-12 12:55:06,669 autoreload 15784 21364 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 12:55:22,175 autoreload 34528 18288 Watching for file changes with StatReloader
+INFO 2026-05-12 12:55:51,318 autoreload 34528 18288 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-12 12:55:54,237 autoreload 32648 32000 Watching for file changes with StatReloader
+INFO 2026-05-12 12:56:12,934 autoreload 32648 32000 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-12 12:56:15,925 autoreload 20264 23532 Watching for file changes with StatReloader
+INFO 2026-05-12 12:56:26,558 log 20264 37908 "GET /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e HTTP/1.1" 200 568
+INFO 2026-05-12 12:59:15,783 autoreload 20264 23532 C:\Python-Projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-12 12:59:51,435 autoreload 21124 42508 Watching for file changes with StatReloader
+INFO 2026-05-12 13:00:47,458 autoreload 21124 42508 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 13:00:52,147 autoreload 2008 25916 Watching for file changes with StatReloader
+INFO 2026-05-12 13:02:19,999 autoreload 2008 25916 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
