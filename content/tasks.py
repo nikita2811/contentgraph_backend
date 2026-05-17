@@ -29,6 +29,7 @@ def _mark_failed(seo_request, meta, error_message, retries=0):
     soft_time_limit=270,
     time_limit=300,
     acks_late=True,
+    queue='default'
 )
 def generate_content_task(self, product_request_id) -> dict:
     """

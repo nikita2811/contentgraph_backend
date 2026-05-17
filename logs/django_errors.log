@@ -2009,3 +2009,269 @@ WARNING 2026-05-15 18:58:23,605 log 32624 26232 Not Found: /content/download/b6f
 WARNING 2026-05-15 18:58:23,609 log 32624 26232 "POST /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878 HTTP/1.1" 404 3762
 INFO 2026-05-15 18:59:30,161 autoreload 32624 10636 C:\python-projects\contentgraph_backend\content\urls.py changed, reloading.
 INFO 2026-05-15 18:59:33,133 autoreload 37248 8920 Watching for file changes with StatReloader
+WARNING 2026-05-15 18:59:43,461 log 37248 34288 Unauthorized: /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878
+WARNING 2026-05-15 18:59:43,461 log 37248 34288 "POST /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878 HTTP/1.1" 401 58
+INFO 2026-05-17 18:45:59,269 views 37248 12868 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-17 18:45:59,282 log 37248 12868 "POST /auth/signin HTTP/1.1" 200 672
+ERROR 2026-05-17 18:46:26,853 log 37248 12868 Internal Server Error: /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: BulkFileProcessor.post() got an unexpected keyword argument 'job_id'
+ERROR 2026-05-17 18:46:26,869 log 37248 12868 "POST /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878 HTTP/1.1" 500 100596
+ERROR 2026-05-17 18:47:25,864 log 37248 12868 Internal Server Error: /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: BulkFileProcessor.get() got multiple values for argument 'job_id'
+ERROR 2026-05-17 18:47:25,864 log 37248 12868 "GET /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878 HTTP/1.1" 500 100564
+INFO 2026-05-17 18:49:04,478 autoreload 37248 8920 C:\python-projects\contentgraph_backend\content\urls.py changed, reloading.
+INFO 2026-05-17 18:49:12,805 autoreload 35656 39444 Watching for file changes with StatReloader
+ERROR 2026-05-17 18:49:24,384 log 35656 39084 Internal Server Error: /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: BulkFileProcessor.get() got multiple values for argument 'job_id'
+ERROR 2026-05-17 18:49:24,392 log 35656 39084 "GET /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878 HTTP/1.1" 500 100600
+INFO 2026-05-17 18:49:56,617 autoreload 35656 39444 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-17 18:49:59,589 autoreload 20188 40516 Watching for file changes with StatReloader
+WARNING 2026-05-17 18:50:08,304 log 20188 27180 Bad Request: /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878
+WARNING 2026-05-17 18:50:08,308 log 20188 27180 "GET /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878 HTTP/1.1" 400 54
+ERROR 2026-05-17 18:50:56,433 log 20188 27180 Internal Server Error: /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python-projects\contentgraph_backend\content\views.py", line 178, in get
+    'Bucket': settings.AWS_BUCKET_NAME,
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\conf\__init__.py", line 77, in __getattr__
+    val = getattr(_wrapped, name)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Settings' object has no attribute 'AWS_BUCKET_NAME'
+ERROR 2026-05-17 18:50:56,459 log 20188 27180 "GET /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a HTTP/1.1" 500 109363
+INFO 2026-05-17 18:51:46,516 autoreload 20188 40516 C:\python-projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-05-17 18:51:50,177 autoreload 33856 34408 Watching for file changes with StatReloader
+INFO 2026-05-17 18:52:35,143 autoreload 33856 34408 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-17 18:52:38,315 autoreload 17084 15080 Watching for file changes with StatReloader
+WARNING 2026-05-17 18:52:48,114 log 17084 10660 Unauthorized: /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a
+WARNING 2026-05-17 18:52:48,114 log 17084 10660 "GET /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a HTTP/1.1" 401 183
+INFO 2026-05-17 18:53:13,735 views 17084 10660 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-17 18:53:13,739 log 17084 10660 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-17 18:53:25,777 log 17084 10660 "GET /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a HTTP/1.1" 200 352
+INFO 2026-05-17 18:55:55,299 autoreload 17084 15080 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-17 18:55:59,248 autoreload 12100 2336 Watching for file changes with StatReloader
+INFO 2026-05-17 19:05:40,908 autoreload 12100 2336 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-17 19:05:45,805 autoreload 2052 34432 Watching for file changes with StatReloader
+INFO 2026-05-17 19:06:09,648 views 2052 26828 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-17 19:06:09,654 log 2052 26828 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-17 19:07:19,419 autoreload 2052 34432 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-17 19:07:22,647 autoreload 40672 6908 Watching for file changes with StatReloader
+ERROR 2026-05-17 19:07:32,828 log 40672 21788 Internal Server Error: /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python-projects\contentgraph_backend\content\views.py", line 186, in get
+    s3_object['Body'].iter_chunks(chunk_size=8192),
+    ^^^^^^^^^
+NameError: name 's3_object' is not defined. Did you mean: 'object'?
+ERROR 2026-05-17 19:07:32,838 log 40672 21788 "GET /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a HTTP/1.1" 500 105485
+INFO 2026-05-17 19:07:47,671 autoreload 40672 6908 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-17 19:07:50,663 autoreload 20244 31148 Watching for file changes with StatReloader
+ERROR 2026-05-17 19:08:00,632 log 20244 19684 Internal Server Error: /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python-projects\contentgraph_backend\content\views.py", line 186, in get
+    s3['Body'].iter_chunks(chunk_size=8192),
+    ~~^^^^^^^^
+TypeError: 'S3' object is not subscriptable
+ERROR 2026-05-17 19:08:00,986 log 20244 19684 "GET /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a HTTP/1.1" 500 105479
+ERROR 2026-05-17 19:08:14,912 log 20244 19684 Internal Server Error: /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python-projects\contentgraph_backend\content\views.py", line 186, in get
+    s3['Body'].iter_chunks(chunk_size=8192),
+    ~~^^^^^^^^
+TypeError: 'S3' object is not subscriptable
+ERROR 2026-05-17 19:08:14,914 log 20244 19684 "GET /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a HTTP/1.1" 500 105479
+INFO 2026-05-17 19:10:16,939 autoreload 20244 31148 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-17 19:10:19,966 autoreload 37936 34088 Watching for file changes with StatReloader
+INFO 2026-05-17 19:11:07,306 autoreload 37936 34088 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-17 19:11:10,105 autoreload 27528 30768 Watching for file changes with StatReloader
+WARNING 2026-05-17 19:11:20,587 log 27528 29920 Unauthorized: /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a
+WARNING 2026-05-17 19:11:20,589 log 27528 29920 "GET /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a HTTP/1.1" 401 183
+INFO 2026-05-17 19:11:29,530 views 27528 29920 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-17 19:11:29,532 log 27528 29920 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-17 19:11:52,843 log 27528 29920 "GET /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a HTTP/1.1" 200 314
+INFO 2026-05-17 19:14:38,456 autoreload 27528 30768 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-17 19:14:42,841 autoreload 37780 36868 Watching for file changes with StatReloader
+INFO 2026-05-17 19:15:21,565 autoreload 37780 36868 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-17 19:15:24,664 autoreload 27888 3436 Watching for file changes with StatReloader
+INFO 2026-05-17 19:15:35,286 log 27888 7852 "GET /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a HTTP/1.1" 200 74
+INFO 2026-05-17 19:15:45,427 log 27888 29928 "GET /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a HTTP/1.1" 200 74
+WARNING 2026-05-17 19:16:19,795 log 27888 37200 Unauthorized: /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a
+WARNING 2026-05-17 19:16:19,801 log 27888 37200 "GET /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a HTTP/1.1" 401 10098
+INFO 2026-05-17 19:16:20,284 log 27888 38868 "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+INFO 2026-05-17 19:16:20,291 log 27888 1016 "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+INFO 2026-05-17 19:16:20,292 log 27888 26892 "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+INFO 2026-05-17 19:16:20,323 log 27888 37200 "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+INFO 2026-05-17 19:16:20,405 log 27888 37200 "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+INFO 2026-05-17 19:16:20,411 log 27888 14656 "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+INFO 2026-05-17 19:16:20,413 log 27888 38868 "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+INFO 2026-05-17 19:16:20,417 log 27888 38868 "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+INFO 2026-05-17 19:16:20,439 log 27888 37200 "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+INFO 2026-05-17 19:16:20,446 log 27888 1016 "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+INFO 2026-05-17 19:16:20,446 log 27888 26892 "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+INFO 2026-05-17 19:16:20,515 log 27888 23028 "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+WARNING 2026-05-17 19:16:21,339 log 27888 23028 Not Found: /favicon.ico
+WARNING 2026-05-17 19:16:21,342 log 27888 23028 "GET /favicon.ico HTTP/1.1" 404 2672
+WARNING 2026-05-17 19:16:31,708 log 27888 23584 Unauthorized: /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a
+WARNING 2026-05-17 19:16:31,709 log 27888 23584 "GET /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a HTTP/1.1" 401 183
+WARNING 2026-05-17 19:16:33,639 log 27888 23584 Unauthorized: /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a
+WARNING 2026-05-17 19:16:33,639 log 27888 23584 "GET /content/download/be9b99c8-7e64-491d-a9cd-cc2653be956a HTTP/1.1" 401 183
+INFO 2026-05-17 19:17:17,839 autoreload 27888 3436 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-17 19:17:22,552 autoreload 38416 24732 Watching for file changes with StatReloader
+INFO 2026-05-17 20:27:01,761 autoreload 38416 24732 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-17 20:27:08,496 autoreload 32368 39060 Watching for file changes with StatReloader
+INFO 2026-05-17 20:27:36,942 autoreload 32368 39060 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.

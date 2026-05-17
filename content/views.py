@@ -13,6 +13,7 @@ from .models import CeleryTaskMeta,AIResult,BulkJob
 from django.http import (
     FileResponse, JsonResponse, HttpResponseBadRequest, HttpResponseNotFound
 )
+from django.http import StreamingHttpResponse
 import csv
 from django.conf import settings
 import boto3
@@ -53,7 +54,7 @@ class GenerateView(APIView):
                         request=request_data,
                         task_id=task.id,
                         task_name='generate_seo_content',
-                        queue_type='redis',       # single API uses redis
+                        queue_type='default',       # single API uses redis
                         status='pending',
                     )
         except json.JSONDecodeError:
@@ -153,7 +154,7 @@ class BulkFileProcessor(APIView):
                              "job_id":job.id})
     
 
-    def get(request, job_id):
+    def get(self,request, job_id):
         s3 = boto3.client('s3',
                  aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
                  aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY'),
@@ -172,17 +173,18 @@ class BulkFileProcessor(APIView):
             return JsonResponse({'error': 'Result file not found'}, status=404)
         
          # Generate presigned URL — valid for 1 hour
-        url = s3.generate_presigned_url(
-         'get_object',
-           Params={
-               'Bucket': settings.AWS_BUCKET_NAME,
-               'Key': job.result_s3_key,
-               'ResponseContentDisposition': f'attachment; filename="result_{job_id}.csv"'
-           },
-           ExpiresIn=3600
+        try:
+         s3_object = s3.get_object(   # ← call get_object, not generate_presigned_url
+            Bucket=settings.AWS_BUCKET_NAME,
+            Key=job.result_s3_key,
         )
+        except Exception as e:
+         return JsonResponse({'error': f'S3 fetch failed: {e}'}, status=500)
 
-        return JsonResponse({
-        'download_url': url,
-        'expires_in': 3600
-       })
+        response = StreamingHttpResponse(
+        s3_object['Body'].iter_chunks(chunk_size=8192),  # ← subscript the response, not the client
+        content_type='text/csv',
+        )
+        response['Content-Disposition'] = f'attachment; filename="result_{job_id}.csv"'
+        return response
+       

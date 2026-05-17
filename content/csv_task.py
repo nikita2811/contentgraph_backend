@@ -89,7 +89,7 @@ def process_csv_task(self, bulk_job_id) -> dict:
         job.save(update_fields=['status'])
 
         # Read CSV from S3
-        obj = s3.get_object(Bucket='content.graph', Key=job.s3_key)
+        obj = s3.get_object(Bucket=settings.AWS_BUCKET_NAME, Key=job.s3_key)
         content = obj['Body'].read().decode('utf-8')
         reader = list(csv.DictReader(io.StringIO(content)))
 
@@ -227,9 +227,9 @@ def process_csv_task(self, bulk_job_id) -> dict:
         writer.writeheader()
         writer.writerows(output_rows)
 
-        result_key = f'downloads/{bulk_job_id}/output.csv'
+        result_key = f'downloads/{bulk_job_id}_output.csv'
         s3.put_object(
-            Bucket='content.graph',
+            Bucket=settings.AWS_BUCKET_NAME,
             Key=result_key,
             Body=output.getvalue().encode('utf-8')
         )
