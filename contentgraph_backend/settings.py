@@ -270,6 +270,11 @@ CELERY_BROKER_TRANSPORT_OPTIONS = {
     'interval_max': 0.5,
 }
 
+CELERY_IMPORTS = (
+    "content.tasks",       # add your task modules here
+    "content.csv_task",
+)
+
 # CELERY_TASK_SOFT_TIME_LIMIT      = 270
 # CELERY_TASK_TIME_LIMIT           = 300
 # CELERY_RESULT_EXPIRES            = 300
