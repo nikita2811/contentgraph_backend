@@ -30,6 +30,7 @@ class AIResult(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     request = models.OneToOneField('Product', on_delete=models.CASCADE, related_name='result')
     seo_title = models.CharField(max_length=255)
+    meta_title=models.CharField(max_length=255,blank=True,null=True)
     meta_description = models.TextField()
     long_description = models.TextField()
     tags = models.JSONField(default=list)
@@ -56,6 +57,7 @@ class BulkJob(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bulk_jobs')
     name = models.CharField(max_length=255)
+    s3_key=models.CharField(max_length=255,null=True,blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     total_items = models.IntegerField(default=0)
     processed_items = models.IntegerField(default=0)
@@ -63,6 +65,7 @@ class BulkJob(models.Model):
     rabbitmq_queue = models.CharField(max_length=255, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     completed_at = models.DateTimeField(null=True, blank=True)
+    result_s3_key = models.CharField(max_length=500, null=True, blank=True)
 
     class Meta:
         db_table = 'bulk_job'
@@ -94,6 +97,7 @@ class CeleryTaskMeta(models.Model):
     retry_count = models.IntegerField(default=0)
     started_at = models.DateTimeField(null=True, blank=True)
     completed_at = models.DateTimeField(null=True, blank=True)
+    task_meta = models.OneToOneField('BulkJobItem', on_delete=models.CASCADE,null=True,blank=True)
 
     class Meta:
         db_table = 'celery_task_meta'
@@ -111,6 +115,7 @@ class BulkJobItem(models.Model):
     ]
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    row_index  = models.PositiveIntegerField(default=0) 
     bulk_job = models.ForeignKey('BulkJob', on_delete=models.CASCADE, related_name='items')
     request = models.OneToOneField('Product', on_delete=models.CASCADE, related_name='bulk_item')
     position = models.IntegerField()

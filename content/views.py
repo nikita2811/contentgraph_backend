@@ -1,28 +1,3 @@
-# from django.shortcuts import render
-# from services.fastapi_client import generate_content
-# from rest_framework.response import Response
-# from rest_framework.views import APIView
-
-# class GenerateSingleView(APIView):
-#     def post(self, request):
-#        product_name =request.data.get('product_name')
-#        category=request.data.get('category')
-#        tone=request.data.get('tone')
-#        audience=request.data.get('target_audience')
-#        key_features=request.data.get('key_features')
-#        payload={
-#            "product_name":product_name,
-#            "category":category,
-#            "tone":tone,
-#            "target_audience":audience,
-#            "key_features":key_features
-           
-#        }
-#        api_call = generate_content(payload)
-#        return Response({
-#            "response":api_call
-#        })
-    
 import logging
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
@@ -34,7 +9,19 @@ from .tasks import generate_content_task
 import json
 from .serializers import ProductCreateSerializer,ProductSerializer
 from rest_framework.permissions import IsAuthenticated
-from .models import CeleryTaskMeta,AIResult
+from .models import CeleryTaskMeta,AIResult,BulkJob
+from django.http import (
+    FileResponse, JsonResponse, HttpResponseBadRequest, HttpResponseNotFound
+)
+import csv
+from django.conf import settings
+import boto3
+from dotenv import load_dotenv
+import os
+from .csv_task import process_csv_task
+load_dotenv()  # loads .env file
+
+
 
 logger = logging.getLogger(__name__)
 
@@ -115,3 +102,87 @@ class ResultView(APIView):
                 return JsonResponse({"status": "failed", "error": "Result not found"}, status=404)
 
         return JsonResponse({"status": result.state.lower()})
+
+
+class BulkFileProcessor(APIView):
+    permission_classes = [IsAuthenticated]
+    MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB
+    BUCKET_NAME = 'content.graph'
+    def post(self,request):
+        file = request.FILES.get('file')
+
+        if not file:
+            raise HttpResponseBadRequest('No file provided. Send multipart field "file".')
+        
+        if not file.name.endswith('.csv'):
+            return HttpResponseBadRequest('Only .csv files are accepted.')
+
+        if file.size > self.MAX_FILE_SIZE:
+            return HttpResponseBadRequest('File too large (max 10 MB).')
+        
+        job = BulkJob.objects.create(
+            status="pending",
+            user=request.user)
+        
+        # Upload raw file to S3
+        s3_key = f"uploads/{job.id}_{file.name}"
+        job.s3_key = s3_key
+        job.save(update_fields=['s3_key'])
+        try:
+            s3 = boto3.client('s3',
+                 aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
+                 aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY'),
+                 region_name=os.environ.get('AWS_DEFAULT_REGION')
+                )
+            
+            s3.upload_fileobj(
+                Fileobj=file,
+                Bucket=self.BUCKET_NAME,
+                Key=s3_key
+            )
+            process_csv_task.delay(job.id)
+
+           
+            
+        except Exception as e:
+            job.status ='failed'
+            job.save(update_fields=['status'])
+            return HttpResponseBadRequest(f'S3 upload failed: {e}')
+        
+        return JsonResponse({"message":"file uploaded successfully",
+                             "job_id":job.id})
+    
+
+    def get(request, job_id):
+        s3 = boto3.client('s3',
+                 aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
+                 aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY'),
+                 region_name=os.environ.get('AWS_DEFAULT_REGION')
+                )
+        try:
+            # Make sure job belongs to requesting user
+            job = BulkJob.objects.get(id=job_id, user=request.user)
+        except BulkJob.DoesNotExist:
+            return JsonResponse({'error': 'Job not found'}, status=404)
+    
+        if job.status != 'completed':
+            return JsonResponse({'error': f'Job not ready, current status: {job.status}'}, status=400)
+    
+        if not job.result_s3_key:
+            return JsonResponse({'error': 'Result file not found'}, status=404)
+        
+         # Generate presigned URL — valid for 1 hour
+        url = s3.generate_presigned_url(
+         'get_object',
+           Params={
+               'Bucket': settings.AWS_BUCKET_NAME,
+               'Key': job.result_s3_key,
+               'ResponseContentDisposition': f'attachment; filename="result_{job_id}.csv"'
+           },
+           ExpiresIn=3600
+        )
+
+        return JsonResponse({
+        'download_url': url,
+        'expires_in': 3600
+       })

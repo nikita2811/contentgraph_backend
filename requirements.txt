@@ -17,3 +17,6 @@ razorpay
 celery[redis]>=5.3
 redis[hiredis]>=5.0
 django-celery-results
+boto3
+celery[sqs]
+gevent

@@ -48,7 +48,10 @@ def generate_content_task(self, product_request_id) -> dict:
 
     try:
         data = Product.objects.get(id=product_request_id)
-        logger.info(f"product data: {data}")
+        if data.status == 'completed':
+         return {"status": "already_completed", "product_id": data.id}
+
+        
 
         product_details = {
             "product_name": data.product_name,
@@ -59,7 +62,6 @@ def generate_content_task(self, product_request_id) -> dict:
         }
 
         response = generate_content(product_details)
-        print(response)
         # Parse nested JSON strings
         final_content_str = response["final_content"][0]["text"]
         serp_str = response["serp"][0]["text"]
@@ -67,17 +69,20 @@ def generate_content_task(self, product_request_id) -> dict:
         serp = json.loads(serp_str)
 
         # Persist results
-        AIResult.objects.create(
+        AIResult.objects.get_or_create(
             request=data,
-            seo_title=content["seo_title"],
-            meta_description=content["meta_description"],
-            meta_title=content["h1"],
-            long_description=content["intro_paragraph"],
+            defaults={
+            'request'  : data,
+            'seo_title' :content["seo_title"],
+            'meta_description':content["meta_description"],
+            'meta_title':content["h1"],
+            'long_description':content["intro_paragraph"],
             # join if tags is CharField, remove join if JSONField
-            tags=",".join(content["tags"]) if isinstance(content["tags"], list) else content["tags"],
-            primary_keyword=serp["primary_keyword"],
+            'tags':",".join(content["tags"]) if isinstance(content["tags"], list) else content["tags"],
+            'primary_keyword':serp["primary_keyword"],
             # join if secondary_keywords is a list and field is CharField
-            secondary_keyword=",".join(serp["secondary_keywords"]) if isinstance(serp["secondary_keywords"], list) else serp["secondary_keywords"],
+            'secondary_keyword':",".join(serp["secondary_keywords"]) if isinstance(serp["secondary_keywords"], list) else serp["secondary_keywords"],
+        }
         )
 
         # Mark request completed

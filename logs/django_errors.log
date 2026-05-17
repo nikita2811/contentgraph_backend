@@ -989,3 +989,1023 @@ INFO 2026-05-12 13:00:47,458 autoreload 21124 42508 C:\Python-Projects\contentgr
 INFO 2026-05-12 13:00:52,147 autoreload 2008 25916 Watching for file changes with StatReloader
 INFO 2026-05-12 13:02:19,999 autoreload 2008 25916 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
 INFO 2026-05-12 13:02:51,863 autoreload 32084 31124 Watching for file changes with StatReloader
+INFO 2026-05-12 16:42:43,974 autoreload 32084 31124 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 16:42:53,801 autoreload 30308 18276 Watching for file changes with StatReloader
+INFO 2026-05-12 16:44:43,789 autoreload 30308 18276 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 16:44:47,173 autoreload 8144 19268 Watching for file changes with StatReloader
+INFO 2026-05-12 16:45:47,014 autoreload 8144 19268 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 16:45:49,600 autoreload 33300 9988 Watching for file changes with StatReloader
+INFO 2026-05-12 16:46:09,581 autoreload 33300 9988 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 16:46:12,905 autoreload 42016 11328 Watching for file changes with StatReloader
+INFO 2026-05-12 17:06:15,470 autoreload 42016 11328 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-12 17:06:21,424 autoreload 42800 25988 Watching for file changes with StatReloader
+INFO 2026-05-12 17:32:24,573 autoreload 42800 25988 C:\Python-Projects\contentgraph_backend\content\models.py changed, reloading.
+INFO 2026-05-12 17:32:29,599 autoreload 19936 21956 Watching for file changes with StatReloader
+INFO 2026-05-13 10:38:06,092 autoreload 13724 6720 Watching for file changes with StatReloader
+INFO 2026-05-13 11:08:22,035 autoreload 13724 6720 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 11:08:26,455 autoreload 8992 27368 Watching for file changes with StatReloader
+INFO 2026-05-13 11:08:36,820 autoreload 8992 27368 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 11:08:39,799 autoreload 26340 30416 Watching for file changes with StatReloader
+INFO 2026-05-13 11:14:52,717 autoreload 18968 13556 Watching for file changes with StatReloader
+INFO 2026-05-13 11:15:16,144 autoreload 18968 13556 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 11:15:23,835 autoreload 10460 27360 Watching for file changes with StatReloader
+WARNING 2026-05-13 11:22:31,901 log 10460 5904 Method Not Allowed: /content/upload-file
+WARNING 2026-05-13 11:22:31,905 log 10460 5904 "GET /content/upload-file HTTP/1.1" 405 40
+ERROR 2026-05-13 11:22:40,137 log 10460 5904 Internal Server Error: /content/upload-file
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 118, in post
+    status=BulkJob.status.PENDING,
+           ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'DeferredAttribute' object has no attribute 'PENDING'
+ERROR 2026-05-13 11:22:40,151 log 10460 5904 "POST /content/upload-file HTTP/1.1" 500 102055
+INFO 2026-05-13 11:23:07,145 autoreload 10460 27360 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 11:23:11,165 autoreload 28020 13652 Watching for file changes with StatReloader
+ERROR 2026-05-13 11:23:16,262 log 28020 15216 Internal Server Error: /content/upload-file
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 118, in post
+    status=BulkJob.status.Pending,
+           ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'DeferredAttribute' object has no attribute 'Pending'
+ERROR 2026-05-13 11:23:16,272 log 28020 15216 "POST /content/upload-file HTTP/1.1" 500 102055
+INFO 2026-05-13 11:23:31,105 autoreload 28020 13652 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 11:23:34,197 autoreload 9944 3188 Watching for file changes with StatReloader
+ERROR 2026-05-13 11:23:41,210 log 9944 23576 Internal Server Error: /content/upload-file
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 117, in post
+    job = BulkJob.objects.create(
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\query.py", line 667, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\base.py", line 566, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "C:\Myenv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 287, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<django.contrib.auth.models.AnonymousUser object at 0x00000234C624EFF0>": "BulkJob.user" must be a "User" instance.
+ERROR 2026-05-13 11:23:41,233 log 9944 23576 "POST /content/upload-file HTTP/1.1" 500 121263
+INFO 2026-05-13 11:25:17,984 autoreload 9944 3188 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 11:25:21,147 autoreload 25372 22640 Watching for file changes with StatReloader
+WARNING 2026-05-13 11:25:31,291 log 25372 28316 Unauthorized: /content/upload-file
+WARNING 2026-05-13 11:25:31,291 log 25372 28316 "POST /content/upload-file HTTP/1.1" 401 58
+WARNING 2026-05-13 11:25:39,982 log 25372 28316 Unauthorized: /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e
+WARNING 2026-05-13 11:25:39,982 log 25372 28316 "GET /content/generate/1dec1bd1-c89c-4235-b3eb-807b578c187e HTTP/1.1" 401 183
+INFO 2026-05-13 11:25:49,659 views 25372 28316 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-13 11:25:49,659 log 25372 28316 "POST /auth/signin HTTP/1.1" 200 672
+ERROR 2026-05-13 11:26:19,004 log 25372 28316 Internal Server Error: /content/upload-file
+Traceback (most recent call last):
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 126, in post
+    s3.upload_fileobj(
+  File "C:\Myenv\Lib\site-packages\botocore\context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\boto3\s3\inject.py", line 678, in upload_fileobj
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\s3transfer\futures.py", line 111, in result
+    return self._coordinator.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\s3transfer\futures.py", line 287, in result
+    raise self._exception
+  File "C:\Myenv\Lib\site-packages\s3transfer\tasks.py", line 142, in __call__
+    return self._execute_main(kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\s3transfer\tasks.py", line 165, in _execute_main
+    return_value = self._main(**kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\s3transfer\upload.py", line 796, in _main
+    client.put_object(Bucket=bucket, Key=key, Body=body, **extra_args)
+  File "C:\Myenv\Lib\site-packages\botocore\client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\client.py", line 1076, in _make_api_call
+    http, parsed_response = self._make_request(
+                            ^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\client.py", line 1100, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\endpoint.py", line 196, in _send_request
+    request = self.create_request(request_dict, operation_model)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\endpoint.py", line 132, in create_request
+    self._event_emitter.emit(
+  File "C:\Myenv\Lib\site-packages\botocore\hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\signers.py", line 108, in handler
+    return self.sign(operation_name, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\signers.py", line 200, in sign
+    auth.add_auth(request)
+  File "C:\Myenv\Lib\site-packages\botocore\auth.py", line 429, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 133, in post
+    job.status = BulkJob.Status.FAILED
+                 ^^^^^^^^^^^^^^
+AttributeError: type object 'BulkJob' has no attribute 'Status'. Did you mean: 'status'?
+ERROR 2026-05-13 11:26:19,019 log 25372 28316 "POST /content/upload-file HTTP/1.1" 500 224435
+INFO 2026-05-13 11:26:56,270 autoreload 25372 22640 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 11:26:59,295 autoreload 2180 26492 Watching for file changes with StatReloader
+ERROR 2026-05-13 11:27:13,867 log 2180 12224 Internal Server Error: /content/upload-file
+Traceback (most recent call last):
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 126, in post
+    s3.upload_fileobj(
+  File "C:\Myenv\Lib\site-packages\botocore\context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\boto3\s3\inject.py", line 678, in upload_fileobj
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\s3transfer\futures.py", line 111, in result
+    return self._coordinator.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\s3transfer\futures.py", line 287, in result
+    raise self._exception
+  File "C:\Myenv\Lib\site-packages\s3transfer\tasks.py", line 142, in __call__
+    return self._execute_main(kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\s3transfer\tasks.py", line 165, in _execute_main
+    return_value = self._main(**kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\s3transfer\upload.py", line 796, in _main
+    client.put_object(Bucket=bucket, Key=key, Body=body, **extra_args)
+  File "C:\Myenv\Lib\site-packages\botocore\client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\client.py", line 1076, in _make_api_call
+    http, parsed_response = self._make_request(
+                            ^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\client.py", line 1100, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\endpoint.py", line 196, in _send_request
+    request = self.create_request(request_dict, operation_model)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\endpoint.py", line 132, in create_request
+    self._event_emitter.emit(
+  File "C:\Myenv\Lib\site-packages\botocore\hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\signers.py", line 108, in handler
+    return self.sign(operation_name, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\botocore\signers.py", line 200, in sign
+    auth.add_auth(request)
+  File "C:\Myenv\Lib\site-packages\botocore\auth.py", line 429, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python-Projects\contentgraph_backend\content\views.py", line 133, in post
+    job.status = BulkJob.status.FAILED
+                 ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'DeferredAttribute' object has no attribute 'FAILED'
+ERROR 2026-05-13 11:27:13,884 log 2180 12224 "POST /content/upload-file HTTP/1.1" 500 224479
+INFO 2026-05-13 11:27:29,561 autoreload 2180 26492 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 11:27:32,526 autoreload 29216 19360 Watching for file changes with StatReloader
+WARNING 2026-05-13 11:27:43,367 log 29216 28236 Bad Request: /content/upload-file
+WARNING 2026-05-13 11:27:43,367 log 29216 28236 "POST /content/upload-file HTTP/1.1" 400 46
+INFO 2026-05-13 13:21:11,477 autoreload 29216 19360 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 13:21:18,447 autoreload 12784 10300 Watching for file changes with StatReloader
+INFO 2026-05-13 13:21:26,624 views 12784 15452 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-13 13:21:26,630 log 12784 15452 "POST /auth/signin HTTP/1.1" 200 672
+WARNING 2026-05-13 13:22:11,790 log 12784 15452 Bad Request: /content/upload-file
+WARNING 2026-05-13 13:22:11,790 log 12784 15452 "POST /content/upload-file HTTP/1.1" 400 46
+INFO 2026-05-13 13:22:47,489 autoreload 12784 10300 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 13:22:50,238 autoreload 24560 29364 Watching for file changes with StatReloader
+WARNING 2026-05-13 13:22:59,696 log 24560 1188 Bad Request: /content/upload-file
+WARNING 2026-05-13 13:22:59,699 log 24560 1188 "POST /content/upload-file HTTP/1.1" 400 83
+INFO 2026-05-13 13:23:30,935 autoreload 24560 29364 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 13:23:33,656 autoreload 25160 32440 Watching for file changes with StatReloader
+INFO 2026-05-13 13:23:38,385 autoreload 25160 32440 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 13:23:40,745 autoreload 12840 22568 Watching for file changes with StatReloader
+WARNING 2026-05-13 13:23:48,469 log 12840 23488 Bad Request: /content/upload-file
+WARNING 2026-05-13 13:23:48,469 log 12840 23488 "POST /content/upload-file HTTP/1.1" 400 86
+INFO 2026-05-13 13:23:58,629 autoreload 12840 22568 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 13:24:01,294 autoreload 31244 30904 Watching for file changes with StatReloader
+WARNING 2026-05-13 13:24:10,491 log 31244 20700 Bad Request: /content/upload-file
+WARNING 2026-05-13 13:24:10,494 log 31244 20700 "POST /content/upload-file HTTP/1.1" 400 83
+WARNING 2026-05-13 13:27:29,216 log 31244 1740 Unauthorized: /content/upload-file
+WARNING 2026-05-13 13:27:29,216 log 31244 1740 "POST /content/upload-file HTTP/1.1" 401 183
+INFO 2026-05-13 13:27:38,814 views 31244 1740 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-13 13:27:38,814 log 31244 1740 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-13 13:27:58,953 views 31244 1740 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-13 13:27:58,958 log 31244 1740 "POST /auth/signin HTTP/1.1" 200 672
+WARNING 2026-05-13 13:28:13,828 log 31244 1740 Bad Request: /content/upload-file
+WARNING 2026-05-13 13:28:13,829 log 31244 1740 "POST /content/upload-file HTTP/1.1" 400 83
+INFO 2026-05-13 13:28:27,861 autoreload 31244 30904 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 13:28:31,486 autoreload 22492 9908 Watching for file changes with StatReloader
+INFO 2026-05-13 13:28:42,151 log 22492 27904 "POST /content/upload-file HTTP/1.1" 200 41
+INFO 2026-05-13 13:34:14,506 autoreload 22492 9908 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 13:34:17,776 autoreload 27448 31232 Watching for file changes with StatReloader
+INFO 2026-05-13 13:35:41,322 autoreload 27448 31232 C:\Python-Projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-13 13:35:44,140 autoreload 9720 27400 Watching for file changes with StatReloader
+INFO 2026-05-14 12:13:13,365 autoreload 7516 4188 Watching for file changes with StatReloader
+INFO 2026-05-14 12:18:06,892 autoreload 7516 4188 C:\python-projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-05-14 12:18:10,152 autoreload 32996 2008 Watching for file changes with StatReloader
+INFO 2026-05-14 12:26:38,148 autoreload 32996 2008 C:\python-projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-05-14 12:26:41,295 autoreload 29604 34552 Watching for file changes with StatReloader
+INFO 2026-05-14 12:29:59,579 autoreload 29604 34552 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-14 12:30:02,305 autoreload 30648 17768 Watching for file changes with StatReloader
+INFO 2026-05-14 12:31:17,763 autoreload 19772 18492 Watching for file changes with StatReloader
+INFO 2026-05-14 12:33:50,143 autoreload 19772 18492 C:\python-projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-05-14 12:33:53,312 autoreload 17832 2216 Watching for file changes with StatReloader
+INFO 2026-05-14 12:34:07,147 views 17832 16248 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-14 12:34:07,150 log 17832 16248 "POST /auth/signin HTTP/1.1" 200 672
+ERROR 2026-05-14 12:35:02,689 log 17832 16248 Internal Server Error: /content/upload-file
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedColumn: column "s3_key" of relation "bulk_job" does not exist
+LINE 1: INSERT INTO "bulk_job" ("id", "user_id", "name", "s3_key", "...
+                                                         ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python-projects\contentgraph_backend\content\views.py", line 123, in post
+    job = BulkJob.objects.create(
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\query.py", line 669, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Myenv\Lib\site-packages\django\db\models\base.py", line 874, in save
+    self.save_base(
+  File "C:\Myenv\Lib\site-packages\django\db\models\base.py", line 966, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\base.py", line 1167, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\base.py", line 1218, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\query.py", line 1918, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1925, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Myenv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Myenv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: column "s3_key" of relation "bulk_job" does not exist
+LINE 1: INSERT INTO "bulk_job" ("id", "user_id", "name", "s3_key", "...
+                                                         ^
+
+ERROR 2026-05-14 12:35:02,697 log 17832 16248 "POST /content/upload-file HTTP/1.1" 500 189231
+INFO 2026-05-14 12:36:43,823 autoreload 27156 7664 Watching for file changes with StatReloader
+INFO 2026-05-14 12:37:01,006 log 27156 20932 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-14 12:47:37,029 views 27156 1852 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-14 12:47:37,042 log 27156 1852 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-14 12:47:53,923 views 27156 1852 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-14 12:47:53,947 log 27156 1852 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-14 12:48:15,463 views 27156 1852 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-14 12:48:15,463 log 27156 1852 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-14 12:48:31,888 log 27156 1852 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-14 12:49:21,723 log 27156 1852 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 200 21
+INFO 2026-05-14 12:49:24,173 log 27156 1852 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 200 21
+INFO 2026-05-14 12:49:49,294 log 27156 1852 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 200 21
+INFO 2026-05-14 12:49:51,421 log 27156 1852 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 200 21
+INFO 2026-05-14 12:51:08,415 log 27156 23316 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 200 21
+INFO 2026-05-14 12:51:10,468 log 27156 23316 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 200 21
+INFO 2026-05-14 12:51:18,759 log 27156 23316 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 200 21
+INFO 2026-05-14 12:52:00,543 log 27156 23316 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 200 24
+INFO 2026-05-14 12:52:08,490 log 27156 23316 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 200 24
+INFO 2026-05-14 12:52:14,165 log 27156 23316 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 200 24
+INFO 2026-05-14 12:52:59,217 log 27156 23316 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 200 24
+INFO 2026-05-14 12:53:01,468 log 27156 23316 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 200 24
+WARNING 2026-05-14 12:53:25,945 log 27156 23316 Unauthorized: /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0
+WARNING 2026-05-14 12:53:25,947 log 27156 23316 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 401 183
+INFO 2026-05-14 12:53:56,237 views 27156 23316 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-14 12:53:56,241 log 27156 23316 "POST /auth/signin HTTP/1.1" 200 672
+ERROR 2026-05-14 12:54:19,166 log 27156 23316 Internal Server Error: /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0
+ERROR 2026-05-14 12:54:19,168 log 27156 23316 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 500 90
+INFO 2026-05-14 12:56:18,872 autoreload 27156 7664 C:\python-projects\contentgraph_backend\content\models.py changed, reloading.
+INFO 2026-05-14 12:56:22,583 autoreload 11576 30000 Watching for file changes with StatReloader
+INFO 2026-05-14 12:57:02,142 autoreload 32616 29940 Watching for file changes with StatReloader
+INFO 2026-05-14 13:04:44,824 autoreload 32616 29940 C:\python-projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-05-14 13:04:48,492 autoreload 18360 16468 Watching for file changes with StatReloader
+INFO 2026-05-14 13:05:40,879 views 18360 8 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-14 13:05:40,885 log 18360 8 "POST /auth/signin HTTP/1.1" 200 672
+WARNING 2026-05-14 13:07:12,082 log 18360 33364 Unauthorized: /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0
+WARNING 2026-05-14 13:07:12,082 log 18360 33364 "GET /content/generate/104358e5-a52a-42e9-aa2e-92489f38aed0 HTTP/1.1" 401 183
+ERROR 2026-05-14 13:07:46,405 log 18360 8 Internal Server Error: /content/generate-content
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 385, in connect_check_health
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\retry.py", line 87, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 386, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 797, in _connect
+    raise err
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 781, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 130, in reconnect_on_error
+    yield
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 180, in _consume_from
+    self._pubsub.subscribe(key)
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 1034, in subscribe
+    ret_val = self.execute_command("SUBSCRIBE", *new_channels.keys())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 864, in execute_command
+    self.connection = self.connection_pool.get_connection()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\utils.py", line 191, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 1530, in get_connection
+    connection.connect()
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 379, in connect
+    self.connect_check_health(check_health=True)
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 391, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 385, in connect_check_health
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\retry.py", line 87, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 386, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 797, in _connect
+    raise err
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 781, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 133, in reconnect_on_error
+    self._ensure(self._reconnect_pubsub, ())
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 428, in ensure
+    return retry_over_time(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 109, in _reconnect_pubsub
+    metas = self.backend.client.mget(self.subscribed_to)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\commands\core.py", line 1994, in mget
+    return self.execute_command("MGET", *args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 623, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 629, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\utils.py", line 191, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 1530, in get_connection
+    connection.connect()
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 379, in connect
+    self.connect_check_health(check_health=True)
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 391, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python-projects\contentgraph_backend\content\views.py", line 47, in post
+    task = generate_content_task.delay(request_data.id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\base.py", line 946, in send_task
+    self.backend.on_task_call(P, task_id)
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 417, in on_task_call
+    self.result_consumer.consume_from(task_id)
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 172, in consume_from
+    return self.start(task_id)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 150, in start
+    self._consume_from(initial_task_id)
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 179, in _consume_from
+    with self.reconnect_on_error():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 136, in reconnect_on_error
+    raise RuntimeError(E_RETRY_LIMIT_EXCEEDED) from e
+RuntimeError: 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+INFO 2026-05-14 13:07:46,421 basehttp 18360 8 - Broken pipe from ('127.0.0.1', 62135)
+ERROR 2026-05-14 13:08:16,961 log 18360 28224 Internal Server Error: /content/generate-content
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 385, in connect_check_health
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\retry.py", line 87, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 386, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 797, in _connect
+    raise err
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 781, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 130, in reconnect_on_error
+    yield
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 180, in _consume_from
+    self._pubsub.subscribe(key)
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 1034, in subscribe
+    ret_val = self.execute_command("SUBSCRIBE", *new_channels.keys())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 864, in execute_command
+    self.connection = self.connection_pool.get_connection()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\utils.py", line 191, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 1530, in get_connection
+    connection.connect()
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 379, in connect
+    self.connect_check_health(check_health=True)
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 391, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 385, in connect_check_health
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\retry.py", line 87, in call_with_retry
+    return do()
+           ^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 386, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 797, in _connect
+    raise err
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 781, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 133, in reconnect_on_error
+    self._ensure(self._reconnect_pubsub, ())
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 428, in ensure
+    return retry_over_time(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\kombu\utils\functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 109, in _reconnect_pubsub
+    metas = self.backend.client.mget(self.subscribed_to)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\commands\core.py", line 1994, in mget
+    return self.execute_command("MGET", *args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 623, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\client.py", line 629, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\utils.py", line 191, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 1530, in get_connection
+    connection.connect()
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 379, in connect
+    self.connect_check_health(check_health=True)
+  File "C:\Myenv\Lib\site-packages\redis\connection.py", line 391, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to localhost:6379. No connection could be made because the target machine actively refused it.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python-projects\contentgraph_backend\content\views.py", line 47, in post
+    task = generate_content_task.delay(request_data.id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\task.py", line 444, in delay
+    return self.apply_async(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\task.py", line 608, in apply_async
+    return app.send_task(
+           ^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\app\base.py", line 946, in send_task
+    self.backend.on_task_call(P, task_id)
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 417, in on_task_call
+    self.result_consumer.consume_from(task_id)
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 172, in consume_from
+    return self.start(task_id)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 150, in start
+    self._consume_from(initial_task_id)
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 179, in _consume_from
+    with self.reconnect_on_error():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Myenv\Lib\site-packages\celery\backends\redis.py", line 136, in reconnect_on_error
+    raise RuntimeError(E_RETRY_LIMIT_EXCEEDED) from e
+RuntimeError: 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+ERROR 2026-05-14 13:08:16,976 log 18360 28224 "POST /content/generate-content HTTP/1.1" 500 295602
+INFO 2026-05-14 13:09:38,856 autoreload 18360 16468 C:\python-projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-05-14 13:09:42,185 autoreload 35020 12096 Watching for file changes with StatReloader
+INFO 2026-05-14 13:09:59,941 autoreload 35020 12096 C:\python-projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-05-14 13:10:02,725 autoreload 10652 10976 Watching for file changes with StatReloader
+INFO 2026-05-14 13:10:19,039 log 10652 19772 "POST /content/generate-content HTTP/1.1" 202 71
+WARNING 2026-05-14 13:10:39,773 log 10652 19772 Unauthorized: /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146
+WARNING 2026-05-14 13:10:39,773 log 10652 19772 "GET /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146 HTTP/1.1" 401 183
+INFO 2026-05-14 13:10:48,194 views 10652 19772 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-14 13:10:48,201 log 10652 19772 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-14 13:11:14,610 views 10652 19772 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-14 13:11:14,613 log 10652 19772 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-14 13:11:30,643 log 10652 19772 "GET /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146 HTTP/1.1" 200 21
+INFO 2026-05-14 13:11:33,255 log 10652 19772 "GET /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146 HTTP/1.1" 200 21
+INFO 2026-05-14 13:11:35,706 log 10652 19772 "GET /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146 HTTP/1.1" 200 21
+INFO 2026-05-14 13:12:14,525 log 10652 19772 "GET /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146 HTTP/1.1" 200 21
+INFO 2026-05-14 13:13:27,661 log 10652 32220 "GET /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146 HTTP/1.1" 200 21
+INFO 2026-05-14 13:13:30,415 log 10652 32220 "GET /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146 HTTP/1.1" 200 21
+INFO 2026-05-14 13:13:51,225 log 10652 32220 "GET /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146 HTTP/1.1" 200 21
+INFO 2026-05-14 13:14:00,809 log 10652 32220 "GET /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146 HTTP/1.1" 200 21
+INFO 2026-05-14 13:14:23,030 log 10652 32220 "GET /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146 HTTP/1.1" 200 21
+INFO 2026-05-14 13:15:26,840 log 10652 23772 "GET /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146 HTTP/1.1" 200 21
+WARNING 2026-05-14 13:17:43,972 log 10652 8980 Unauthorized: /content/generate-content
+WARNING 2026-05-14 13:17:43,976 log 10652 8980 "POST /content/generate-content HTTP/1.1" 401 183
+INFO 2026-05-14 13:17:51,126 views 10652 8980 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-14 13:17:51,129 log 10652 8980 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-14 13:18:20,003 log 10652 8980 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-14 13:20:20,736 autoreload 10652 10976 C:\python-projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-05-14 13:20:24,151 autoreload 13568 13308 Watching for file changes with StatReloader
+INFO 2026-05-14 13:20:48,589 log 13568 33964 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-14 13:21:44,375 autoreload 13568 13308 C:\python-projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-05-14 13:21:47,226 autoreload 26972 14248 Watching for file changes with StatReloader
+INFO 2026-05-14 13:21:55,838 log 26972 23524 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-14 13:22:11,227 log 26972 23524 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-14 13:24:33,513 autoreload 26972 14248 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-14 13:24:36,921 autoreload 34184 32272 Watching for file changes with StatReloader
+INFO 2026-05-14 13:25:31,965 autoreload 34184 32272 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-14 13:25:34,836 autoreload 24760 13492 Watching for file changes with StatReloader
+INFO 2026-05-14 13:27:26,839 autoreload 24760 13492 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-14 13:27:30,123 autoreload 14500 19732 Watching for file changes with StatReloader
+INFO 2026-05-14 13:27:42,610 autoreload 14500 19732 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-14 13:27:45,350 autoreload 24548 13592 Watching for file changes with StatReloader
+WARNING 2026-05-14 14:07:52,316 log 24548 34096 Unauthorized: /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146
+WARNING 2026-05-14 14:07:52,333 log 24548 34096 "GET /content/generate/bd4517ca-14ad-445a-a523-63d109e5e146 HTTP/1.1" 401 183
+INFO 2026-05-14 14:08:22,470 views 24548 34096 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-14 14:08:22,480 log 24548 34096 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-14 14:08:45,069 log 24548 34096 "GET /content/generate/b3483b8e-3427-4ee4-90e9-535da52dae55 HTTP/1.1" 200 628
+INFO 2026-05-14 14:09:23,334 log 24548 34096 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-14 14:09:50,187 autoreload 24548 13592 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-14 14:09:54,179 autoreload 5708 7648 Watching for file changes with StatReloader
+INFO 2026-05-14 14:10:22,707 autoreload 5708 7648 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-14 14:10:25,499 autoreload 22052 30204 Watching for file changes with StatReloader
+INFO 2026-05-14 14:11:06,354 log 22052 11796 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-14 14:57:14,266 autoreload 22052 30204 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-14 14:57:19,682 autoreload 26976 18104 Watching for file changes with StatReloader
+INFO 2026-05-14 16:31:03,990 autoreload 26976 18104 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-14 16:31:09,579 autoreload 2236 25520 Watching for file changes with StatReloader
+INFO 2026-05-14 16:33:34,089 autoreload 2236 25520 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-14 16:33:37,326 autoreload 31972 936 Watching for file changes with StatReloader
+INFO 2026-05-14 16:33:52,714 autoreload 31972 936 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-14 16:33:56,016 autoreload 16020 13708 Watching for file changes with StatReloader
+INFO 2026-05-14 16:34:01,989 autoreload 16020 13708 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-14 16:34:05,420 autoreload 13724 17376 Watching for file changes with StatReloader
+INFO 2026-05-14 16:34:22,172 autoreload 13724 17376 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-14 16:34:25,526 autoreload 4660 17016 Watching for file changes with StatReloader
+INFO 2026-05-15 12:25:37,374 autoreload 4660 17016 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 12:25:46,895 autoreload 22120 19140 Watching for file changes with StatReloader
+INFO 2026-05-15 12:28:36,597 autoreload 22120 19140 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 12:28:42,459 autoreload 34164 36232 Watching for file changes with StatReloader
+INFO 2026-05-15 12:46:27,881 autoreload 34164 36232 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-15 12:46:33,265 autoreload 27140 10300 Watching for file changes with StatReloader
+INFO 2026-05-15 12:48:28,474 autoreload 27140 10300 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 12:48:30,164 autoreload 36544 12456 Watching for file changes with StatReloader
+INFO 2026-05-15 12:48:57,551 autoreload 36544 12456 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 12:48:59,279 autoreload 35636 18444 Watching for file changes with StatReloader
+INFO 2026-05-15 12:49:07,718 autoreload 35636 18444 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 12:49:09,492 autoreload 31272 26620 Watching for file changes with StatReloader
+INFO 2026-05-15 12:50:03,125 autoreload 31272 26620 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 12:50:04,821 autoreload 10996 25992 Watching for file changes with StatReloader
+INFO 2026-05-15 12:50:53,045 autoreload 10996 25992 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 12:50:54,683 autoreload 17200 28692 Watching for file changes with StatReloader
+INFO 2026-05-15 12:51:17,740 autoreload 17200 28692 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 12:51:19,395 autoreload 9628 34696 Watching for file changes with StatReloader
+INFO 2026-05-15 12:51:52,300 views 9628 9248 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 12:51:52,316 log 9628 9248 "POST /auth/signin HTTP/1.1" 200 672
+WARNING 2026-05-15 12:52:35,458 log 9628 9248 Bad Request: /content/upload-file
+WARNING 2026-05-15 12:52:35,458 log 9628 9248 "POST /content/upload-file HTTP/1.1" 400 292
+INFO 2026-05-15 12:53:53,930 autoreload 9628 34696 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-15 12:53:55,912 autoreload 30000 22304 Watching for file changes with StatReloader
+INFO 2026-05-15 12:54:07,413 log 30000 38344 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 13:01:05,464 autoreload 30000 22304 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:01:07,698 autoreload 5388 33064 Watching for file changes with StatReloader
+INFO 2026-05-15 13:02:07,194 autoreload 5388 33064 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:02:09,010 autoreload 15888 24156 Watching for file changes with StatReloader
+INFO 2026-05-15 13:02:28,001 autoreload 15888 24156 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:02:29,897 autoreload 19316 10252 Watching for file changes with StatReloader
+INFO 2026-05-15 13:03:09,916 autoreload 19316 10252 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:03:11,742 autoreload 10472 37416 Watching for file changes with StatReloader
+INFO 2026-05-15 13:04:01,121 autoreload 10472 37416 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:04:02,935 autoreload 3704 28184 Watching for file changes with StatReloader
+WARNING 2026-05-15 13:04:09,091 log 3704 33836 Unauthorized: /content/upload-file
+WARNING 2026-05-15 13:04:09,091 log 3704 33836 "POST /content/upload-file HTTP/1.1" 401 183
+INFO 2026-05-15 13:04:15,428 views 3704 33836 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 13:04:15,428 log 3704 33836 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-15 13:04:29,886 views 3704 33836 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 13:04:29,886 log 3704 33836 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-15 13:04:45,505 log 3704 33836 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 13:05:23,722 autoreload 3704 28184 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:05:25,691 autoreload 30356 38152 Watching for file changes with StatReloader
+INFO 2026-05-15 13:06:13,460 log 30356 22216 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 13:13:16,037 autoreload 30356 38152 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:13:18,508 autoreload 6492 17192 Watching for file changes with StatReloader
+INFO 2026-05-15 13:13:40,042 autoreload 6492 17192 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:13:41,969 autoreload 35872 6472 Watching for file changes with StatReloader
+WARNING 2026-05-15 13:15:26,355 log 35872 30108 Unauthorized: /content/upload-file
+WARNING 2026-05-15 13:15:26,357 log 35872 30108 "POST /content/upload-file HTTP/1.1" 401 183
+INFO 2026-05-15 13:15:33,842 views 35872 30108 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 13:15:33,844 log 35872 30108 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-15 13:16:03,256 autoreload 35872 6472 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:16:05,248 autoreload 27576 9060 Watching for file changes with StatReloader
+INFO 2026-05-15 13:16:13,316 views 27576 36336 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 13:16:13,316 log 27576 36336 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-15 13:16:42,938 log 27576 36336 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 13:17:00,454 log 27576 36336 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 13:18:30,288 autoreload 27576 9060 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:18:32,076 autoreload 31040 29156 Watching for file changes with StatReloader
+INFO 2026-05-15 13:18:44,312 log 31040 38012 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 13:18:52,057 log 31040 38012 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 13:22:38,356 autoreload 31040 29156 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:22:40,132 autoreload 13176 4408 Watching for file changes with StatReloader
+INFO 2026-05-15 13:22:50,774 autoreload 13176 4408 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:22:52,522 autoreload 36732 18172 Watching for file changes with StatReloader
+INFO 2026-05-15 13:23:04,277 autoreload 36732 18172 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:23:06,168 autoreload 36424 5092 Watching for file changes with StatReloader
+WARNING 2026-05-15 13:23:41,174 log 36424 9692 Unauthorized: /content/upload-file
+WARNING 2026-05-15 13:23:41,175 log 36424 9692 "POST /content/upload-file HTTP/1.1" 401 183
+INFO 2026-05-15 13:25:02,420 autoreload 36424 5092 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 13:25:04,695 autoreload 15580 19692 Watching for file changes with StatReloader
+INFO 2026-05-15 13:25:50,479 views 15580 25992 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 13:25:50,481 log 15580 25992 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-15 13:26:16,997 views 15580 25992 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 13:26:16,997 log 15580 25992 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-15 13:26:39,070 log 15580 25992 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 15:45:04,802 autoreload 15580 19692 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 15:45:08,970 autoreload 13632 14724 Watching for file changes with StatReloader
+INFO 2026-05-15 15:46:07,253 autoreload 17200 38644 Watching for file changes with StatReloader
+INFO 2026-05-15 16:07:25,700 views 17200 37532 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 16:07:25,721 log 17200 37532 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-15 16:07:51,919 log 17200 37532 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 16:10:19,443 autoreload 17200 38644 C:\python-projects\contentgraph_backend\content\models.py changed, reloading.
+INFO 2026-05-15 16:10:22,893 autoreload 16728 4768 Watching for file changes with StatReloader
+INFO 2026-05-15 16:11:38,250 autoreload 35560 19752 Watching for file changes with StatReloader
+INFO 2026-05-15 16:12:44,117 views 35560 21188 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 16:12:44,121 log 35560 21188 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-15 16:13:17,157 log 35560 21188 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 16:16:18,025 autoreload 35560 19752 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 16:16:21,136 autoreload 14360 35780 Watching for file changes with StatReloader
+WARNING 2026-05-15 16:21:12,038 log 14360 23428 Unauthorized: /content/upload-file
+WARNING 2026-05-15 16:21:12,038 log 14360 23428 "POST /content/upload-file HTTP/1.1" 401 183
+INFO 2026-05-15 16:21:29,486 views 14360 23428 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 16:21:29,492 log 14360 23428 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-15 16:21:52,471 log 14360 23428 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 16:22:27,396 log 14360 23428 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 16:44:22,654 autoreload 14360 35780 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 16:44:27,965 autoreload 31944 36904 Watching for file changes with StatReloader
+INFO 2026-05-15 16:44:38,548 autoreload 31944 36904 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 16:44:41,286 autoreload 29856 9176 Watching for file changes with StatReloader
+INFO 2026-05-15 16:46:02,897 views 29856 32776 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 16:46:02,899 log 29856 32776 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-15 16:46:35,893 log 29856 32776 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 16:49:56,488 autoreload 29856 9176 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 16:50:00,142 autoreload 388 15700 Watching for file changes with StatReloader
+INFO 2026-05-15 16:50:55,588 autoreload 388 15700 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 16:50:58,333 autoreload 23228 35676 Watching for file changes with StatReloader
+INFO 2026-05-15 16:51:07,668 views 23228 21388 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 16:51:07,673 log 23228 21388 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-15 16:51:41,757 log 23228 21388 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 16:52:05,814 log 23228 21388 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 16:54:32,416 autoreload 23228 35676 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 16:54:35,255 autoreload 6112 31084 Watching for file changes with StatReloader
+INFO 2026-05-15 16:54:59,032 autoreload 6112 31084 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 16:55:02,045 autoreload 19348 2164 Watching for file changes with StatReloader
+INFO 2026-05-15 16:55:26,497 log 19348 10620 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 16:56:07,667 autoreload 19348 2164 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 16:56:10,813 autoreload 22156 26296 Watching for file changes with StatReloader
+INFO 2026-05-15 16:56:28,964 autoreload 22156 26296 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 16:56:32,019 autoreload 27040 14104 Watching for file changes with StatReloader
+INFO 2026-05-15 16:57:04,709 autoreload 27040 14104 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 16:57:07,557 autoreload 38044 36552 Watching for file changes with StatReloader
+WARNING 2026-05-15 16:57:14,380 log 38044 24036 Unauthorized: /content/upload-file
+WARNING 2026-05-15 16:57:14,381 log 38044 24036 "POST /content/upload-file HTTP/1.1" 401 183
+INFO 2026-05-15 16:57:30,590 views 38044 24036 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 16:57:30,592 log 38044 24036 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-15 16:58:02,626 log 38044 24036 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 16:58:15,214 log 38044 24036 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 17:02:16,957 autoreload 38044 36552 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 17:02:20,307 autoreload 1888 28116 Watching for file changes with StatReloader
+INFO 2026-05-15 17:02:37,332 autoreload 1888 28116 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 17:02:40,217 autoreload 4268 26016 Watching for file changes with StatReloader
+WARNING 2026-05-15 17:02:49,882 log 4268 21016 Unauthorized: /content/upload-file
+WARNING 2026-05-15 17:02:49,882 log 4268 21016 "POST /content/upload-file HTTP/1.1" 401 183
+INFO 2026-05-15 17:02:59,307 views 4268 21016 User logged in: nikitasaxena43@gmail.com
+INFO 2026-05-15 17:02:59,308 log 4268 21016 "POST /auth/signin HTTP/1.1" 200 672
+INFO 2026-05-15 17:03:34,164 log 4268 21016 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 17:05:14,284 autoreload 4268 26016 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 17:05:17,502 autoreload 3112 29828 Watching for file changes with StatReloader
+INFO 2026-05-15 17:05:26,775 autoreload 3112 29828 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-15 17:05:29,615 autoreload 2972 30204 Watching for file changes with StatReloader
+INFO 2026-05-15 17:05:54,866 log 2972 23212 "POST /content/upload-file HTTP/1.1" 200 91
+INFO 2026-05-15 17:31:42,312 autoreload 2972 30204 C:\python-projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-05-15 17:31:47,231 autoreload 36916 12072 Watching for file changes with StatReloader
+INFO 2026-05-15 17:32:06,513 autoreload 36916 12072 C:\python-projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
+INFO 2026-05-15 17:32:09,108 autoreload 3476 34140 Watching for file changes with StatReloader
+INFO 2026-05-15 18:52:30,300 autoreload 3476 34140 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-15 18:52:52,722 autoreload 31000 31240 Watching for file changes with StatReloader
+INFO 2026-05-15 18:53:36,944 autoreload 31000 31240 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-15 18:53:39,713 autoreload 19908 33220 Watching for file changes with StatReloader
+INFO 2026-05-15 18:54:27,748 autoreload 19908 33220 C:\python-projects\contentgraph_backend\content\urls.py changed, reloading.
+INFO 2026-05-15 18:54:30,382 autoreload 20604 30784 Watching for file changes with StatReloader
+INFO 2026-05-15 18:54:43,426 autoreload 20604 30784 C:\python-projects\contentgraph_backend\content\urls.py changed, reloading.
+INFO 2026-05-15 18:54:46,070 autoreload 21536 31944 Watching for file changes with StatReloader
+WARNING 2026-05-15 18:56:12,286 log 21536 25340 Not Found: /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878
+WARNING 2026-05-15 18:56:12,286 log 21536 25340 "POST /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878 HTTP/1.1" 404 3762
+INFO 2026-05-15 18:58:08,558 autoreload 21536 31944 C:\python-projects\contentgraph_backend\content\urls.py changed, reloading.
+INFO 2026-05-15 18:58:12,353 autoreload 32624 10636 Watching for file changes with StatReloader
+WARNING 2026-05-15 18:58:23,605 log 32624 26232 Not Found: /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878
+WARNING 2026-05-15 18:58:23,609 log 32624 26232 "POST /content/download/b6f97731-7b77-437d-b0b9-cfedf069e878 HTTP/1.1" 404 3762
+INFO 2026-05-15 18:59:30,161 autoreload 32624 10636 C:\python-projects\contentgraph_backend\content\urls.py changed, reloading.
+INFO 2026-05-15 18:59:33,133 autoreload 37248 8920 Watching for file changes with StatReloader
