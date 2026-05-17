@@ -21,21 +21,16 @@ services:
     env_file: .env
     depends_on:
       - db
+
   celery_worker:
-  build: .
-  command: celery -A contentgraph_backend worker --loglevel=info --pool=gevent --concurrency=100 -Q default,csv
-
-  envenvironment:
-    - DJANGO_SETTINGS_MODULE=contentgraph_backend.settings
-    - CELERY_BROKER_URL=amqps://gywmbqpw:mU6su5zEMpy22C-IvTqchCthqMo1EvCt@beaver.rmq.cloudamqp.com/gywmbqpw
-
-  # ✅ for a .env file use env_file:
-  env_file: .env
-
-  depends_on:
-    - web
-    - rabbitmq
-    - db
+    
+    build: . 
+    restart: always
+    command: celery -A contentgraph_backend worker --loglevel=info --pool=gevent --concurrency=100 -Q default,csv
+    env_file: .env 
+    depends_on:
+      - web
+      - db
 
 volumes:
   postgres_data:
