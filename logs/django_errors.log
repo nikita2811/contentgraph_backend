@@ -2275,3 +2275,4 @@ INFO 2026-05-17 19:17:22,552 autoreload 38416 24732 Watching for file changes wi
 INFO 2026-05-17 20:27:01,761 autoreload 38416 24732 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
 INFO 2026-05-17 20:27:08,496 autoreload 32368 39060 Watching for file changes with StatReloader
 INFO 2026-05-17 20:27:36,942 autoreload 32368 39060 C:\python-projects\contentgraph_backend\content\views.py changed, reloading.
+INFO 2026-05-17 20:27:40,577 autoreload 40192 37712 Watching for file changes with StatReloader

@@ -23,7 +23,7 @@ services:
       - db
   celery_worker:
   build: .
-  command: celery -A contentgraph_backend worker --loglevel=info --pool=gevent --concurrency=100
+  command: celery -A contentgraph_backend worker --loglevel=info --pool=gevent --concurrency=100 -Q default,csv
   volumes:
     - .:/app
   environment:
