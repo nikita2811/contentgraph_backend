@@ -20,3 +20,5 @@ django-celery-results
 boto3
 celery
 gevent
+kombu
+celery
