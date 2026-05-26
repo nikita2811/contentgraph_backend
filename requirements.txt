@@ -20,5 +20,5 @@ django-celery-results
 boto3
 celery
 gevent
-kombu >= 5.3.0
-celery >= 5.3.0
+kombu == 5.3.0
+celery == 5.3.0
