@@ -6,14 +6,13 @@ from celery import shared_task
 from celery.exceptions import SoftTimeLimitExceeded
 from contentgraph_backend.exceptions import AIServiceUnavailable, AIServiceError
 from services.fastapi_client import generate_content
-from .models import Product, CeleryTaskMeta, AIResult
+from .models import Product, CeleryTaskMeta, AIResult,BulkJob,BulkJobItem,TokenUsage
 import boto3
 from django.utils.timezone import now
-from .models import BulkJob
 import logging
 import json
 import uuid
-from .models import BulkJobItem
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -137,7 +136,7 @@ def process_csv_task(self, bulk_job_id) -> dict:
                 defaults={
                     'task_id': task_id,
                     'task_name': 'process_csv_row',
-                    'queue_type': 'rabbitmq',
+                    'queue_type': 'csv',
                     'status': 'started',
                     'started_at': now(),
                     'task_meta': bulk_item,
@@ -155,28 +154,55 @@ def process_csv_task(self, bulk_job_id) -> dict:
 
                 
                 logger.warning(product_details)  # verify it looks correct
+                start = time.time()
                 response = generate_content(product_details)
-
-                final_content_str = response["final_content"][0]["text"]
-                serp_str = response["serp"][0]["text"]
+                elapsed_ms = int((time.time() - start) * 1000)
+                # Parse nested JSON strings
+                final_content_str = response["final_content"]
                 content = json.loads(final_content_str)
-                serp = json.loads(serp_str)
-                print("SERP KEYS:", serp.keys())  # ← add this
-                print("SERP DATA:", serp)         # ← and this
-                # Save AIResult per row
-                AIResult.objects.get_or_create(
-                  request=product,
-                  defaults={
-                      'seo_title': content.get("seo_title") or "",
-                      'meta_description': content.get("meta_description") or "",
-                      'meta_title': content.get("h1") or content.get("meta_title") or "",
-                      'long_description': content.get("intro_paragraph") or content.get("introduction") or "",
-                      'tags': content.get("tags") or [],
-                      'primary_keyword': serp.get("primary_keyword") or "",        # ✅
-                      'secondary_keyword': ", ".join(serp.get("secondary_keywords") or []),  # ✅
-                  }
-)
+                serp_raw = response["serp"]
+                if isinstance(serp_raw, str):
+                    serp_list = json.loads(serp_raw)
+                    # serp is a list of blocks, find the text block
+                    serp_text = next(
+                        (block["text"] for block in serp_list if block.get("type") == "text"), 
+                        "{}"
+                    )
+                    # strip markdown code fences if present
+                    serp_text = serp_text.strip().removeprefix("```json").removesuffix("```").strip()
+                    serp = json.loads(serp_text)
+                else:
+                    serp = serp_raw
+                
+                token_usage = response['token_usage']
 
+        # Persist results
+                AIResult.objects.get_or_create(
+                    request=product,
+                    defaults={
+                    'request'  : product,
+                    'seo_title' :content["seo_title"],
+                    'meta_description':content["meta_description"],
+                    'meta_title':content["h1"],
+                    'generation_time_ms': elapsed_ms,
+                    'long_description':content["intro_paragraph"],
+                    # join if tags is CharField, remove join if JSONField
+                    "tags":content["tags"] if isinstance(content["tags"], list) else content["tags"].split(","),  # ← pass list directly
+                    'primary_keyword':serp["primary_keyword"],
+                    # join if secondary_keywords is a list and field is CharField
+                    "secondary_keyword": ",".join(serp["secondary_keywords"]) if isinstance(serp["secondary_keywords"], list) else serp["secondary_keywords"],  # ← now TextField, no truncation needed
+                    }
+                )
+
+                TokenUsage.objects.create(
+                product_name=product_details.get("product_name", ""),
+                prompt_tokens=token_usage.get("prompt_tokens", 0),      # ← dict access
+                completion_tokens=token_usage.get("completion_tokens", 0),
+                total_tokens=token_usage.get("total_tokens", 0),
+                model_name=token_usage.get("model_name", ""),
+                task_id=self.request.id,
+                )
+        
 
 
                 # Mark row success

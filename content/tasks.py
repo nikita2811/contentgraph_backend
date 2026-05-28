@@ -4,7 +4,7 @@ from celery import shared_task
 from celery.exceptions import SoftTimeLimitExceeded
 from contentgraph_backend.exceptions import AIServiceUnavailable, AIServiceError
 from services.fastapi_client import generate_content
-from .models import Product, CeleryTaskMeta, AIResult
+from .models import Product, CeleryTaskMeta, AIResult,TokenUsage
 from django.utils.timezone import now
 import os
 
@@ -61,13 +61,27 @@ def generate_content_task(self, product_request_id) -> dict:
             "tone": data.tone,
             "key_features": data.key_features,
         }
-
+        start = time.time()
         response = generate_content(product_details)
+        elapsed_ms = int((time.time() - start) * 1000)
         # Parse nested JSON strings
-        final_content_str = response["final_content"][0]["text"]
-        serp_str = response["serp"][0]["text"]
+        final_content_str = response["final_content"]
         content = json.loads(final_content_str)
-        serp = json.loads(serp_str)
+        serp_raw = response["serp"]
+        if isinstance(serp_raw, str):
+            serp_list = json.loads(serp_raw)
+            # serp is a list of blocks, find the text block
+            serp_text = next(
+                (block["text"] for block in serp_list if block.get("type") == "text"), 
+                "{}"
+            )
+            # strip markdown code fences if present
+            serp_text = serp_text.strip().removeprefix("```json").removesuffix("```").strip()
+            serp = json.loads(serp_text)
+        else:
+            serp = serp_raw
+                
+        token_usage = response['token_usage']
 
         # Persist results
         AIResult.objects.get_or_create(
@@ -78,14 +92,23 @@ def generate_content_task(self, product_request_id) -> dict:
             'meta_description':content["meta_description"],
             'meta_title':content["h1"],
             'long_description':content["intro_paragraph"],
+            'generation_time_ms': elapsed_ms,
             # join if tags is CharField, remove join if JSONField
-            'tags':",".join(content["tags"]) if isinstance(content["tags"], list) else content["tags"],
+            "tags":content["tags"] if isinstance(content["tags"], list) else content["tags"].split(","),  # ← pass list directly
             'primary_keyword':serp["primary_keyword"],
             # join if secondary_keywords is a list and field is CharField
-            'secondary_keyword':",".join(serp["secondary_keywords"]) if isinstance(serp["secondary_keywords"], list) else serp["secondary_keywords"],
-        }
+            "secondary_keyword": ",".join(serp["secondary_keywords"]) if isinstance(serp["secondary_keywords"], list) else serp["secondary_keywords"],  # ← now TextField, no truncation needed
+            }
         )
-
+        
+        TokenUsage.objects.create(
+            product_name=product_details.get("product_name", ""),
+            prompt_tokens=token_usage.get("prompt_tokens", 0),      # ← dict access
+            completion_tokens=token_usage.get("completion_tokens", 0),
+            total_tokens=token_usage.get("total_tokens", 0),
+            model_name=token_usage.get("model_name", ""),
+            task_id=self.request.id,
+        )
         # Mark request completed
         data.status = 'completed'
         data.save(update_fields=['status'])

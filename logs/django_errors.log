@@ -2281,3 +2281,739 @@ INFO 2026-05-17 21:10:03,638 autoreload 39364 23380 Watching for file changes wi
 INFO 2026-05-17 21:10:32,244 autoreload 39364 23380 C:\python-projects\contentgraph_backend\contentgraph_backend\settings.py changed, reloading.
 INFO 2026-05-17 21:10:35,560 autoreload 15732 37104 Watching for file changes with StatReloader
 INFO 2026-05-25 13:01:59,529 autoreload 38624 36872 Watching for file changes with StatReloader
+INFO 2026-05-26 17:47:08,334 autoreload 14284 16708 Watching for file changes with StatReloader
+INFO 2026-05-26 17:48:04,966 log 14284 22940 "OPTIONS /auth/signin HTTP/1.1" 200 0
+INFO 2026-05-26 17:48:06,799 views 14284 27872 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 17:48:06,812 log 14284 27872 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 17:50:14,315 views 14284 27872 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 17:50:14,315 log 14284 27872 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 17:59:03,134 autoreload 14284 16708 C:\python-projects\contentgraph_backend\services\fastapi_client.py changed, reloading.
+INFO 2026-05-26 17:59:06,683 autoreload 19576 22968 Watching for file changes with StatReloader
+INFO 2026-05-26 18:08:02,304 autoreload 14552 3192 Watching for file changes with StatReloader
+INFO 2026-05-26 18:10:02,516 log 14552 1736 "OPTIONS /content/generate-content HTTP/1.1" 200 0
+WARNING 2026-05-26 18:10:02,536 log 14552 26328 Unauthorized: /content/generate-content
+WARNING 2026-05-26 18:10:02,536 log 14552 26328 "POST /content/generate-content HTTP/1.1" 401 183
+INFO 2026-05-26 18:10:20,030 views 14552 26328 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 18:10:20,032 log 14552 26328 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 18:10:46,283 log 14552 26328 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-26 18:10:46,335 log 14552 1736 "OPTIONS /content/generate/f9958595-9bc3-4bf3-b74d-24eafb1d3ff1 HTTP/1.1" 200 0
+INFO 2026-05-26 18:10:46,505 log 14552 26328 "GET /content/generate/f9958595-9bc3-4bf3-b74d-24eafb1d3ff1 HTTP/1.1" 200 21
+INFO 2026-05-26 18:10:49,509 log 14552 26328 "GET /content/generate/f9958595-9bc3-4bf3-b74d-24eafb1d3ff1 HTTP/1.1" 200 21
+INFO 2026-05-26 18:10:53,104 log 14552 26328 "GET /content/generate/f9958595-9bc3-4bf3-b74d-24eafb1d3ff1 HTTP/1.1" 200 21
+INFO 2026-05-26 18:10:56,101 log 14552 26328 "GET /content/generate/f9958595-9bc3-4bf3-b74d-24eafb1d3ff1 HTTP/1.1" 200 21
+INFO 2026-05-26 18:10:59,200 log 14552 26328 "GET /content/generate/f9958595-9bc3-4bf3-b74d-24eafb1d3ff1 HTTP/1.1" 200 21
+INFO 2026-05-26 18:11:01,529 log 14552 26328 "GET /content/generate/f9958595-9bc3-4bf3-b74d-24eafb1d3ff1 HTTP/1.1" 200 21
+ERROR 2026-05-26 18:11:04,502 log 14552 26328 Internal Server Error: /content/generate/f9958595-9bc3-4bf3-b74d-24eafb1d3ff1
+ERROR 2026-05-26 18:11:04,502 log 14552 26328 "GET /content/generate/f9958595-9bc3-4bf3-b74d-24eafb1d3ff1 HTTP/1.1" 500 58
+INFO 2026-05-26 18:12:58,219 autoreload 14552 3192 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-26 18:13:00,797 autoreload 2300 34960 Watching for file changes with StatReloader
+ERROR 2026-05-26 18:15:53,144 log 2300 18764 Internal Server Error: /auth/signin
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+  File "C:\Myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 333, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\python-projects\contentgraph_backend\users\views.py", line 107, in post
+    user = User.objects.get(email=email)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\query.py", line 635, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\query.py", line 372, in __len__
+    self._fetch_all()
+  File "C:\Myenv\Lib\site-packages\django\db\models\query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1622, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+  File "C:\Myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+  File "C:\Myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 333, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+ERROR 2026-05-26 18:15:53,160 log 2300 18764 "POST /auth/signin HTTP/1.1" 500 27454
+INFO 2026-05-26 18:16:14,105 views 2300 18764 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 18:16:14,108 log 2300 18764 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 18:16:55,078 log 2300 18764 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-26 18:16:55,105 log 2300 23640 "OPTIONS /content/generate/8aee51a8-59a2-46a9-a9f5-8e2c7e11b538 HTTP/1.1" 200 0
+INFO 2026-05-26 18:16:55,289 log 2300 18764 "GET /content/generate/8aee51a8-59a2-46a9-a9f5-8e2c7e11b538 HTTP/1.1" 200 21
+INFO 2026-05-26 18:16:58,279 log 2300 18764 "GET /content/generate/8aee51a8-59a2-46a9-a9f5-8e2c7e11b538 HTTP/1.1" 200 21
+INFO 2026-05-26 18:17:01,372 log 2300 18764 "GET /content/generate/8aee51a8-59a2-46a9-a9f5-8e2c7e11b538 HTTP/1.1" 200 24
+INFO 2026-05-26 18:17:05,203 log 2300 18764 "GET /content/generate/8aee51a8-59a2-46a9-a9f5-8e2c7e11b538 HTTP/1.1" 200 24
+INFO 2026-05-26 18:17:08,211 log 2300 18764 "GET /content/generate/8aee51a8-59a2-46a9-a9f5-8e2c7e11b538 HTTP/1.1" 200 24
+INFO 2026-05-26 18:17:11,202 log 2300 18764 "GET /content/generate/8aee51a8-59a2-46a9-a9f5-8e2c7e11b538 HTTP/1.1" 200 24
+INFO 2026-05-26 18:17:14,307 log 2300 18764 "GET /content/generate/8aee51a8-59a2-46a9-a9f5-8e2c7e11b538 HTTP/1.1" 200 24
+ERROR 2026-05-26 18:17:17,109 log 2300 18764 Internal Server Error: /content/generate/8aee51a8-59a2-46a9-a9f5-8e2c7e11b538
+ERROR 2026-05-26 18:17:17,109 log 2300 18764 "GET /content/generate/8aee51a8-59a2-46a9-a9f5-8e2c7e11b538 HTTP/1.1" 500 68
+INFO 2026-05-26 18:17:42,327 views 2300 18764 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 18:17:42,330 log 2300 18764 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 18:18:06,109 log 2300 18764 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-26 18:18:06,138 log 2300 23640 "OPTIONS /content/generate/5b85a05f-dde4-4291-b2ee-214fec54c659 HTTP/1.1" 200 0
+INFO 2026-05-26 18:18:06,318 log 2300 18764 "GET /content/generate/5b85a05f-dde4-4291-b2ee-214fec54c659 HTTP/1.1" 200 21
+INFO 2026-05-26 18:18:10,117 log 2300 18764 "GET /content/generate/5b85a05f-dde4-4291-b2ee-214fec54c659 HTTP/1.1" 200 21
+INFO 2026-05-26 18:18:13,098 log 2300 18764 "GET /content/generate/5b85a05f-dde4-4291-b2ee-214fec54c659 HTTP/1.1" 200 21
+INFO 2026-05-26 18:18:16,114 log 2300 18764 "GET /content/generate/5b85a05f-dde4-4291-b2ee-214fec54c659 HTTP/1.1" 200 21
+INFO 2026-05-26 18:18:19,106 log 2300 18764 "GET /content/generate/5b85a05f-dde4-4291-b2ee-214fec54c659 HTTP/1.1" 200 21
+ERROR 2026-05-26 18:18:22,108 log 2300 18764 Internal Server Error: /content/generate/5b85a05f-dde4-4291-b2ee-214fec54c659
+ERROR 2026-05-26 18:18:22,108 log 2300 18764 "GET /content/generate/5b85a05f-dde4-4291-b2ee-214fec54c659 HTTP/1.1" 500 58
+INFO 2026-05-26 18:19:41,373 views 2300 18764 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 18:19:41,386 log 2300 18764 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 18:20:08,499 log 2300 18764 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-26 18:20:08,530 log 2300 23640 "OPTIONS /content/generate/7ed77687-7afd-43ef-9e9a-b7fbcc352540 HTTP/1.1" 200 0
+INFO 2026-05-26 18:20:08,719 log 2300 18764 "GET /content/generate/7ed77687-7afd-43ef-9e9a-b7fbcc352540 HTTP/1.1" 200 21
+INFO 2026-05-26 18:20:12,100 log 2300 18764 "GET /content/generate/7ed77687-7afd-43ef-9e9a-b7fbcc352540 HTTP/1.1" 200 21
+INFO 2026-05-26 18:20:15,159 log 2300 18764 "GET /content/generate/7ed77687-7afd-43ef-9e9a-b7fbcc352540 HTTP/1.1" 200 21
+INFO 2026-05-26 18:20:18,104 log 2300 18764 "GET /content/generate/7ed77687-7afd-43ef-9e9a-b7fbcc352540 HTTP/1.1" 200 21
+INFO 2026-05-26 18:20:21,113 log 2300 18764 "GET /content/generate/7ed77687-7afd-43ef-9e9a-b7fbcc352540 HTTP/1.1" 200 21
+INFO 2026-05-26 18:20:24,128 log 2300 18764 "GET /content/generate/7ed77687-7afd-43ef-9e9a-b7fbcc352540 HTTP/1.1" 200 21
+INFO 2026-05-26 18:20:26,703 log 2300 18764 "GET /content/generate/7ed77687-7afd-43ef-9e9a-b7fbcc352540 HTTP/1.1" 200 21
+INFO 2026-05-26 18:20:32,728 views 2300 18764 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 18:20:32,728 log 2300 18764 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 18:21:00,207 log 2300 18764 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-26 18:21:00,235 log 2300 23640 "OPTIONS /content/generate/b4a05db4-7bed-4390-bb46-81e2d426c29b HTTP/1.1" 200 0
+INFO 2026-05-26 18:21:00,446 log 2300 18764 "GET /content/generate/b4a05db4-7bed-4390-bb46-81e2d426c29b HTTP/1.1" 200 21
+ERROR 2026-05-26 18:21:04,152 log 2300 18764 Internal Server Error: /content/generate/b4a05db4-7bed-4390-bb46-81e2d426c29b
+ERROR 2026-05-26 18:21:04,152 log 2300 18764 "GET /content/generate/b4a05db4-7bed-4390-bb46-81e2d426c29b HTTP/1.1" 500 58
+INFO 2026-05-26 18:21:29,872 autoreload 2300 34960 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-26 18:21:32,408 autoreload 2208 15480 Watching for file changes with StatReloader
+INFO 2026-05-26 18:22:03,512 views 2208 31652 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 18:22:03,522 log 2208 31652 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 18:22:45,008 log 2208 31652 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-26 18:22:45,056 log 2208 9036 "OPTIONS /content/generate/88cbe174-c0ed-4845-93e3-d1a3c94d3872 HTTP/1.1" 200 0
+INFO 2026-05-26 18:22:45,234 log 2208 31652 "GET /content/generate/88cbe174-c0ed-4845-93e3-d1a3c94d3872 HTTP/1.1" 200 21
+INFO 2026-05-26 18:22:49,091 log 2208 31652 "GET /content/generate/88cbe174-c0ed-4845-93e3-d1a3c94d3872 HTTP/1.1" 200 21
+ERROR 2026-05-26 18:22:52,082 log 2208 31652 Internal Server Error: /content/generate/88cbe174-c0ed-4845-93e3-d1a3c94d3872
+ERROR 2026-05-26 18:22:52,082 log 2208 31652 "GET /content/generate/88cbe174-c0ed-4845-93e3-d1a3c94d3872 HTTP/1.1" 500 58
+INFO 2026-05-26 18:23:13,834 autoreload 2208 15480 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-26 18:23:15,664 autoreload 28368 38768 Watching for file changes with StatReloader
+INFO 2026-05-26 18:27:43,490 views 28368 33332 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 18:27:43,496 log 28368 33332 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 18:28:24,421 log 28368 33332 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-26 18:28:24,454 log 28368 29172 "OPTIONS /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 0
+INFO 2026-05-26 18:28:24,693 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 21
+INFO 2026-05-26 18:28:27,678 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 21
+INFO 2026-05-26 18:28:30,673 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 21
+INFO 2026-05-26 18:28:33,688 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 21
+INFO 2026-05-26 18:28:37,365 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 583
+INFO 2026-05-26 18:28:40,394 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 583
+INFO 2026-05-26 18:28:42,926 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 583
+INFO 2026-05-26 18:28:45,893 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 583
+INFO 2026-05-26 18:28:48,905 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 583
+INFO 2026-05-26 18:28:51,905 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 583
+INFO 2026-05-26 18:28:54,911 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 583
+INFO 2026-05-26 18:28:57,935 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 583
+INFO 2026-05-26 18:29:01,089 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 583
+INFO 2026-05-26 18:29:03,916 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 583
+INFO 2026-05-26 18:29:06,898 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 583
+INFO 2026-05-26 18:29:09,902 log 28368 33332 "GET /content/generate/248a8b4d-d0b4-4d79-af43-9a80387fd183 HTTP/1.1" 200 583
+INFO 2026-05-26 18:39:55,565 views 28368 3572 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 18:39:55,572 log 28368 3572 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 18:40:40,899 log 28368 3572 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-26 18:40:40,949 log 28368 38628 "OPTIONS /content/generate/d6ac0ad1-6a54-4bee-8c5b-56951d44e488 HTTP/1.1" 200 0
+INFO 2026-05-26 18:40:41,130 log 28368 3572 "GET /content/generate/d6ac0ad1-6a54-4bee-8c5b-56951d44e488 HTTP/1.1" 200 21
+INFO 2026-05-26 18:40:45,130 log 28368 3572 "GET /content/generate/d6ac0ad1-6a54-4bee-8c5b-56951d44e488 HTTP/1.1" 200 21
+INFO 2026-05-26 18:40:48,107 log 28368 3572 "GET /content/generate/d6ac0ad1-6a54-4bee-8c5b-56951d44e488 HTTP/1.1" 200 21
+INFO 2026-05-26 18:40:51,137 log 28368 3572 "GET /content/generate/d6ac0ad1-6a54-4bee-8c5b-56951d44e488 HTTP/1.1" 200 21
+INFO 2026-05-26 18:40:54,404 log 28368 3572 "GET /content/generate/d6ac0ad1-6a54-4bee-8c5b-56951d44e488 HTTP/1.1" 200 21
+ERROR 2026-05-26 18:40:57,122 log 28368 3572 Internal Server Error: /content/generate/d6ac0ad1-6a54-4bee-8c5b-56951d44e488
+ERROR 2026-05-26 18:40:57,122 log 28368 3572 "GET /content/generate/d6ac0ad1-6a54-4bee-8c5b-56951d44e488 HTTP/1.1" 500 56
+INFO 2026-05-26 18:42:16,703 views 28368 3572 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 18:42:16,703 log 28368 3572 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 18:42:46,192 log 28368 3572 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-26 18:42:46,226 log 28368 38628 "OPTIONS /content/generate/ff3b3554-2d15-4a82-8a3f-be3cdb066946 HTTP/1.1" 200 0
+INFO 2026-05-26 18:42:46,403 log 28368 3572 "GET /content/generate/ff3b3554-2d15-4a82-8a3f-be3cdb066946 HTTP/1.1" 200 21
+INFO 2026-05-26 18:42:49,413 log 28368 3572 "GET /content/generate/ff3b3554-2d15-4a82-8a3f-be3cdb066946 HTTP/1.1" 200 21
+INFO 2026-05-26 18:42:52,398 log 28368 3572 "GET /content/generate/ff3b3554-2d15-4a82-8a3f-be3cdb066946 HTTP/1.1" 200 21
+INFO 2026-05-26 18:42:56,109 log 28368 3572 "GET /content/generate/ff3b3554-2d15-4a82-8a3f-be3cdb066946 HTTP/1.1" 200 21
+INFO 2026-05-26 18:42:59,107 log 28368 3572 "GET /content/generate/ff3b3554-2d15-4a82-8a3f-be3cdb066946 HTTP/1.1" 200 21
+ERROR 2026-05-26 18:43:02,104 log 28368 3572 Internal Server Error: /content/generate/ff3b3554-2d15-4a82-8a3f-be3cdb066946
+ERROR 2026-05-26 18:43:02,104 log 28368 3572 "GET /content/generate/ff3b3554-2d15-4a82-8a3f-be3cdb066946 HTTP/1.1" 500 56
+INFO 2026-05-26 18:47:19,843 views 28368 3572 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 18:47:19,843 log 28368 3572 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 18:48:41,333 log 28368 3572 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-26 18:48:41,374 log 28368 36728 "OPTIONS /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 0
+INFO 2026-05-26 18:48:41,566 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 21
+INFO 2026-05-26 18:48:44,544 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 21
+INFO 2026-05-26 18:48:48,100 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 21
+INFO 2026-05-26 18:48:51,116 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 21
+INFO 2026-05-26 18:48:54,116 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 21
+INFO 2026-05-26 18:48:57,112 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 21
+INFO 2026-05-26 18:49:00,130 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 21
+INFO 2026-05-26 18:49:03,097 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 21
+INFO 2026-05-26 18:49:06,306 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 644
+INFO 2026-05-26 18:49:09,282 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 644
+INFO 2026-05-26 18:49:12,304 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 644
+INFO 2026-05-26 18:49:15,290 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 644
+INFO 2026-05-26 18:49:18,298 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 644
+INFO 2026-05-26 18:49:21,296 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 644
+INFO 2026-05-26 18:49:24,372 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 644
+INFO 2026-05-26 18:49:26,751 log 28368 3572 "GET /content/generate/74010463-2148-4554-abd8-7f7159dfec29 HTTP/1.1" 200 644
+INFO 2026-05-26 18:49:35,111 views 28368 3572 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 18:49:35,111 log 28368 3572 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 18:50:15,588 log 28368 3572 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-26 18:50:15,626 log 28368 36728 "OPTIONS /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 0
+INFO 2026-05-26 18:50:15,797 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 21
+INFO 2026-05-26 18:50:18,814 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 21
+INFO 2026-05-26 18:50:22,117 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 21
+INFO 2026-05-26 18:50:25,101 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 21
+INFO 2026-05-26 18:50:28,104 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 21
+INFO 2026-05-26 18:50:31,095 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 21
+INFO 2026-05-26 18:50:34,102 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 21
+INFO 2026-05-26 18:50:37,264 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:50:40,292 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:50:43,289 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:50:46,274 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:50:49,298 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:50:52,275 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:50:55,277 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:50:58,281 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:51:01,267 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:51:04,278 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:51:07,264 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:51:10,302 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:51:13,292 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:51:16,301 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:51:19,276 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:52:19,307 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:53:19,279 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+INFO 2026-05-26 18:54:19,263 log 28368 3572 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 200 657
+WARNING 2026-05-26 18:55:18,967 log 28368 28980 Unauthorized: /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b
+WARNING 2026-05-26 18:55:18,967 log 28368 28980 "GET /content/generate/7484a249-d1b4-45b4-a6d7-c8c8c718a44b HTTP/1.1" 401 183
+INFO 2026-05-26 19:19:31,355 autoreload 28368 38768 C:\python-projects\contentgraph_backend\content\models.py changed, reloading.
+INFO 2026-05-26 19:19:35,703 autoreload 14044 4980 Watching for file changes with StatReloader
+INFO 2026-05-26 19:46:35,560 autoreload 14044 4980 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-26 19:46:40,369 autoreload 20252 29020 Watching for file changes with StatReloader
+INFO 2026-05-26 19:46:49,101 autoreload 20252 29020 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-26 19:46:51,271 autoreload 2244 2676 Watching for file changes with StatReloader
+INFO 2026-05-26 19:47:43,075 autoreload 2244 2676 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-26 19:47:45,974 autoreload 21360 28928 Watching for file changes with StatReloader
+INFO 2026-05-26 19:48:06,066 autoreload 21360 28928 C:\python-projects\contentgraph_backend\content\models.py changed, reloading.
+INFO 2026-05-26 19:48:08,920 autoreload 12544 1136 Watching for file changes with StatReloader
+INFO 2026-05-26 19:48:35,629 autoreload 32640 19740 Watching for file changes with StatReloader
+INFO 2026-05-26 19:50:35,347 autoreload 13984 11136 Watching for file changes with StatReloader
+INFO 2026-05-26 19:51:28,850 log 13984 13616 "OPTIONS /auth/signin HTTP/1.1" 200 0
+INFO 2026-05-26 19:51:31,059 views 13984 4064 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-26 19:51:31,059 log 13984 4064 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-26 19:52:39,500 log 13984 4064 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-26 19:52:39,579 log 13984 13616 "OPTIONS /content/generate/3dfdb6e4-e0e8-48e7-97c9-63f0203f67c8 HTTP/1.1" 200 0
+INFO 2026-05-26 19:52:39,890 log 13984 4064 "GET /content/generate/3dfdb6e4-e0e8-48e7-97c9-63f0203f67c8 HTTP/1.1" 200 21
+INFO 2026-05-26 19:52:42,890 log 13984 4064 "GET /content/generate/3dfdb6e4-e0e8-48e7-97c9-63f0203f67c8 HTTP/1.1" 200 21
+INFO 2026-05-26 19:52:45,950 log 13984 4064 "GET /content/generate/3dfdb6e4-e0e8-48e7-97c9-63f0203f67c8 HTTP/1.1" 200 24
+INFO 2026-05-26 19:52:49,459 log 13984 4064 "GET /content/generate/3dfdb6e4-e0e8-48e7-97c9-63f0203f67c8 HTTP/1.1" 200 24
+INFO 2026-05-26 19:52:52,189 log 13984 4064 "GET /content/generate/3dfdb6e4-e0e8-48e7-97c9-63f0203f67c8 HTTP/1.1" 200 24
+INFO 2026-05-26 19:52:55,423 log 13984 4064 "GET /content/generate/3dfdb6e4-e0e8-48e7-97c9-63f0203f67c8 HTTP/1.1" 200 24
+INFO 2026-05-26 19:52:58,244 log 13984 4064 "GET /content/generate/3dfdb6e4-e0e8-48e7-97c9-63f0203f67c8 HTTP/1.1" 200 24
+INFO 2026-05-26 19:53:01,306 log 13984 4064 "GET /content/generate/3dfdb6e4-e0e8-48e7-97c9-63f0203f67c8 HTTP/1.1" 200 24
+ERROR 2026-05-26 19:53:04,492 log 13984 4064 Internal Server Error: /content/generate/3dfdb6e4-e0e8-48e7-97c9-63f0203f67c8
+ERROR 2026-05-26 19:53:04,492 log 13984 4064 "GET /content/generate/3dfdb6e4-e0e8-48e7-97c9-63f0203f67c8 HTTP/1.1" 500 68
+INFO 2026-05-27 14:39:10,661 autoreload 15748 33764 Watching for file changes with StatReloader
+INFO 2026-05-27 14:40:52,292 log 15748 19800 "OPTIONS /auth/signin HTTP/1.1" 200 0
+INFO 2026-05-27 14:40:54,898 views 15748 10996 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 14:40:54,901 log 15748 10996 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-27 15:49:27,289 views 15748 6168 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 15:49:27,329 log 15748 6168 "POST /auth/signin HTTP/1.1" 200 680
+WARNING 2026-05-27 15:51:58,488 log 15748 13076 Not Found: /favicon.ico
+WARNING 2026-05-27 15:51:58,488 log 15748 13076 "GET /favicon.ico HTTP/1.1" 404 2672
+INFO 2026-05-27 16:21:41,626 log 15748 37156 "OPTIONS /content/generate-content HTTP/1.1" 200 0
+WARNING 2026-05-27 16:21:41,809 log 15748 28380 Unauthorized: /content/generate-content
+WARNING 2026-05-27 16:21:41,810 log 15748 28380 "POST /content/generate-content HTTP/1.1" 401 183
+INFO 2026-05-27 16:21:41,912 log 15748 37156 "OPTIONS /api/token/refresh/ HTTP/1.1" 200 0
+WARNING 2026-05-27 16:21:41,952 log 15748 28380 Not Found: /api/token/refresh/
+WARNING 2026-05-27 16:21:41,958 log 15748 28380 "POST /api/token/refresh/ HTTP/1.1" 404 2694
+INFO 2026-05-27 16:21:51,515 views 15748 28380 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 16:21:51,519 log 15748 28380 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-27 16:22:41,777 log 15748 28380 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-27 16:22:41,909 log 15748 37156 "OPTIONS /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 200 0
+INFO 2026-05-27 16:22:42,339 log 15748 28380 "GET /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 200 21
+INFO 2026-05-27 16:22:46,089 log 15748 28380 "GET /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 200 21
+INFO 2026-05-27 16:22:48,206 log 15748 28380 "GET /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 200 21
+INFO 2026-05-27 16:22:51,101 log 15748 28380 "GET /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 200 21
+INFO 2026-05-27 16:22:54,449 log 15748 28380 "GET /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 200 21
+INFO 2026-05-27 16:22:58,029 log 15748 28380 "GET /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 200 21
+INFO 2026-05-27 16:23:00,430 log 15748 28380 "GET /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 200 21
+INFO 2026-05-27 16:23:03,691 log 15748 28380 "GET /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 200 21
+INFO 2026-05-27 16:23:06,091 log 15748 28380 "GET /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 200 21
+INFO 2026-05-27 16:23:09,236 log 15748 28380 "GET /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 200 21
+INFO 2026-05-27 16:23:12,089 log 15748 28380 "GET /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 200 21
+INFO 2026-05-27 16:23:15,376 log 15748 28380 "GET /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 200 21
+ERROR 2026-05-27 16:23:18,771 log 15748 28380 Internal Server Error: /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e
+ERROR 2026-05-27 16:23:18,771 log 15748 28380 "GET /content/generate/51ed2785-781e-4caa-8425-c6bc5b8e710e HTTP/1.1" 500 56
+INFO 2026-05-27 16:34:07,321 views 15748 18184 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 16:34:07,330 log 15748 18184 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-27 16:34:50,492 log 15748 18184 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-27 16:34:50,608 log 15748 19340 "OPTIONS /content/generate/18c09092-ea1d-446d-a63c-24bc474ec8de HTTP/1.1" 200 0
+INFO 2026-05-27 16:34:50,902 log 15748 18184 "GET /content/generate/18c09092-ea1d-446d-a63c-24bc474ec8de HTTP/1.1" 200 21
+INFO 2026-05-27 16:34:53,878 log 15748 18184 "GET /content/generate/18c09092-ea1d-446d-a63c-24bc474ec8de HTTP/1.1" 200 21
+INFO 2026-05-27 16:34:57,821 log 15748 18184 "GET /content/generate/18c09092-ea1d-446d-a63c-24bc474ec8de HTTP/1.1" 200 21
+INFO 2026-05-27 16:34:59,788 log 15748 18184 "GET /content/generate/18c09092-ea1d-446d-a63c-24bc474ec8de HTTP/1.1" 200 21
+INFO 2026-05-27 16:35:07,114 views 15748 18184 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 16:35:07,117 log 15748 18184 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-27 16:35:54,688 log 15748 18184 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-27 16:35:54,837 log 15748 19340 "OPTIONS /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 0
+INFO 2026-05-27 16:35:55,179 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:35:57,977 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:36:01,434 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:36:04,486 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:36:07,687 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:36:10,408 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:36:13,420 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:36:16,538 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:36:19,451 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:36:22,531 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:36:25,502 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:36:28,496 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:36:31,424 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:36:34,418 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+INFO 2026-05-27 16:36:37,482 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 200 21
+ERROR 2026-05-27 16:36:41,324 log 15748 18184 Internal Server Error: /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf
+ERROR 2026-05-27 16:36:41,325 log 15748 18184 "GET /content/generate/cf8741ff-617a-4b83-ae93-4a5f1bd0a3bf HTTP/1.1" 500 56
+INFO 2026-05-27 16:38:56,984 views 15748 18184 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 16:38:56,985 log 15748 18184 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-27 16:39:30,251 views 15748 18184 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 16:39:30,255 log 15748 18184 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-27 16:40:13,244 log 15748 18184 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-27 16:40:13,400 log 15748 19340 "OPTIONS /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 0
+INFO 2026-05-27 16:40:13,663 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:17,694 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:20,396 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:23,507 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:26,477 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:29,415 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:32,552 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:34,812 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:37,664 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:40,835 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:43,559 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:46,580 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:50,395 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:53,396 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:56,611 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:40:59,408 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:41:02,397 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+INFO 2026-05-27 16:41:05,464 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 200 21
+ERROR 2026-05-27 16:41:08,431 log 15748 18184 Internal Server Error: /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79
+ERROR 2026-05-27 16:41:08,431 log 15748 18184 "GET /content/generate/b7b25345-b6f6-43a0-add4-cf95a21d0e79 HTTP/1.1" 500 56
+INFO 2026-05-27 16:42:55,734 log 15748 19340 "OPTIONS /auth/signin HTTP/1.1" 200 0
+INFO 2026-05-27 16:42:58,281 views 15748 18184 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 16:42:58,285 log 15748 18184 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-27 16:43:43,894 log 15748 18184 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-27 16:43:44,005 log 15748 19340 "OPTIONS /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 0
+INFO 2026-05-27 16:43:44,348 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:43:47,275 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:43:50,523 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:43:53,506 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:43:56,426 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:43:59,451 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:02,479 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:07,638 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:08,411 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:11,398 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:14,392 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:17,395 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:20,394 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:23,405 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:26,499 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:29,473 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:32,522 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:35,507 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:38,754 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:41,447 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:44,407 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:47,468 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+INFO 2026-05-27 16:44:50,482 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 200 21
+ERROR 2026-05-27 16:44:53,701 log 15748 18184 Internal Server Error: /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e
+ERROR 2026-05-27 16:44:53,704 log 15748 18184 "GET /content/generate/46865f82-0dea-46b7-be48-5c2ddc139e0e HTTP/1.1" 500 56
+INFO 2026-05-27 16:52:18,163 views 15748 35900 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 16:52:18,167 log 15748 35900 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-27 16:53:07,912 log 15748 35900 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-27 16:53:08,027 log 15748 18528 "OPTIONS /content/generate/4bb8df3c-822e-444f-8739-eca7b7064df9 HTTP/1.1" 200 0
+INFO 2026-05-27 16:53:08,240 log 15748 35900 "GET /content/generate/4bb8df3c-822e-444f-8739-eca7b7064df9 HTTP/1.1" 200 21
+INFO 2026-05-27 16:53:11,228 log 15748 35900 "GET /content/generate/4bb8df3c-822e-444f-8739-eca7b7064df9 HTTP/1.1" 200 21
+ERROR 2026-05-27 16:53:14,602 log 15748 35900 Internal Server Error: /content/generate/4bb8df3c-822e-444f-8739-eca7b7064df9
+ERROR 2026-05-27 16:53:14,604 log 15748 35900 "GET /content/generate/4bb8df3c-822e-444f-8739-eca7b7064df9 HTTP/1.1" 500 56
+INFO 2026-05-27 17:19:09,449 autoreload 15748 33764 C:\myenv\Lib\site-packages\dotenv\parser.py changed, reloading.
+INFO 2026-05-27 17:19:13,876 autoreload 31912 37472 Watching for file changes with StatReloader
+INFO 2026-05-27 17:19:54,539 views 31912 17460 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 17:19:54,547 log 31912 17460 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-27 17:20:40,993 log 31912 17460 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-27 17:20:41,075 log 31912 33184 "OPTIONS /content/generate/45baccdd-48c2-46c7-a177-99279cffc6aa HTTP/1.1" 200 0
+INFO 2026-05-27 17:20:41,314 log 31912 17460 "GET /content/generate/45baccdd-48c2-46c7-a177-99279cffc6aa HTTP/1.1" 200 21
+INFO 2026-05-27 17:20:45,099 log 31912 17460 "GET /content/generate/45baccdd-48c2-46c7-a177-99279cffc6aa HTTP/1.1" 200 21
+ERROR 2026-05-27 17:20:47,599 log 31912 17460 Internal Server Error: /content/generate/45baccdd-48c2-46c7-a177-99279cffc6aa
+ERROR 2026-05-27 17:20:47,599 log 31912 17460 "GET /content/generate/45baccdd-48c2-46c7-a177-99279cffc6aa HTTP/1.1" 500 56
+INFO 2026-05-27 17:31:43,267 autoreload 31912 37472 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-27 17:31:49,433 autoreload 40016 11800 Watching for file changes with StatReloader
+INFO 2026-05-27 17:32:16,611 views 40016 8012 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 17:32:16,611 log 40016 8012 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-27 17:33:35,025 log 40016 8012 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-27 17:33:35,108 log 40016 4236 "OPTIONS /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 0
+INFO 2026-05-27 17:33:35,326 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:33:38,303 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:33:41,297 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:33:44,464 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:33:47,641 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:33:50,563 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:33:53,401 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:33:56,470 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:33:59,404 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:02,898 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:05,593 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:08,547 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:11,413 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:14,587 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:17,559 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:20,507 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:24,198 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:26,406 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:29,401 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:32,391 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:35,404 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:38,588 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:41,431 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:44,464 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:47,576 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:50,596 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:53,695 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:34:56,469 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:35:00,607 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:35:02,402 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:35:05,496 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:35:08,447 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:35:11,405 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:35:14,481 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:35:17,443 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+INFO 2026-05-27 17:35:20,536 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 200 21
+ERROR 2026-05-27 17:36:10,827 log 40016 8012 Internal Server Error: /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128
+ERROR 2026-05-27 17:36:10,827 log 40016 8012 "GET /content/generate/64e478fc-4067-49c9-a3fa-78d40a33e128 HTTP/1.1" 500 75
+INFO 2026-05-27 17:40:03,912 autoreload 40016 11800 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-27 17:40:08,173 autoreload 26984 8724 Watching for file changes with StatReloader
+INFO 2026-05-27 17:48:47,857 autoreload 25032 36236 Watching for file changes with StatReloader
+INFO 2026-05-27 17:49:22,778 views 25032 26604 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 17:49:22,789 log 25032 26604 "POST /auth/signin HTTP/1.1" 200 680
+WARNING 2026-05-27 17:50:24,966 log 25032 26604 Bad Request: /content/generate-content
+WARNING 2026-05-27 17:50:24,966 log 25032 26604 "POST /content/generate-content HTTP/1.1" 400 72
+WARNING 2026-05-27 17:50:49,844 log 25032 26604 Bad Request: /content/generate-content
+WARNING 2026-05-27 17:50:49,846 log 25032 26604 "POST /content/generate-content HTTP/1.1" 400 72
+INFO 2026-05-27 17:51:13,556 log 25032 26604 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-27 17:51:13,659 log 25032 40764 "OPTIONS /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 0
+INFO 2026-05-27 17:51:13,929 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:17,038 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:20,529 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:23,436 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:26,468 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:29,590 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:32,412 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:35,453 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:38,427 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:41,582 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:44,463 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:47,443 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:50,514 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:53,395 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:56,549 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:51:59,398 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:52:02,646 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:52:05,559 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:52:08,423 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:52:11,497 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:52:14,569 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:52:17,428 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:52:20,410 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:52:32,501 log 25032 26604 "GET /content/generate/1d493375-8897-40d5-a8d7-05d4990449da HTTP/1.1" 200 21
+INFO 2026-05-27 17:52:34,897 basehttp 25032 26604 - Broken pipe from ('127.0.0.1', 58727)
+INFO 2026-05-27 17:52:42,481 views 25032 31488 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 17:52:42,482 log 25032 31488 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-27 17:53:35,353 log 25032 31488 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-27 17:53:35,421 log 25032 40764 "OPTIONS /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 0
+INFO 2026-05-27 17:53:35,723 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:53:39,462 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:53:42,426 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:53:45,387 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:53:48,449 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:53:51,373 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:53:54,374 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:53:56,665 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:00,374 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:03,375 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:06,813 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:09,601 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:12,850 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:15,717 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:18,358 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:21,468 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:24,431 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:27,723 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:30,480 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:33,379 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:36,378 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:39,469 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:42,488 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:45,434 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:48,517 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:51,459 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:54:54,860 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+INFO 2026-05-27 17:55:20,483 log 25032 31488 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 200 21
+ERROR 2026-05-27 17:56:23,681 log 25032 36304 Internal Server Error: /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+  File "C:\Myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 333, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\views\generic\base.py", line 106, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+  File "C:\Myenv\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\Myenv\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+  File "C:\Myenv\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 51, in authenticate
+    return self.get_user(validated_token), validated_token
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\rest_framework_simplejwt\authentication.py", line 130, in get_user
+    user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\query.py", line 635, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\query.py", line 372, in __len__
+    self._fetch_all()
+  File "C:\Myenv\Lib\site-packages\django\db\models\query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\query.py", line 95, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\models\sql\compiler.py", line 1622, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+  File "C:\Myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\utils.py", line 94, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+  File "C:\Myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\django\db\backends\postgresql\base.py", line 333, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Myenv\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: could not translate host name "aws-1-ap-southeast-1.pooler.supabase.com" to address: Name or service not known
+
+ERROR 2026-05-27 17:56:23,750 log 25032 36304 "GET /content/generate/6e42f976-5c82-42e9-a27b-7c367feb4670 HTTP/1.1" 500 28576
+INFO 2026-05-27 19:51:40,235 autoreload 25032 36236 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-27 19:51:53,346 autoreload 31512 41484 Watching for file changes with StatReloader
+INFO 2026-05-27 19:52:49,813 autoreload 31512 41484 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-27 19:52:52,520 autoreload 5440 3376 Watching for file changes with StatReloader
+INFO 2026-05-27 20:57:58,073 autoreload 5440 3376 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-27 20:58:03,127 autoreload 44828 26904 Watching for file changes with StatReloader
+INFO 2026-05-27 20:59:09,061 autoreload 44828 26904 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-27 20:59:11,606 autoreload 20008 43480 Watching for file changes with StatReloader
+INFO 2026-05-27 21:01:01,433 autoreload 20008 43480 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-27 21:01:03,963 autoreload 27064 12192 Watching for file changes with StatReloader
+INFO 2026-05-27 21:01:27,578 log 27064 41980 "OPTIONS /auth/signin HTTP/1.1" 200 0
+INFO 2026-05-27 21:01:29,605 views 27064 29868 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 21:01:29,605 log 27064 29868 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-27 21:03:09,268 views 27064 29868 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-27 21:03:09,282 log 27064 29868 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-27 21:04:26,785 log 27064 41980 "OPTIONS /content/generate-content HTTP/1.1" 200 0
+INFO 2026-05-27 21:04:31,024 log 27064 29868 "POST /content/generate-content HTTP/1.1" 202 71
+INFO 2026-05-27 21:04:31,076 log 27064 41980 "OPTIONS /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 0
+INFO 2026-05-27 21:04:31,425 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:04:34,302 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:04:37,295 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:04:40,496 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:04:43,638 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:04:46,362 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:04:49,356 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:04:52,504 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:04:55,628 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:04:58,407 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:01,423 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:04,380 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:07,574 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:10,444 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:13,479 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:16,361 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:19,337 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:22,266 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:25,388 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:28,536 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:31,502 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:34,439 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:37,426 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:40,372 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:43,382 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:46,475 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:49,660 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:52,373 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:55,583 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:05:58,564 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:06:01,461 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+INFO 2026-05-27 21:06:04,393 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 200 21
+ERROR 2026-05-27 21:06:07,377 log 27064 29868 Internal Server Error: /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5
+ERROR 2026-05-27 21:06:07,378 log 27064 29868 "GET /content/generate/f2e88ebe-2b5b-4158-9099-dd56683d01c5 HTTP/1.1" 500 81
+INFO 2026-05-27 21:13:11,767 autoreload 27064 12192 C:\python-projects\contentgraph_backend\content\models.py changed, reloading.
+INFO 2026-05-27 21:13:20,815 autoreload 37156 29552 Watching for file changes with StatReloader
+INFO 2026-05-27 21:14:29,365 autoreload 37156 29552 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-27 21:14:32,727 autoreload 24780 16468 Watching for file changes with StatReloader
+INFO 2026-05-27 21:18:55,161 autoreload 24780 16468 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-27 21:18:59,947 autoreload 27316 27484 Watching for file changes with StatReloader
+INFO 2026-05-27 21:19:07,849 autoreload 27316 27484 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-27 21:19:10,705 autoreload 28856 17756 Watching for file changes with StatReloader
+INFO 2026-05-27 21:20:07,571 autoreload 28856 17756 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-27 21:20:10,599 autoreload 39380 23852 Watching for file changes with StatReloader
+INFO 2026-05-27 21:20:58,927 autoreload 39380 23852 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-27 21:21:02,050 autoreload 33584 34488 Watching for file changes with StatReloader
+INFO 2026-05-27 21:22:54,704 autoreload 33584 34488 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-27 21:23:01,418 autoreload 20600 43084 Watching for file changes with StatReloader
+INFO 2026-05-27 21:23:41,288 autoreload 20600 43084 C:\python-projects\contentgraph_backend\content\csv_task.py changed, reloading.
+INFO 2026-05-27 21:23:47,104 autoreload 37524 5912 Watching for file changes with StatReloader
+INFO 2026-05-27 21:24:10,900 autoreload 37524 5912 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-27 21:24:14,761 autoreload 42624 20964 Watching for file changes with StatReloader
+INFO 2026-05-27 21:24:25,620 autoreload 42624 20964 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
+INFO 2026-05-27 21:24:28,621 autoreload 30648 43964 Watching for file changes with StatReloader

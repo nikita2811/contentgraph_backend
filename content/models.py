@@ -35,7 +35,7 @@ class AIResult(models.Model):
     long_description = models.TextField()
     tags = models.JSONField(default=list)
     primary_keyword = models.CharField(max_length=255)
-    secondary_keyword = models.CharField(max_length=255)
+    secondary_keyword = models.TextField(blank=True, null=True) 
     generation_time_ms = models.IntegerField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -129,3 +129,18 @@ class BulkJobItem(models.Model):
     def __str__(self):
         return f"Item {self.position} - {self.bulk_job.name} - {self.status}"
     
+class TokenUsage(models.Model):
+    product_name    = models.CharField(max_length=255)
+    prompt_tokens   = models.IntegerField(default=0)
+    completion_tokens = models.IntegerField(default=0)
+    total_tokens    = models.IntegerField(default=0)
+    model_name      = models.CharField(max_length=100, blank=True)
+    task_id         = models.CharField(max_length=255, blank=True)
+    created_at      = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'token_usage'
+        
+
+    def __str__(self):
+        return f"{self.product_name} - {self.total_tokens} tokens"
