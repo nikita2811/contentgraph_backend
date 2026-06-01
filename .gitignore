@@ -2,3 +2,51 @@
 /logs
 private.pem
 generate-keys.py
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+
+# Django cache framework (file-based cache)
+cache/
+.cache/
+
+# Django migrations cache (optional — usually you WANT to track migrations)
+# *.pyc inside migrations is covered by __pycache__ above
+
+# Pytest / coverage cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# MyPy cache
+.mypy_cache/
+
+# Celery cache / beat schedule
+celerybeat-schedule
+celerybeat.pid
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Static / media (generated at deploy time)
+staticfiles/
+mediafiles/
+media/
+
+# DB (if using SQLite locally)
+*.sqlite3
+
+# OS
+.DS_Store
+Thumbs.db

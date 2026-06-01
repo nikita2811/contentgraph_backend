@@ -1,7 +1,8 @@
 from django.urls import path
-from . import views
+from .views import CreateOrderView, VerifyPaymentView, RazorpayWebhookView
 
 urlpatterns = [
-    path("payment/",        views.create_order,    name="create_order"),
-    path("verify-payment/", views.verify_payment,  name="verify_payment"),
+    path("billing/order/create/", CreateOrderView.as_view()),
+    path("billing/payment/verify/", VerifyPaymentView.as_view()),
+    path("billing/webhook/razorpay/", RazorpayWebhookView.as_view()),
 ]

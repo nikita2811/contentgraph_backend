@@ -3017,3 +3017,29 @@ INFO 2026-05-27 21:24:10,900 autoreload 37524 5912 C:\python-projects\contentgra
 INFO 2026-05-27 21:24:14,761 autoreload 42624 20964 Watching for file changes with StatReloader
 INFO 2026-05-27 21:24:25,620 autoreload 42624 20964 C:\python-projects\contentgraph_backend\content\tasks.py changed, reloading.
 INFO 2026-05-27 21:24:28,621 autoreload 30648 43964 Watching for file changes with StatReloader
+INFO 2026-05-28 14:55:34,514 autoreload 31084 27492 Watching for file changes with StatReloader
+INFO 2026-05-28 15:02:24,404 log 31084 29120 "OPTIONS /auth/signin HTTP/1.1" 200 0
+INFO 2026-05-28 15:02:28,603 views 31084 26088 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-28 15:02:28,618 log 31084 26088 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-28 15:33:33,883 views 31084 28308 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-28 15:33:33,898 log 31084 28308 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-28 15:35:58,022 views 31084 28308 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-28 15:35:58,026 log 31084 28308 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-28 15:45:53,542 views 31084 32064 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-28 15:45:53,559 log 31084 32064 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-28 15:59:01,813 views 31084 30776 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-28 15:59:01,842 log 31084 30776 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-28 15:59:13,396 views 31084 30776 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-28 15:59:13,397 log 31084 30776 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-28 16:06:16,734 views 31084 29836 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-28 16:06:16,750 log 31084 29836 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-28 16:07:45,727 views 31084 29836 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-28 16:07:45,730 log 31084 29836 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-28 16:09:21,107 views 31084 29836 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-28 16:09:21,107 log 31084 29836 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-28 16:14:34,805 views 31084 31340 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-28 16:14:34,810 log 31084 31340 "POST /auth/signin HTTP/1.1" 200 680
+INFO 2026-05-28 16:33:10,381 views 31084 33456 User logged in: nikitasaxenainfo@gmail.com
+INFO 2026-05-28 16:33:10,400 log 31084 33456 "POST /auth/signin HTTP/1.1" 200 680
+WARNING 2026-05-29 08:46:01,030 log 31084 32460 Not Found: /favicon.ico
+WARNING 2026-05-29 08:46:01,081 log 31084 32460 "GET /favicon.ico HTTP/1.1" 404 2672

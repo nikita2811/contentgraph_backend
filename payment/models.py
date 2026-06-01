@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.conf import settings
 
 
 class PricingPlan(models.Model):
@@ -28,7 +29,7 @@ class PricingPlan(models.Model):
 
 class UserWallet(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    user = models.OneToOneField('auth.User', on_delete=models.CASCADE, related_name='wallet')
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='wallet')
     balance = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     total_credited = models.DecimalField(max_digits=12, decimal_places=2, default=0)
     total_debited = models.DecimalField(max_digits=12, decimal_places=2, default=0)
@@ -51,7 +52,7 @@ class RazorpayOrder(models.Model):
     ]
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='razorpay_orders')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='razorpay_orders')
     razorpay_order_id = models.CharField(max_length=255, unique=True)
     amount = models.DecimalField(max_digits=12, decimal_places=2)  # in INR (not paise)
     currency = models.CharField(max_length=3, default='INR')
@@ -87,7 +88,7 @@ class RazorpayPayment(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     order = models.ForeignKey('RazorpayOrder', on_delete=models.CASCADE, related_name='payments')
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='razorpay_payments')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='razorpay_payments')
     razorpay_payment_id = models.CharField(max_length=255, unique=True)
     razorpay_signature = models.CharField(max_length=500)  # for HMAC verification
     amount = models.DecimalField(max_digits=12, decimal_places=2)
@@ -117,9 +118,9 @@ class WalletTransaction(models.Model):
     wallet = models.ForeignKey('UserWallet', on_delete=models.CASCADE, related_name='transactions')
     payment = models.OneToOneField('RazorpayPayment', on_delete=models.SET_NULL,
                                    null=True, blank=True, related_name='wallet_transaction')
-    seo_request = models.ForeignKey('SEORequest', on_delete=models.SET_NULL,
+    product_request = models.ForeignKey('content.Product', on_delete=models.SET_NULL,
                                     null=True, blank=True, related_name='wallet_transactions')
-    bulk_job = models.ForeignKey('BulkJob', on_delete=models.SET_NULL,
+    bulk_job = models.ForeignKey('content.BulkJob', on_delete=models.SET_NULL,
                                  null=True, blank=True, related_name='wallet_transactions')
     transaction_type = models.CharField(max_length=10, choices=TRANSACTION_TYPE_CHOICES)
     amount = models.DecimalField(max_digits=12, decimal_places=2)
@@ -148,10 +149,10 @@ class APIUsageCharge(models.Model):
     ]
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='usage_charges')
-    seo_request = models.ForeignKey('SEORequest', on_delete=models.SET_NULL,
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='usage_charges')
+    product_request = models.ForeignKey('content.Product', on_delete=models.SET_NULL,
                                     null=True, blank=True, related_name='usage_charges')
-    bulk_job = models.ForeignKey('BulkJob', on_delete=models.SET_NULL,
+    bulk_job = models.ForeignKey('content.BulkJob', on_delete=models.SET_NULL,
                                  null=True, blank=True, related_name='usage_charges')
     pricing_plan = models.ForeignKey('PricingPlan', on_delete=models.PROTECT,
                                      related_name='usage_charges')
