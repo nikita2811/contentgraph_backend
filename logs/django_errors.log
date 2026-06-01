@@ -3043,3 +3043,6 @@ INFO 2026-05-28 16:33:10,381 views 31084 33456 User logged in: nikitasaxenainfo@
 INFO 2026-05-28 16:33:10,400 log 31084 33456 "POST /auth/signin HTTP/1.1" 200 680
 WARNING 2026-05-29 08:46:01,030 log 31084 32460 Not Found: /favicon.ico
 WARNING 2026-05-29 08:46:01,081 log 31084 32460 "GET /favicon.ico HTTP/1.1" 404 2672
+INFO 2026-06-01 13:05:53,004 autoreload 33460 35040 Watching for file changes with StatReloader
+INFO 2026-06-01 13:08:07,424 autoreload 33460 35040 C:\python-projects\contentgraph_backend\payment\views.py changed, reloading.
+INFO 2026-06-01 13:08:09,259 autoreload 44572 39716 Watching for file changes with StatReloader

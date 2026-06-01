@@ -11,8 +11,8 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from .models import RazorpayOrder, RazorpayPayment, UserWallet
-from .services import RazorpayService
-from .services import WalletService
+from .services.razorpay_service import RazorpayService
+from .services.wallet_service import WalletService
 
 razorpay_svc = RazorpayService()
 

@@ -2,7 +2,7 @@ from decimal import Decimal
 from django.db import transaction
 from django.utils import timezone
 
-from billing.models import UserWallet, WalletTransaction, RazorpayPayment, APIUsageCharge, PricingPlan
+from payment.models import UserWallet, WalletTransaction, RazorpayPayment, APIUsageCharge, PricingPlan
 
 
 class InsufficientBalanceError(Exception):
