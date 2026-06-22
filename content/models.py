@@ -44,6 +44,10 @@ class AIResult(models.Model):
 
     def __str__(self):
         return f"Result for {self.request.product_name}"
+    
+    @property
+    def user(self):
+        return self.request.user
 
 class BulkJob(models.Model):
    

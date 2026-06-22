@@ -2,6 +2,7 @@ import razorpay
 import hmac
 import hashlib
 from django.conf import settings
+import os
 
 
 class RazorpayService:
@@ -9,12 +10,14 @@ class RazorpayService:
         self.client = razorpay.Client(
             auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET)
         )
+        
 
     def create_order(self, amount_inr: float, receipt: str, notes: dict = None) -> dict:
         """
         Razorpay expects amount in paise (INR × 100).
         Returns the raw Razorpay order dict.
         """
+        
         return self.client.order.create({
             "amount": int(amount_inr * 100),
             "currency": "INR",

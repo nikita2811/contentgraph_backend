@@ -8,6 +8,7 @@ from .views import (
     RedisTokenRefreshView,
     ResetPassword,
     NewResetPassword,
+    MeView,
     
    
 )
@@ -21,6 +22,7 @@ urlpatterns=[
     path('reset-password',NewResetPassword.as_view(),name='reset-password'),
     path('token/refresh',RedisTokenRefreshView.as_view(),name='token-refresh'),
     path('logout',LogoutView.as_view(),name='logout'),
+    path("me/", MeView.as_view(), name="me"),
 
  
 ]

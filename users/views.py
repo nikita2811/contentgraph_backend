@@ -1,3 +1,4 @@
+from __future__ import annotations
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -21,7 +22,19 @@ from django.utils.encoding import force_str
 from django.contrib.auth.tokens import default_token_generator
 from django.shortcuts import redirect
 import threading
+from rest_framework.generics import RetrieveAPIView
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
+from .serializers import UserProfileSerializer
+from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth import get_user_model
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from django.contrib.auth.models import AbstractBaseUser
+
+User = get_user_model()
 
 
 
@@ -42,7 +55,6 @@ class RegisterView(APIView):
     def post(self,request):
         user = request.data
         serializer_data = self.serializer(data=user)
-        logger.info(serializer_data)
         if serializer_data.is_valid():
           serializer_data.save()
           user_data = serializer_data.data
@@ -289,6 +301,35 @@ class LogoutView(APIView):
                 {'error': 'Invalid token.'},
                 status=status.HTTP_400_BAD_REQUEST
             )
+        
+from rest_framework.generics import RetrieveAPIView
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
+from .serializers import UserProfileSerializer
+
+
+
+
+class MeView(RetrieveAPIView):
+    """
+    GET /api/users/me/
+    Returns the profile of the currently authenticated user.
+    Requires a valid JWT Bearer token in the Authorization header.
+    """
+
+    serializer_class = UserProfileSerializer
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self) -> AbstractBaseUser:
+        # No pk lookup needed — always returns the token's owner.
+        return self.request.user
+
+    def get_serializer_context(self):
+        # Pass request so avatar_url can be made absolute.
+        ctx = super().get_serializer_context()
+        ctx["request"] = self.request
+        return ctx
         
 
     

@@ -1,7 +1,10 @@
+# contentgraph_backend/exceptions.py
+
 from rest_framework.exceptions import APIException
 from rest_framework import status
 
 
+# ── DRF exceptions for views/API responses ──
 class AIServiceUnavailable(APIException):
     status_code = status.HTTP_503_SERVICE_UNAVAILABLE
     default_code = "ai_service_unavailable"
@@ -18,3 +21,14 @@ class AIServiceError(APIException):
         if status_code:
             self.status_code = status_code
         super().__init__(detail or "AI service returned an error")
+
+
+# ── Plain exceptions for internal use in Celery tasks ──
+class AIServiceUnavailableError(Exception):
+    """Raised inside Celery tasks when FastAPI is unreachable. Retryable."""
+    pass
+
+
+class AIServiceFailedError(Exception):
+    """Raised inside Celery tasks when FastAPI returns an error. Non-retryable."""
+    pass

@@ -10,9 +10,13 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 
-from .models import RazorpayOrder, RazorpayPayment, UserWallet
+from .models import RazorpayOrder, RazorpayPayment, UserWallet,WalletTransaction,PricingPlan
 from .services.razorpay_service import RazorpayService
 from .services.wallet_service import WalletService
+from .services.billing_service import BillingService
+from django.conf import settings
+from .serializers import WalletSerializer,WalletTransactionSerializer
+from decimal import Decimal
 
 razorpay_svc = RazorpayService()
 
@@ -193,4 +197,137 @@ class RazorpayWebhookView(APIView):
         RazorpayOrder.objects.filter(
             razorpay_order_id=rz_order_id, status="created"
         ).update(status="failed")
+
+
+
+
+class WalletView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        try:
+            wallet = UserWallet.objects.get(user=request.user)
+        except UserWallet.DoesNotExist:
+            # Auto-create wallet on first access
+            wallet = UserWallet.objects.create(user=request.user)
+
+        serializer = WalletSerializer(wallet)
+        return Response(serializer.data)
+
+
+
+
+
+class TransactionListView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        VALID_TYPES = {'credit', 'debit', 'refund'}
+
+        # --- query params ---
+        txn_type   = request.query_params.get('type')          # credit | debit | refund
+        start_date = request.query_params.get('start_date')    # YYYY-MM-DD
+        end_date   = request.query_params.get('end_date')      # YYYY-MM-DD
+        page       = int(request.query_params.get('page', 1))
+        page_size  = min(int(request.query_params.get('page_size', 20)), 100)
+
+        qs = (
+            WalletTransaction.objects
+            .filter(wallet__user=request.user)
+            .order_by('-created_at')
+        )
+
+        # --- filters ---
+        if txn_type:
+            if txn_type not in VALID_TYPES:
+                return Response(
+                    {'error': f'Invalid type. Choose from: {", ".join(VALID_TYPES)}'},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+            qs = qs.filter(transaction_type=txn_type)
+
+        if start_date:
+            qs = qs.filter(created_at__date__gte=start_date)
+
+        if end_date:
+            qs = qs.filter(created_at__date__lte=end_date)
+
+        # --- pagination ---
+        total        = qs.count()
+        total_pages  = (total + page_size - 1) // page_size
+        offset       = (page - 1) * page_size
+        transactions = qs[offset : offset + page_size]
+
+        serializer = WalletTransactionSerializer(transactions, many=True)
+
+        return Response({
+            'results':     serializer.data,
+            'total':       total,
+            'page':        page,
+            'page_size':   page_size,
+            'total_pages': total_pages,
+            'has_next':    page < total_pages,
+            'has_prev':    page > 1,
+        })
+    
+
+class PlanView(APIView):
+    def post(self,request):
+        payload ={
+        "tier_name": request.data.get('tier'),
+        "max_units": request.data.get('max_units'),
+        "min_units": request.data.get('min_units'),
+        "price_per_unit": request.data.get('price_per_unit'),
+        "currency": request.data.get('currency'),
+        "is_active": request.data.get('is_active'),
+        }
+
+        PricingPlan.objects.create(**payload)
+
+        return Response({
+            "message":"pricing plan created successfully"
+        })
+    
+
+
+class BalanceCheckView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        units = int(request.data.get('units', 1))
+
+        if units < 1:
+            return Response(
+                {'error': 'units must be at least 1'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            plan   = BillingService.get_applicable_plan(units)
+            cost   = (plan.price_per_unit * units).quantize(Decimal('0.01'))
+            wallet = UserWallet.objects.get(user=request.user)
+
+            can_afford = wallet.balance >= cost
+            shortfall  = max(cost - wallet.balance, Decimal('0.00'))
+
+            return Response({
+                'can_afford':  can_afford,
+                'balance':     str(wallet.balance),
+                'cost':        str(cost),
+                'shortfall':   str(shortfall),
+                'unit_price':  str(plan.price_per_unit),
+                'tier':        plan.tier_name,
+                'units':       units,
+            })
+
+        except UserWallet.DoesNotExist:
+            return Response(
+                {'error': 'Wallet not found'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        except ValueError as e:
+            return Response(
+                {'error': str(e)},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 

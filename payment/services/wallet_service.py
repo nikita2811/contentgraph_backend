@@ -103,7 +103,7 @@ class WalletService:
         )
         balance_before = wallet.balance
         wallet.balance += amount
-        wallet.total_credited += amount
+        wallet.total_debited -= amount  # ← reverse the debit, not inflate total_credited
         wallet.save()
 
         txn = WalletTransaction.objects.create(

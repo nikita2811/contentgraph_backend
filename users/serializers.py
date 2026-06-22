@@ -1,7 +1,11 @@
+from __future__ import annotations
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from datetime import timezone,timedelta
+from typing import TYPE_CHECKING
 
+if TYPE_CHECKING:
+    from django.contrib.auth.models import AbstractBaseUser
 
 User = get_user_model()
 
@@ -32,3 +36,29 @@ class LoginSerializer(serializers.ModelSerializer):
     class Meta:
         model=User
         fields = ['email','password','token']  
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    avatar_url = serializers.SerializerMethodField()
+   
+ 
+    class Meta:
+        model = User
+        fields = [
+            "id",
+            "email",
+            "name",
+            "avatar_url",
+            "last_login",
+        ]
+        read_only_fields = fields
+ 
+    
+ 
+    def get_avatar_url(self, obj: User) -> str | None:
+        request = self.context.get("request")
+        # If you store avatars on the User model (e.g. via django-avatar or
+        # a custom ImageField called `avatar`), swap the line below.
+        avatar = getattr(obj, "avatar", None)
+        if avatar and hasattr(avatar, "url"):
+            return request.build_absolute_uri(avatar.url) if request else avatar.url
+        return None

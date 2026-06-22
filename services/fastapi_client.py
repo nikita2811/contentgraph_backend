@@ -3,7 +3,7 @@ import logging
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 from django.conf import settings
 from .auth import get_auth_header
-from contentgraph_backend.exceptions import AIServiceError,AIServiceUnavailable
+from contentgraph_backend.exceptions import AIServiceFailedError,AIServiceUnavailableError
 
 logger = logging.getLogger(__name__)
 
@@ -13,7 +13,7 @@ BULK_TIMEOUT   = httpx.Timeout(connect=5.0, read=300.0, write=10.0, pool=5.0)
 
 def _get_client(timeout: httpx.Timeout) -> httpx.Client:
     return httpx.Client(
-        base_url=settings.FASTAPI_SERVICE_URL,
+        base_url="http://127.0.0.1:8001",
         timeout=timeout,
         headers={
             **get_auth_header(),           # fresh JWT every time client is created
@@ -23,32 +23,35 @@ def _get_client(timeout: httpx.Timeout) -> httpx.Client:
 
 
 @retry(
-    retry=retry_if_exception_type(httpx.TransportError | httpx.TimeoutException),
+    retry=retry_if_exception_type((httpx.TransportError,httpx.TimeoutException)),
     stop=stop_after_attempt(3),
     wait=wait_exponential(multiplier=1, min=1, max=8),
     reraise=True,
 )
-def generate_content(payload: dict) -> dict:
-    try:
-        with _get_client(SINGLE_TIMEOUT) as client:
-            response = client.post("/generate", json=payload,headers={
+def _generate_content_with_retry(payload: dict) -> dict:
+    """Raw call — lets httpx exceptions bubble up so tenacity can retry them."""
+    with _get_client(SINGLE_TIMEOUT) as client:
+        response = client.post("/generate", json=payload,headers={
             **get_auth_header(),         
             "Content-Type": "application/json",
         },)
-            response.raise_for_status()
-            return response.json()
+        response.raise_for_status()
+        return response.json()
+def generate_content(payload: dict) -> dict:
+    try:
+       return _generate_content_with_retry(payload)
 
     except httpx.ConnectError as e:
         logger.error(f"FastAPI unreachable: {e}")
-        raise AIServiceUnavailable("AI service is currently unavailable") from e
+        raise AIServiceUnavailableError("AI service is currently unavailable") from e
 
     except httpx.TimeoutException as e:
         logger.error(f"FastAPI timeout: {e}")
-        raise AIServiceUnavailable("AI service timed out") from e
+        raise AIServiceUnavailableError("AI service timed out") from e
 
     except httpx.HTTPStatusError as e:
         logger.error(f"FastAPI error {e.response.status_code}: {e.response.text}")
-        raise AIServiceError(
+        raise AIServiceFailedError(
             f"AI service returned {e.response.status_code}",
             status_code=e.response.status_code,
         ) from e

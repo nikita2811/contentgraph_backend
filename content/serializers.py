@@ -44,8 +44,4 @@ class ProductCreateSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("key_features must be a non-empty list.")
         return value
 
-    def validate_tone(self, value):
-        allowed = ['professional', 'casual', 'formal', 'friendly']
-        if value.lower() not in allowed:
-            raise serializers.ValidationError(f"tone must be one of: {', '.join(allowed)}")
-        return value.lower()
+    

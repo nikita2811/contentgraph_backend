@@ -3,14 +3,11 @@ from django.db import models
 from django.conf import settings
 
 
+# -- table for storing pricing plans
 class PricingPlan(models.Model):
-    API_TYPE_CHOICES = [
-        ('single', 'Single'),
-        ('bulk', 'Bulk'),
-    ]
+  
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    api_type = models.CharField(max_length=10, choices=API_TYPE_CHOICES)
     tier_name = models.CharField(max_length=100)
     min_units = models.IntegerField(default=1)
     max_units = models.IntegerField(null=True, blank=True)  # null = unlimited
@@ -21,12 +18,12 @@ class PricingPlan(models.Model):
 
     class Meta:
         db_table = 'pricing_plan'
-        ordering = ['api_type', 'min_units']
+        ordering = ['min_units']
 
     def __str__(self):
-        return f"{self.tier_name} ({self.api_type}) - {self.price_per_unit}/{self.currency}"
+        return f"{self.tier_name} - {self.price_per_unit}/{self.currency}"
 
-
+# -- table for maintaining credits
 class UserWallet(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='wallet')
@@ -42,7 +39,7 @@ class UserWallet(models.Model):
     def __str__(self):
         return f"{self.user.email} - {self.balance} {self.currency}"
 
-
+# -- table for storing order ids
 class RazorpayOrder(models.Model):
     STATUS_CHOICES = [
         ('created', 'Created'),
@@ -69,7 +66,7 @@ class RazorpayOrder(models.Model):
     def __str__(self):
         return f"{self.razorpay_order_id} - {self.status}"
 
-
+# -- table for storing payments
 class RazorpayPayment(models.Model):
     METHOD_CHOICES = [
         ('card', 'Card'),
@@ -106,7 +103,7 @@ class RazorpayPayment(models.Model):
     def __str__(self):
         return f"{self.razorpay_payment_id} - {self.status}"
 
-
+# -- table for maintaining all transactions
 class WalletTransaction(models.Model):
     TRANSACTION_TYPE_CHOICES = [
         ('credit', 'Credit'),   # top-up
@@ -136,12 +133,9 @@ class WalletTransaction(models.Model):
     def __str__(self):
         return f"{self.transaction_type} - {self.amount} ({self.wallet.user.email})"
 
-
+# -- table for usage
 class APIUsageCharge(models.Model):
-    API_TYPE_CHOICES = [
-        ('single', 'Single'),
-        ('bulk', 'Bulk'),
-    ]
+   
     STATUS_CHOICES = [
         ('success', 'Success'),
         ('failed', 'Failed'),
@@ -158,16 +152,17 @@ class APIUsageCharge(models.Model):
                                      related_name='usage_charges')
     wallet_transaction = models.OneToOneField('WalletTransaction', on_delete=models.SET_NULL,
                                               null=True, blank=True, related_name='usage_charge')
-    api_type = models.CharField(max_length=10, choices=API_TYPE_CHOICES)
+   
     units_consumed = models.IntegerField(default=1)  # 1 for single, N for bulk
     unit_price = models.DecimalField(max_digits=10, decimal_places=4)  # snapshot at charge time
     total_charged = models.DecimalField(max_digits=12, decimal_places=2)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='success')
     charged_at = models.DateTimeField(auto_now_add=True)
+    
 
     class Meta:
         db_table = 'api_usage_charge'
         ordering = ['-charged_at']
 
     def __str__(self):
-        return f"{self.api_type} - {self.units_consumed} units - {self.total_charged}"
+        return f"{self.units_consumed} units - {self.total_charged}"
