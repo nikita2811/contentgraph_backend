@@ -13,7 +13,7 @@ BULK_TIMEOUT   = httpx.Timeout(connect=5.0, read=300.0, write=10.0, pool=5.0)
 
 def _get_client(timeout: httpx.Timeout) -> httpx.Client:
     return httpx.Client(
-        base_url="http://127.0.0.1:8001",
+        base_url=settings.FASTAPI_SERVICE_URL,
         timeout=timeout,
         headers={
             **get_auth_header(),           # fresh JWT every time client is created
