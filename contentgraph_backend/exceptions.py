@@ -26,9 +26,19 @@ class AIServiceError(APIException):
 # ── Plain exceptions for internal use in Celery tasks ──
 class AIServiceUnavailableError(Exception):
     """Raised inside Celery tasks when FastAPI is unreachable. Retryable."""
-    pass
+    status_code = status.HTTP_503_SERVICE_UNAVAILABLE
+    default_code = "ai_service_error"
+    def __init__(self,  status_code=None, detail=None):
+        self.status_code = status_code
+        self.detail = detail
+        super().__init__(detail)
 
 
 class AIServiceFailedError(Exception):
     """Raised inside Celery tasks when FastAPI returns an error. Non-retryable."""
-    pass
+    status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    default_code = "ai_service_error"
+    def __init__(self, status_code=None, detail=None):
+        self.status_code = status_code
+        self.detail = detail
+        super().__init__(detail)
