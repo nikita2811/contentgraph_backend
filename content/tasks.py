@@ -2,7 +2,7 @@ import logging
 import json
 from celery import shared_task
 from celery.exceptions import SoftTimeLimitExceeded
-from contentgraph_backend.exceptions import AIServiceUnavailable, AIServiceError
+from contentgraph_backend.exceptions import AIServiceFailedError,AIServiceUnavailableError
 from services.fastapi_client import generate_content
 from .models import Product, CeleryTaskMeta, AIResult, TokenUsage
 from django.utils.timezone import now
@@ -148,25 +148,24 @@ def generate_content_task(self, product_request_id: int, user_id: int, is_regene
 
         return {"status": "success", "product_id": product.id}
 
-    except AIServiceUnavailable as e:
+    except AIServiceUnavailableError as e:          # ← fixed to match fastapi_client.py
         if self.request.retries >= self.max_retries:
             _mark_failed(product, charge, meta, str(e), self.request.retries)
-            logger.warning(f"[task={self.request.id}] Retries exhausted: {e}")
+            logger.exception(f"[task={self.request.id}] Retries exhausted")   # ← full traceback
             raise
         logger.warning(f"[task={self.request.id}] Transient error, retrying: {e}")
         raise self.retry(exc=e, countdown=2 ** self.request.retries)
 
-    except AIServiceError as e:
+    except AIServiceFailedError as e:                # ← fixed to match fastapi_client.py
         _mark_failed(product, charge, meta, str(e), self.request.retries)
-        logger.error(f"[task={self.request.id}] Non-retryable error: {e}")
+        logger.exception(f"[task={self.request.id}] Non-retryable error")     # ← full traceback
         raise
-
     except SoftTimeLimitExceeded:
         _mark_failed(product, charge, meta, "AI pipeline timed out", self.request.retries)
-        logger.error(f"[task={self.request.id}] Pipeline exceeded 270s soft limit")
-        raise AIServiceUnavailable("AI pipeline timed out")
+        logger.exception(f"[task={self.request.id}] Pipeline exceeded 270s soft limit")  # ← full traceback
+        raise AIServiceUnavailableError(detail="AI pipeline timed out")       # ← keyword, unambiguous
 
     except Exception as e:
         _mark_failed(product, charge, meta, str(e), self.request.retries)
-        logger.exception(f"[task={self.request.id}] Unexpected error: {e}")
+        logger.exception(f"[task={self.request.id}] Unexpected error")        # already correct
         raise

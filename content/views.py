@@ -58,7 +58,7 @@ class GenerateView(APIView):
         try:
             serializer = ProductCreateSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
-            is_regenerate = serializer.validated_data.pop('is_regenerate',True)
+            is_regenerate = serializer.validated_data.pop('is_regenerate',False)
             request_data = serializer.save(
                 user=request.user,
                 request_type='single',
@@ -342,10 +342,7 @@ def _credits_used(user, since=None):
         user_id=user,
         status="refunded"
     )
-    qsf = APIUsageCharge.objects.filter(
-        user_id=user,
-        status="refunded"
-    )
+    
     charged = 0
     if since:
         qs = qs.filter(charged_at__gte=since)
