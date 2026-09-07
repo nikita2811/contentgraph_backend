@@ -342,6 +342,11 @@ def _credits_used(user, since=None):
         user_id=user,
         status="refunded"
     )
+    qsf = APIUsageCharge.objects.filter(
+        user_id=user,
+        status="failed"
+    )
+
     
     charged = 0
     if since:
