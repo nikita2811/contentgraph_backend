@@ -49,12 +49,18 @@ class UserProfileSerializer(serializers.ModelSerializer):
             "name",
             "avatar_url",
             "last_login",
+            "credits",
         ]
         read_only_fields = fields
+
+
+    def get_credits(self, obj):
+        wallet = getattr(obj, 'wallet', None)
+        return wallet.balance if wallet else 0
  
     
  
-    def get_avatar_url(self, obj: User) -> str | None:
+    def get_avatar_url(self, obj) -> str | None:
         request = self.context.get("request")
         # If you store avatars on the User model (e.g. via django-avatar or
         # a custom ImageField called `avatar`), swap the line below.

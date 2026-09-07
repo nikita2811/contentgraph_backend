@@ -29,6 +29,12 @@ from .serializers import UserProfileSerializer
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import get_user_model
 
+
+from rest_framework.generics import RetrieveAPIView
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
+from .serializers import UserProfileSerializer
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -302,10 +308,7 @@ class LogoutView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
         
-from rest_framework.generics import RetrieveAPIView
-from rest_framework_simplejwt.authentication import JWTAuthentication
 
-from .serializers import UserProfileSerializer
 
 
 
@@ -322,8 +325,9 @@ class MeView(RetrieveAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_object(self) -> AbstractBaseUser:
-        # No pk lookup needed — always returns the token's owner.
-        return self.request.user
+      # select_related pulls the wallet row in the same query (OneToOneField),
+        # avoiding a second DB hit when the serializer accesses user.wallet.
+        return User.objects.select_related('wallet').get(pk=self.request.user.pk)
 
     def get_serializer_context(self):
         # Pass request so avatar_url can be made absolute.
