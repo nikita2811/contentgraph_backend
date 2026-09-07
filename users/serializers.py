@@ -39,6 +39,7 @@ class LoginSerializer(serializers.ModelSerializer):
 
 class UserProfileSerializer(serializers.ModelSerializer):
     avatar_url = serializers.SerializerMethodField()
+    credits = serializers.SerializerMethodField()
    
  
     class Meta:
