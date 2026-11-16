@@ -34,11 +34,12 @@ os.makedirs(LOGS_DIR, exist_ok=True)
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True #off this setting in next commit
 
 ALLOWED_HOSTS = ['contentgraph-backend.onrender.com',
                  'backend.contentgraph.io',
                  'app.contentgraph.io',
+                 'contentgraph.vercel.app',
                  'localhost',
                  'contentgraph-ai-agent.onrender.com',
                  '127.0.0.1']
