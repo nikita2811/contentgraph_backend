@@ -84,7 +84,8 @@ ROOT_URLCONF = 'contentgraph_backend.urls'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://app.contentgraph.io",  # exact match, no trailing slash
+    "https://app.contentgraph.io",
+    "https://contentgraph.vercel.app",  # exact match, no trailing slash
 ]
 
 # ✅ Allow all HTTP methods
