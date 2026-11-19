@@ -29,6 +29,7 @@ from django.db.models import F, Case, When, ExpressionWrapper
 from django.db.models.functions import Cast
  
 from .models import Product, BulkJob
+from .url_extractor import get_product_from_url
 
 
 from django.db.models import Sum, Avg
@@ -43,6 +44,25 @@ load_dotenv()  # loads .env file
 
 logger = logging.getLogger(__name__)
 
+def format_category(raw: str, depth: int = 2) -> str:
+      """'Shoes & Handbags > Shoes > Men's Shoes > ...' -> 'shoes & handbags,shoes'"""
+      parts = [p.strip().lower() for p in (raw or "").split(">") if p.strip()]
+      return ",".join(parts[:depth])
+
+USER_INPUT_FIELDS = ("platform", "target_audience", "tone")   # always from the user
+SCRAPED_FIELDS = ("product_name", "category", "description", "key_features")
+MULTI_VALUE_FIELDS = ("tone","target_audience") 
+
+
+def _clean_payload(request):
+    """Plain, mutable dict. Multi-value fields stay lists for form posts."""
+    if hasattr(request.data, "getlist"):          # QueryDict (form / multipart)
+        data = request.data.dict()
+        for field in MULTI_VALUE_FIELDS:
+            if field in request.data:
+                data[field] = request.data.getlist(field)
+        return data
+    return dict(request.data)  
 
 @method_decorator(csrf_exempt, name="dispatch")
 class GenerateView(APIView):
@@ -53,53 +73,77 @@ class GenerateView(APIView):
     Cloudflare sees a < 1s response. ✓
     """
    
+    
 
+    
     def post(self, request):
-        try:
-            serializer = ProductCreateSerializer(data=request.data)
-            serializer.is_valid(raise_exception=True)
-            is_regenerate = serializer.validated_data.pop('is_regenerate',False)
-            request_data = serializer.save(
-                user=request.user,
-                request_type='single',
-                status="pending",
-            )
-           
-            print(f"{is_regenerate}")
-            print(f"{serializer.validated_data}")
-            # 1. Reserve a task ID before dispatching
+    
+     data = _clean_payload(request)
+     logger.info("payload keys: %s", list(data.keys()))
+ 
+     # 1. User-supplied fields are required in BOTH flows (form and URL)
+     missing = [f for f in USER_INPUT_FIELDS if not data.get(f)]
+     if missing:
+      return JsonResponse(
+         {"error": f"Missing required field(s): {', '.join(missing)}"},
+         status=400,
+     )
+      # 2. If a URL was supplied, scrape it and fill in the gaps
+     url = (data.pop("url", None) or "").strip()
+     if url:
+         try:
+             scraped = get_product_from_url(url)  # your redis client, or omit
+         except ValueError as e:        # bad/unsafe URL, or no product found
+             return JsonResponse({"error": str(e)}, status=400)
+         except RuntimeError as e:      # fetch failed (blocked, timeout, etc.)
+             logger.warning("URL extraction failed for %s: %s", url, e)
+             return JsonResponse(
+                 {"error": "Could not fetch product details from that URL. "
+                           "Please enter them manually."},
+                 status=422,
+             )
+ 
+         # User-supplied values win; scraped values only fill blanks
+         for field in ("product_name", "category", "description", "key_features"):
+             if not data.get(field):
+              value = getattr(scraped, field)
+             if field == "category":
+                 value = format_category(value)
+             data[field] = value
             
-            task_id = celery_uuid()
-            # 2. Create the meta row FIRST, while still in the transaction
-            CeleryTaskMeta.objects.create(
-                request=request_data,
-                task_id=task_id,
-                task_name='generate_seo_content',
-                queue_type='default',
-                status='pending',
-            )
-    
-            request_data.celery_task_id = task_id
-            request_data.save(update_fields=['celery_task_id'])
-    
-            # 3. Dispatch AFTER the transaction commits — row is guaranteed to exist
-            transaction.on_commit(
-                lambda: generate_content_task.apply_async(
-                    args=[request_data.id, request.user.id],
-                    kwargs={'is_regenerate': is_regenerate},
-                    task_id=task_id,
-                )
-            )
-    
-            logger.info(f"Task queued: {task_id}")
-    
-        except json.JSONDecodeError:
-            return JsonResponse({"error": "Invalid JSON"}, status=400)
-    
-        return JsonResponse({
-            "task_id": task_id,
-            "status": "queued",
-        }, status=202)
+        
+ 
+     serializer = ProductCreateSerializer(data=data)
+     serializer.is_valid(raise_exception=True)
+     is_regenerate = serializer.validated_data.pop("is_regenerate", False)
+ 
+     task_id = celery_uuid()
+ 
+     with transaction.atomic():
+         request_data = serializer.save(
+             user=request.user,
+             request_type="single",
+             status="pending",
+             celery_task_id=task_id,
+         )
+         CeleryTaskMeta.objects.create(
+             request=request_data,
+             task_id=task_id,
+             task_name="generate_seo_content",
+             queue_type="default",
+             status="pending",
+         )
+         # Runs only after the outer transaction commits
+         transaction.on_commit(
+             lambda: generate_content_task.apply_async(
+                 args=[request_data.id, request.user.id],
+                 kwargs={"is_regenerate": is_regenerate},
+                 task_id=task_id,
+             )
+         )
+ 
+     logger.info("Task queued: %s", task_id)
+     return JsonResponse({"task_id": task_id, "status": "queued"}, status=202)
 class ResultView(APIView):
     def get(self, request, task_id: str):
         # First check Celery task state
